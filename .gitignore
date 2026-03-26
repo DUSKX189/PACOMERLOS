@@ -3,3 +3,8 @@ tailwind-input.css
 tailwind.config.js
 package.json
 package-lock.json
+.DS_Store
+img/.DS_Store
+.agents/
+.claude/
+skills-lock.json
