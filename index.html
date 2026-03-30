@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paquitos Artesanales en Madrid — Paco Merlos</title>
+
+    <!-- SEO Meta -->
+    <meta name="description" content="Paquitos artesanales en Madrid. Hechos a mano con masa madre fermentada 48 h. Red Velvet, Pistacho Lover, Cookies & Kinder. Descubre dónde encontrarlos.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="author" content="Paco Merlos">
+    <!-- IMPORTANTE: Actualiza esta URL con tu dominio real -->
+    <link rel="canonical" href="https://pacomerlos.com/">
+    <link rel="alternate" hreflang="es" href="https://pacomerlos.com/">
+
+    <!-- Geo / Local SEO -->
+    <meta name="geo.region" content="ES-MD">
+    <meta name="geo.placename" content="Madrid">
+    <meta name="theme-color" content="#8C52FF">
+
+    <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pacomerlos.com/">
+    <meta property="og:title" content="Paquitos Artesanales en Madrid — Paco Merlos">
+    <meta property="og:description" content="Paquitos artesanales hechos a mano con masa madre fermentada 48 h. Red Velvet, Pistacho Lover, Cookies & Kinder. Descúbrelos en Madrid.">
+    <meta property="og:image" content="https://pacomerlos.com/img/paquito-frambuesa.webp">
+    <meta property="og:image:width" content="480">
+    <meta property="og:image:height" content="480">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="Paco Merlos">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Paquitos Artesanales en Madrid — Paco Merlos">
+    <meta name="twitter:description" content="Paquitos artesanales hechos a mano con masa madre fermentada 48 h. Madrid.">
+    <meta name="twitter:image" content="https://pacomerlos.com/img/paquito-frambuesa.webp">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon-paco.png">
+    <link rel="apple-touch-icon" href="img/favicon-paco.png">
+
+    <!-- Preload fuentes críticas -->
+    <link rel="preload" href="fonts/now.regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/now.bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Chunko%20Bold%20Demo.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Schema.org JSON-LD: Bakery + Productos -->
+    <!-- IMPORTANTE: Rellena address, telephone y city con tus datos reales -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Bakery",
+      "name": "Paco Merlos",
+      "description": "Paquitos artesanales hechos a mano cada mañana con masa madre fermentada más de 48 horas. Sin aditivos, sin atajos.",
+      "url": "https://pacomerlos.com",
+      "logo": "https://pacomerlos.com/img/logo-paco-merlos.webp",
+      "image": [
+        "https://pacomerlos.com/img/paquito-frambuesa.webp",
+        "https://pacomerlos.com/img/paquito-pistacho.webp",
+        "https://pacomerlos.com/img/paquito-chocolate.webp"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Paco Merlos"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Madrid",
+        "addressRegion": "Comunidad de Madrid",
+        "addressCountry": "ES"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Madrid"
+      },
+      "sameAs": ["https://www.instagram.com/paco_merlos/"],
+      "servesCuisine": "Panadería artesanal",
+      "priceRange": "€€",
+      "hasMenu": "https://pacomerlos.com/#vitrina",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Paquitos",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Red Velvet & Cheese",
+              "description": "Masa madre, azúcar, glaseado de queso y frutos rojos. Bestseller.",
+              "image": "https://pacomerlos.com/img/paquito-frambuesa-lado.webp"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Pistacho Lover",
+              "description": "Masa madre, crema pistacho, cobertura blanca y pistacho. El favorito de Instagram.",
+              "image": "https://pacomerlos.com/img/paquito-pistacho-lado.png"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Cookies & Kinder",
+              "description": "Masa madre, galleta Oreo, Kinder Bueno y ganache.",
+              "image": "https://pacomerlos.com/img/paquito-chocolate-lado.png"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="tailwind.css">
+    <script defer src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="overflow-x-hidden selection:bg-[#FF653A] selection:text-[#FFFFF1] text-[#FFFFF1] bg-[#8C52FF]"
+    style="font-family: 'Now', sans-serif;">
+
+
+    <!-- Header -->
+    <header id="header"
+        class="fixed top-0 left-0 right-0 z-[500] transition-transform duration-300"
+        style="padding: 0.75rem 1.5rem;">
+
+        <!-- Pill container -->
+        <div class="max-w-[64rem] mx-auto flex items-center justify-between bg-[#FFFFE3] rounded-2xl px-5 py-3 shadow-[0_0.5rem_2rem_rgba(0,0,0,0.12)] border border-[#0f0f0f]/[0.06]">
+
+            <!-- Logo -->
+            <a href="#hero">
+                <img src="img/logo-paco-merlos.webp" alt="Paco Merlos" class="h-10 w-auto object-contain" width="200" height="40">
+            </a>
+
+            <!-- Nav -->
+            <nav class="hidden md:flex items-center gap-1">
+                <a href="#vitrina"
+                    class="font-['Now'] font-medium text-xs uppercase tracking-[0.12rem] text-[#0f0f0f]/60 px-4 py-2 rounded-lg transition-colors duration-200 hover:text-[#8C52FF] hover:bg-[#8C52FF]/8">Vitrina</a>
+                <a href="#frescos"
+                    class="font-['Now'] font-medium text-xs uppercase tracking-[0.12rem] text-[#0f0f0f]/60 px-4 py-2 rounded-lg transition-colors duration-200 hover:text-[#8C52FF] hover:bg-[#8C52FF]/8">Proceso</a>
+                <a href="#galeria"
+                    class="font-['Now'] font-medium text-xs uppercase tracking-[0.12rem] text-[#0f0f0f]/60 px-4 py-2 rounded-lg transition-colors duration-200 hover:text-[#8C52FF] hover:bg-[#8C52FF]/8">Galería</a>
+            </nav>
+
+            <!-- CTAs -->
+            <div class="hidden md:flex items-center gap-2.5">
+                <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer"
+                    class="font-['Now'] font-bold text-xs uppercase tracking-[0.1rem] text-[#FFFFF1] bg-[#8C52FF] px-5 py-2.5 rounded-xl flex items-center gap-1.5 transition-transform duration-150 hover:-translate-y-0.5 hover:-translate-x-0.5 shadow-[0.2rem_0.2rem_0_rgba(140,82,255,0.35)] hover:shadow-[0.3rem_0.3rem_0_rgba(140,82,255,0.45)]">
+                    <iconify-icon icon="solar:instagram-linear" stroke-width="1.5" class="text-sm"></iconify-icon>
+                    Síguelos
+                </a>
+                <a href="#encuentralos"
+                    class="font-['Now'] font-bold text-xs uppercase tracking-[0.1rem] text-[#FFFFF1] bg-[#FF653A] px-5 py-2.5 rounded-xl transition-transform duration-150 hover:-translate-y-0.5 hover:-translate-x-0.5 shadow-[0.2rem_0.2rem_0_rgba(255,101,58,0.35)] hover:shadow-[0.3rem_0.3rem_0_rgba(255,101,58,0.45)]">
+                    Encuéntralos
+                </a>
+            </div>
+
+            <!-- Mobile: Instagram + Hamburger -->
+            <div class="md:hidden flex items-center gap-3">
+                <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="text-[#FF653A] hover:scale-110 transition-transform duration-150">
+                    <iconify-icon icon="solar:instagram-linear" stroke-width="1.5" class="text-2xl"></iconify-icon>
+                </a>
+                <button id="menuToggle" onclick="toggleMobileMenu()" aria-label="Abrir menú" class="text-[#0f0f0f]/70 hover:text-[#8C52FF] transition-colors duration-150 p-1">
+                    <iconify-icon id="menuIcon" icon="solar:hamburger-menu-linear" stroke-width="1.5" class="text-2xl"></iconify-icon>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="fixed inset-0 z-[490] bg-[#FFFFE3] flex-col pt-28 pb-10 px-8 hidden">
+        <nav class="flex flex-col mb-8">
+            <a href="#vitrina" onclick="closeMobileMenu()" class="font-['Now'] font-bold text-2xl uppercase tracking-[0.08rem] text-[#0f0f0f]/70 py-5 border-b border-[#0f0f0f]/8 hover:text-[#8C52FF] transition-colors">Vitrina</a>
+            <a href="#frescos" onclick="closeMobileMenu()" class="font-['Now'] font-bold text-2xl uppercase tracking-[0.08rem] text-[#0f0f0f]/70 py-5 border-b border-[#0f0f0f]/8 hover:text-[#8C52FF] transition-colors">Proceso</a>
+            <a href="#galeria" onclick="closeMobileMenu()" class="font-['Now'] font-bold text-2xl uppercase tracking-[0.08rem] text-[#0f0f0f]/70 py-5 border-b border-[#0f0f0f]/8 hover:text-[#8C52FF] transition-colors">Galería</a>
+            <a href="#encuentralos" onclick="closeMobileMenu()" class="font-['Now'] font-bold text-2xl uppercase tracking-[0.08rem] text-[#FF653A] py-5 hover:text-[#FF653A]/70 transition-colors">Encuéntralos</a>
+        </nav>
+        <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer"
+            class="font-['Now'] font-bold text-sm uppercase tracking-[0.1rem] text-[#FFFFF1] bg-[#8C52FF] px-7 py-4 rounded-xl flex items-center justify-center gap-2.5 shadow-[0.25rem_0.25rem_0_rgba(140,82,255,0.35)] w-full">
+            <iconify-icon icon="solar:instagram-linear" stroke-width="1.5" class="text-base"></iconify-icon>
+            Síguenos en Instagram
+        </a>
+    </div>
+
+    <main>
+
+    <!-- Hero -->
+    <section id="hero"
+        class="md:min-h-screen pt-20 grid grid-cols-1 md:grid-cols-2 items-center relative overflow-hidden bg-[#8C52FF]">
+        <!-- Noise BG -->
+        <div class="absolute inset-0 z-[1] opacity-40 pointer-events-none mix-blend-overlay"
+            style="background: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E&quot;);">
+        </div>
+
+        <!-- Giant BG Text -->
+        <div
+            class="absolute inset-0 overflow-hidden pointer-events-none z-0 flex flex-col justify-center items-end pr-4 md:pr-[5vw]">
+            <div
+                class="font-['Chunko'] text-[35vw] md:text-[25vw] leading-[0.9] text-[#FFFFF1]/[0.05] uppercase tracking-normal">
+                PACO</div>
+            <div
+                class="font-['Chunko'] text-[35vw] md:text-[25vw] leading-[0.9] text-[#FFFFF1]/[0.05] uppercase tracking-normal -mt-[1vw]">
+                MERLOS</div>
+        </div>
+
+        <div
+            class="md:p-16 lg:py-20 lg:pl-20 lg:pr-16 z-10 pt-8 pr-8 pb-2 pl-8 relative flex flex-col justify-center h-full">
+            <h1
+                class="sr transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] md:text-[8vw] leading-[1] uppercase text-6xl text-[#FFFFF1] tracking-tight font-['Now'] font-black opacity-100 mb-2 translate-y-0">
+                YA HAN<br>LLEGADO</h1>
+            <p
+                class="sr delay-100 transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] text-xl md:text-[2vw] font-medium tracking-wide uppercase text-[#FFFFF1] mb-10 opacity-100 translate-y-0 font-['Now']">
+                Y ESTAN PA' COMERLOS....</p>
+
+            <div
+                class="sr delay-200 transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] flex flex-wrap items-center gap-6 opacity-100 translate-y-0">
+                <a href="#vitrina"
+                    class="font-['Now'] font-bold uppercase inline-block text-sm text-[#FFFFF1] tracking-[0.1rem] bg-[#FF653A] rounded px-7 py-3.5 transition-transform duration-150 hover:-translate-y-0.5 hover:-translate-x-0.5 shadow-[0.25rem_0.25rem_0_rgba(255,101,58,0.35)] hover:shadow-[0.375rem_0.375rem_0_rgba(255,101,58,0.45)]">VER
+                    LA VITRINA</a>
+                <a href="#encuentralos"
+                    class="font-['Now'] font-bold uppercase inline-block text-sm text-[#8C52FF] tracking-[0.1rem] bg-[#FFFFF1] rounded px-7 py-3.5 transition-transform duration-150 hover:-translate-y-0.5 hover:-translate-x-0.5 shadow-[0.25rem_0.25rem_0_rgba(255,255,241,0.25)] hover:shadow-[0.375rem_0.375rem_0_rgba(255,255,241,0.35)]">DONDE
+                    ENCONTRARLOS</a>
+            </div>
+        </div>
+
+        <div class="relative h-[34rem] md:h-screen flex items-center justify-center z-10">
+            <div class="w-full h-full relative">
+                <!-- Espacio flotante 1 para tu imagen -->
+                <img id="eclair1"
+                    src="img/paquito-pistacho.webp"
+                    alt="Paquito Pistacho Lover de Paco Merlos, bollería artesanal en Madrid"
+                    width="432" height="432"
+                    fetchpriority="high"
+                    decoding="async"
+                    class="absolute origin-center w-[18rem] md:w-[27rem] top-[5%] left-[-8%] md:top-[20%] md:left-auto md:right-[53%] drop-shadow-2xl object-contain">
+
+                <!-- Espacio flotante 2 para tu imagen -->
+                <img id="eclair2"
+                    src="img/paquito-frambuesa.webp"
+                    alt="Paquito Red Velvet & Cheese de Paco Merlos, bestseller artesanal"
+                    width="480" height="480"
+                    fetchpriority="high"
+                    decoding="async"
+                    class="absolute origin-center w-[20rem] md:w-[30rem] top-[-10%] right-[-5%] md:top-[2%] md:right-[16%] drop-shadow-2xl object-contain">
+
+                <!-- Espacio flotante 3 para tu imagen -->
+                <img id="eclair3"
+                    src="img/paquito-chocolate.webp"
+                    alt="Paquito Cookies & Kinder de Paco Merlos, obrador artesanal Madrid"
+                    width="544" height="544"
+                    fetchpriority="high"
+                    decoding="async"
+                    class="absolute origin-center w-[22rem] md:w-[34rem] top-[26%] right-[-5%] md:top-[42%] md:right-[13%] drop-shadow-2xl object-contain">
+            </div>
+        </div>
+
+        <div class="absolute -bottom-[0.125rem] left-0 right-0 z-[3] leading-none">
+            <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
+                style="width:100%; height:90px; display:block;">
+                <path d="M0,0 C180,90 360,30 540,60 C720,90 900,10 1080,50 C1200,75 1340,30 1440,45 L1440,90 L0,90 Z"
+                    fill="#FFFFE3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Vitrina -->
+    <section class="md:px-20 bg-[#FFFFE3] pt-24 pr-8 pl-8 relative" id="vitrina">
+
+        <!-- Chispitas decorativas -->
+        <div aria-hidden="true" class="absolute inset-0 pointer-events-none z-0 select-none overflow-hidden">
+            <div class="absolute" style="top:5%;left:4%;width:26px;height:9px;border-radius:5px;background:#8C52FF;opacity:0.12;transform:rotate(-40deg);"></div>
+            <div class="absolute" style="top:15%;left:2%;width:18px;height:7px;border-radius:4px;background:#8C52FF;opacity:0.09;transform:rotate(22deg);"></div>
+            <div class="absolute" style="top:32%;left:7%;width:22px;height:8px;border-radius:4px;background:#FF653A;opacity:0.10;transform:rotate(-18deg);"></div>
+            <div class="absolute" style="top:55%;left:3%;width:24px;height:8px;border-radius:5px;background:#8C52FF;opacity:0.11;transform:rotate(50deg);"></div>
+            <div class="absolute" style="top:72%;left:6%;width:16px;height:7px;border-radius:4px;background:#FF653A;opacity:0.09;transform:rotate(-30deg);"></div>
+            <div class="absolute" style="top:88%;left:2%;width:20px;height:8px;border-radius:4px;background:#8C52FF;opacity:0.10;transform:rotate(12deg);"></div>
+            <div class="absolute" style="top:4%;right:5%;width:22px;height:8px;border-radius:5px;background:#FF653A;opacity:0.11;transform:rotate(38deg);"></div>
+            <div class="absolute" style="top:20%;right:3%;width:16px;height:6px;border-radius:4px;background:#8C52FF;opacity:0.09;transform:rotate(-52deg);"></div>
+            <div class="absolute" style="top:42%;right:6%;width:26px;height:9px;border-radius:5px;background:#8C52FF;opacity:0.10;transform:rotate(14deg);"></div>
+            <div class="absolute" style="top:60%;right:4%;width:18px;height:7px;border-radius:4px;background:#FF653A;opacity:0.09;transform:rotate(62deg);"></div>
+            <div class="absolute" style="top:78%;right:2%;width:20px;height:7px;border-radius:4px;background:#8C52FF;opacity:0.10;transform:rotate(-28deg);"></div>
+            <div class="absolute" style="top:92%;right:6%;width:24px;height:9px;border-radius:5px;background:#FF653A;opacity:0.11;transform:rotate(44deg);"></div>
+            <div class="absolute" style="top:10%;left:20%;width:14px;height:6px;border-radius:3px;background:#8C52FF;opacity:0.07;transform:rotate(-55deg);"></div>
+            <div class="absolute" style="top:8%;right:20%;width:18px;height:6px;border-radius:4px;background:#FF653A;opacity:0.08;transform:rotate(35deg);"></div>
+            <div class="absolute" style="top:85%;left:25%;width:16px;height:6px;border-radius:4px;background:#8C52FF;opacity:0.07;transform:rotate(18deg);"></div>
+            <div class="absolute" style="top:82%;right:24%;width:14px;height:6px;border-radius:3px;background:#FF653A;opacity:0.08;transform:rotate(-42deg);"></div>
+        </div>
+
+        <div
+            class="sr transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] flex items-center justify-center gap-3.5 mb-4">
+            <div class="h-px w-10 bg-[#0f0f0f]/20"></div>
+            <span class="uppercase text-xs font-medium text-[#0f0f0f]/35 tracking-[0.22rem]">Nuestros paquitos</span>
+            <div class="h-px w-10 bg-[#0f0f0f]/20"></div>
+        </div>
+        <h2
+            class="sr-wipe sr-delay-1 md:text-[6.5vw] uppercase leading-[0.93] text-4xl text-[#8C52FF] tracking-wide font-['Chunko'] text-center mb-16">
+            NUESTRA<br>VITRINA</h2>
+
+        <!-- Mostrador interactivo -->
+        <div class="relative max-w-[68.75rem] mx-auto">
+
+            <!-- Expositor principal -->
+            <div class="flex flex-col md:flex-row items-center gap-6 md:gap-16 min-h-[26rem] border border-[#0f0f0f]/8 rounded-2xl px-8 py-10 md:px-16 md:py-14 relative overflow-hidden">
+
+                <!-- Fondo tintado dinámico -->
+                <div id="vitrinaBg" class="absolute inset-0 pointer-events-none transition-all duration-700 rounded-2xl" style="background: rgba(255,101,58,0.06);"></div>
+
+                <!-- Imagen producto -->
+                <div class="relative w-full md:w-[52%] flex items-center justify-center">
+                    <div id="vitrinaImgWrap" class="relative transition-all duration-500">
+                        <img id="vitrinaImg"
+                            src="img/paquito-frambuesa-lado.webp"
+                            alt="Paquito Red Velvet & Cheese de Paco Merlos"
+                            width="400" height="160"
+                            loading="lazy"
+                            decoding="async"
+                            class="w-[18rem] md:w-[28rem] object-contain drop-shadow-2xl"
+                            style="transform: rotate(-4deg); transition: opacity 0.3s, transform 0.5s cubic-bezier(.23,1.5,.56,1);">
+                        <div id="vitrinaBadge"
+                            class="absolute bottom-2 right-0 font-['Now'] font-bold text-xs tracking-[0.1rem] uppercase px-3 py-1.5 rounded-sm whitespace-nowrap shadow-[0.2rem_0.2rem_0_rgba(0,0,0,0.15)] text-[#FFFFF1]"
+                            style="background:#FF653A; transform: rotate(3deg); transition: opacity 0.3s;">
+                            ★ Bestseller
+                        </div>
+                    </div>
+                    <!-- Línea mostrador -->
+                    <div class="absolute bottom-0 left-4 right-4 h-px bg-[#0f0f0f]/8"></div>
+                </div>
+
+                <!-- Info producto -->
+                <div id="vitrinaInfo" class="relative z-10 w-full md:w-[48%]" style="transition: opacity 0.3s;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span id="vitrinaNum" class="font-['Now'] font-bold text-xs tracking-[0.2rem] text-[#0f0f0f]/25">01</span>
+                        <div class="h-px w-4 bg-[#0f0f0f]/15"></div>
+                        <span id="vitrinaTag" class="text-xs font-medium tracking-[0.12rem] uppercase text-[#0f0f0f]/35">Clasico goloso</span>
+                    </div>
+                    <h3 id="vitrinaName"
+                        class="text-4xl md:text-5xl uppercase leading-[0.95] tracking-wide font-['Now'] font-bold mb-5"
+                        style="color: #FF653A; transition: color 0.3s;">
+                        Red Velvet<br>&amp; Cheese
+                    </h3>
+                    <div class="w-8 h-[1.5px] bg-[#0f0f0f]/15 mb-5"></div>
+                    <p id="vitrinaIngredients" class="text-sm text-[#0f0f0f]/45 leading-[2] tracking-wide">
+                        Masa · Azucar · Glaseado de queso · Frutos rojos
+                    </p>
+                </div>
+            </div>
+
+            <!-- Controles -->
+            <div class="flex items-center justify-between mt-6 px-1">
+
+                <!-- Contador -->
+                <div class="font-['Now'] font-bold text-xs tracking-[0.15rem] text-[#0f0f0f]/30">
+                    <span id="vitrinaCurrent">01</span> <span class="text-[#0f0f0f]/20">/ 03</span>
+                </div>
+
+                <!-- Miniaturas -->
+                <div class="flex items-center gap-2">
+                    <button onclick="goToVitrina(0)" class="vitrina-dot w-2 h-2 rounded-full transition-all duration-300" style="background:#FF653A; opacity:1; transform:scale(1.3);" aria-label="Red Velvet"></button>
+                    <button onclick="goToVitrina(1)" class="vitrina-dot w-2 h-2 rounded-full transition-all duration-300" style="background:#0f0f0f; opacity:0.2;" aria-label="Pistacho"></button>
+                    <button onclick="goToVitrina(2)" class="vitrina-dot w-2 h-2 rounded-full transition-all duration-300" style="background:#0f0f0f; opacity:0.2;" aria-label="Chocolate"></button>
+                </div>
+
+                <!-- Flechas -->
+                <div class="flex items-center gap-2">
+                    <button onclick="prevVitrina()"
+                        class="w-10 h-10 rounded-xl border border-[#0f0f0f]/12 flex items-center justify-center text-[#0f0f0f]/40 hover:text-[#0f0f0f]/80 hover:border-[#0f0f0f]/25 hover:bg-[#0f0f0f]/4 transition-all duration-200 font-bold text-lg">
+                        ←
+                    </button>
+                    <button onclick="nextVitrina()"
+                        class="w-10 h-10 rounded-xl border border-[#0f0f0f]/12 flex items-center justify-center text-[#0f0f0f]/40 hover:text-[#0f0f0f]/80 hover:border-[#0f0f0f]/25 hover:bg-[#0f0f0f]/4 transition-all duration-200 font-bold text-lg">
+                        →
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Botón desplegar sabores secretos -->
+        <div class="flex items-center gap-4 max-w-[68.75rem] mx-auto mt-16 mb-4">
+            <div class="h-px flex-1 bg-[#0f0f0f]/10"></div>
+            <button id="btnSecretos" onclick="toggleSecretos()"
+                class="flex items-center gap-2.5 font-['Now'] font-bold text-xs uppercase tracking-[0.18rem] text-[#0f0f0f]/50 border border-[#0f0f0f]/15 px-5 py-2.5 rounded-full transition-all duration-200 hover:border-[#8C52FF]/40 hover:text-[#8C52FF] hover:bg-[#8C52FF]/5">
+                <span class="text-sm">🔒</span>
+                Sabores Secretos
+                <svg id="iconSecretos" class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+            <div class="h-px flex-1 bg-[#0f0f0f]/10"></div>
+        </div>
+
+        <!-- Fila sabores secretos -->
+        <div id="secretosPanel" style="overflow:hidden; max-height:0; opacity:0; transition: max-height 0.6s cubic-bezier(.16,1,.3,1), opacity 0.4s ease, margin 0.4s ease;" class="mt-0">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-1 max-w-[68.75rem] mr-auto ml-auto gap-x-12 gap-y-12 mb-4 mt-10">
+
+            <!-- Secreto 04 -->
+            <div class="sr transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] flex flex-col items-center px-8 pb-10 relative hover:-translate-y-2 group opacity-70">
+                <div class="font-['Now'] font-bold text-xs tracking-[0.2rem] text-[#0f0f0f]/20 mb-5 self-start">04</div>
+                <div class="md:text-xl uppercase leading-[1] text-lg text-[#0f0f0f]/30 tracking-wide font-['Now'] font-bold text-center mb-2.5">???<br>Secreto</div>
+                <div class="text-xs font-normal tracking-[0.1rem] uppercase text-[#0f0f0f]/20 text-center mb-7">Textura</div>
+                <div class="text-xs text-[#0f0f0f]/20 text-center leading-[1.8] mb-8">Descúbrelos al abrir tu caja</div>
+                <div class="w-[15rem] h-[5.9375rem] rounded-full relative overflow-hidden -rotate-6 transition-transform duration-500 ease-[cubic-bezier(.23,1.5,.56,1)] group-hover:rotate-0 group-hover:scale-105 shrink-0"
+                    style="background: linear-gradient(150deg, #b0b0b0 0%, #888 100%); filter: grayscale(1);">
+                    <div class="absolute top-[0.625rem] left-[1.125rem] right-[1.125rem] h-[2.125rem] rounded-full"
+                        style="background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 100%);"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-2xl opacity-50">🔒</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden md:block w-px bg-[#0f0f0f]/10 self-stretch my-10"></div>
+
+            <!-- Secreto 05 -->
+            <div class="sr delay-100 transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] flex flex-col items-center px-8 pb-10 relative hover:-translate-y-2 group opacity-70">
+                <div class="font-['Now'] font-bold text-xs tracking-[0.2rem] text-[#0f0f0f]/20 mb-5 self-start">05</div>
+                <div class="md:text-xl uppercase leading-[1] text-lg text-[#0f0f0f]/30 tracking-wide font-['Now'] font-bold text-center mb-2.5">???<br>Exclusivo</div>
+                <div class="text-xs font-normal tracking-[0.1rem] uppercase text-[#0f0f0f]/20 text-center mb-7">Sabor</div>
+                <div class="text-xs text-[#0f0f0f]/20 text-center leading-[1.8] mb-8">Descúbrelos al abrir tu caja</div>
+                <div class="w-[15rem] h-[5.9375rem] rounded-full relative overflow-hidden -rotate-6 transition-transform duration-500 ease-[cubic-bezier(.23,1.5,.56,1)] group-hover:rotate-0 group-hover:scale-105 shrink-0"
+                    style="background: linear-gradient(150deg, #c0c0c0 0%, #999 100%); filter: grayscale(1);">
+                    <div class="absolute top-[0.625rem] left-[1.125rem] right-[1.125rem] h-[2.125rem] rounded-full"
+                        style="background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 100%);"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-2xl opacity-50">🔒</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden md:block w-px bg-[#0f0f0f]/10 self-stretch my-10"></div>
+
+            <!-- Secreto 06 -->
+            <div class="sr delay-200 transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] flex flex-col items-center px-8 pb-10 relative hover:-translate-y-2 group opacity-70">
+                <div class="font-['Now'] font-bold text-xs tracking-[0.2rem] text-[#0f0f0f]/20 mb-5 self-start">06</div>
+                <div class="md:text-xl uppercase leading-[1] text-lg text-[#0f0f0f]/30 tracking-wide font-['Now'] font-bold text-center mb-2.5">???<br>Misterio</div>
+                <div class="text-xs font-normal tracking-[0.1rem] uppercase text-[#0f0f0f]/20 text-center mb-7">Ligero</div>
+                <div class="text-xs text-[#0f0f0f]/20 text-center leading-[1.8] mb-8">Descúbrelos al abrir tu caja</div>
+                <div class="w-[15rem] h-[5.9375rem] rounded-full relative overflow-hidden -rotate-6 transition-transform duration-500 ease-[cubic-bezier(.23,1.5,.56,1)] group-hover:rotate-0 group-hover:scale-105 shrink-0"
+                    style="background: linear-gradient(150deg, #a8a8a8 0%, #777 100%); filter: grayscale(1);">
+                    <div class="absolute top-[0.625rem] left-[1.125rem] right-[1.125rem] h-[2.125rem] rounded-full"
+                        style="background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 100%);"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-2xl opacity-50">🔒</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div><!-- fin secretosPanel -->
+
+        <div class="mt-16 leading-none relative z-10 -mx-8 md:-mx-20">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
+                style="width:100%; height:100px; display:block;">
+                <path d="M0,50 C240,0 480,100 720,50 C960,0 1200,80 1440,40 L1440,100 L0,100 Z" fill="#FF653A"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Frescos -->
+    <section id="frescos" class="bg-[#FF653A] py-24 px-8 md:px-20 relative overflow-hidden">
+        <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 font-['Chunko'] text-[7.5rem] md:text-[22vw] uppercase text-[#FFFFF1]/5 tracking-tight whitespace-nowrap pointer-events-none select-none"
+            aria-hidden="true">FRESCOS</div>
+
+        <!-- Sprinkles decorativos -->
+        <div aria-hidden="true" class="absolute inset-0 pointer-events-none z-0 select-none">
+            <!-- Laterales izquierdo -->
+            <div class="absolute" style="top:8%;left:6%;width:28px;height:10px;border-radius:5px;background:#FFFFF1;opacity:0.25;transform:rotate(-40deg);"></div>
+            <div class="absolute" style="top:18%;left:3%;width:18px;height:8px;border-radius:4px;background:#FFFFF1;opacity:0.18;transform:rotate(20deg);"></div>
+            <div class="absolute" style="top:30%;left:9%;width:22px;height:8px;border-radius:4px;background:#FFFFF1;opacity:0.2;transform:rotate(-15deg);"></div>
+            <div class="absolute" style="top:50%;left:4%;width:26px;height:9px;border-radius:5px;background:#FFFFF1;opacity:0.22;transform:rotate(55deg);"></div>
+            <div class="absolute" style="top:65%;left:7%;width:20px;height:8px;border-radius:4px;background:#FFFFF1;opacity:0.17;transform:rotate(-25deg);"></div>
+            <div class="absolute" style="top:80%;left:3%;width:24px;height:9px;border-radius:5px;background:#FFFFF1;opacity:0.2;transform:rotate(10deg);"></div>
+            <!-- Laterales derecho -->
+            <div class="absolute" style="top:6%;right:7%;width:24px;height:9px;border-radius:5px;background:#FFFFF1;opacity:0.22;transform:rotate(35deg);"></div>
+            <div class="absolute" style="top:22%;right:4%;width:18px;height:7px;border-radius:4px;background:#FFFFF1;opacity:0.18;transform:rotate(-50deg);"></div>
+            <div class="absolute" style="top:40%;right:8%;width:26px;height:9px;border-radius:5px;background:#FFFFF1;opacity:0.2;transform:rotate(10deg);"></div>
+            <div class="absolute" style="top:55%;right:5%;width:20px;height:8px;border-radius:4px;background:#FFFFF1;opacity:0.15;transform:rotate(60deg);"></div>
+            <div class="absolute" style="top:70%;right:3%;width:22px;height:8px;border-radius:4px;background:#FFFFF1;opacity:0.18;transform:rotate(-30deg);"></div>
+            <div class="absolute" style="top:85%;right:7%;width:28px;height:10px;border-radius:5px;background:#FFFFF1;opacity:0.2;transform:rotate(45deg);"></div>
+            <!-- Cerca del título -->
+            <div class="absolute" style="top:12%;left:22%;width:16px;height:7px;border-radius:4px;background:#FFFFF1;opacity:0.15;transform:rotate(-60deg);"></div>
+            <div class="absolute" style="top:10%;right:22%;width:20px;height:7px;border-radius:4px;background:#FFFFF1;opacity:0.15;transform:rotate(40deg);"></div>
+            <div class="absolute" style="top:20%;left:28%;width:14px;height:6px;border-radius:3px;background:#FFFFF1;opacity:0.12;transform:rotate(15deg);"></div>
+            <div class="absolute" style="top:18%;right:26%;width:18px;height:7px;border-radius:4px;background:#FFFFF1;opacity:0.13;transform:rotate(-35deg);"></div>
+        </div>
+
+        <div class="sr transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] flex items-center justify-center gap-3.5 mb-4 relative z-10">
+            <div class="h-px w-8 bg-[#FFFFF1]/30"></div>
+            <span class="text-xs font-['Now'] font-medium tracking-[0.22rem] uppercase text-[#FFFFF1]/45">Nuestro proceso</span>
+            <div class="h-px w-8 bg-[#FFFFF1]/30"></div>
+        </div>
+        <h2
+            class="sr-wipe font-['Chunko'] text-5xl md:text-[6vw] uppercase text-center text-[#FFFFF1] leading-[0.9] mb-20 relative z-10 tracking-wide">
+            SIEMPRE<br>FRESCOS</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[62rem] mx-auto relative z-10">
+
+            <!-- Card 01 -->
+            <div
+                class="sr-tilt relative flex flex-col p-8 md:p-10 border border-[#FFFFF1]/10 rounded-2xl gap-5 hover:bg-[#FFFFF1]/5 overflow-hidden group">
+                <div
+                    class="absolute top-4 right-5 font-['Now'] font-black text-[4.5rem] leading-none text-[#FFFFF1] select-none pointer-events-none">
+                    01</div>
+                <div
+                    class="w-12 h-12 rounded-xl border border-[#FFFFF1]/20 flex items-center justify-center bg-[#FFFFF1]/5">
+                    <iconify-icon icon="solar:chef-hat-linear" stroke-width="1.5"
+                        class="text-2xl text-[#FFFFF1]"></iconify-icon>
+                </div>
+                <div>
+                    <div
+                        class="text-[0.65rem] font-['Now'] font-bold tracking-[0.2rem] uppercase text-[#FFFFF1]/40 mb-2">
+                        La base</div>
+                    <h3
+                        class="font-['Now'] font-bold text-2xl md:text-3xl uppercase text-[#FFFFF1] leading-[1.05] tracking-wide mb-3">
+                        Masa<br>Madre.</h3>
+                    <div class="w-8 h-[1.5px] bg-[#FFFFF1]/20 mb-4"></div>
+                    <p class="text-sm font-['Now'] font-light text-[#FFFFF1]/60 leading-[1.7]">Fermentada más de 48
+                        horas. Sin aditivos, sin atajos. Solo harina, agua y tiempo. La misma receta desde el primer
+                        día.</p>
+                </div>
+            </div>
+
+            <!-- Card 02 -->
+            <div
+                class="sr-tilt-neg sr-delay-1 relative flex flex-col p-8 md:p-10 border border-[#FFFFF1]/10 rounded-2xl gap-5 hover:bg-[#FFFFF1]/5 overflow-hidden group">
+                <div
+                    class="absolute top-4 right-5 font-['Now'] font-black text-[4.5rem] leading-none text-[#FFFFF1] select-none pointer-events-none">
+                    02</div>
+                <div
+                    class="w-12 h-12 rounded-xl border border-[#FFFFF1]/20 flex items-center justify-center bg-[#FFFFF1]/5">
+                    <iconify-icon icon="solar:hand-stars-linear" stroke-width="1.5"
+                        class="text-2xl text-[#FFFFF1]"></iconify-icon>
+                </div>
+                <div>
+                    <div
+                        class="text-[0.65rem] font-['Now'] font-bold tracking-[0.2rem] uppercase text-[#FFFFF1]/40 mb-2">
+                        El proceso</div>
+                    <h3
+                        class="font-['Now'] font-bold text-2xl md:text-3xl uppercase text-[#FFFFF1] leading-[1.05] tracking-wide mb-3">
+                        100%<br>Artesanos.</h3>
+                    <div class="w-8 h-[1.5px] bg-[#FFFFF1]/20 mb-4"></div>
+                    <p class="text-sm font-['Now'] font-light text-[#FFFFF1]/60 leading-[1.7]">Cada Paquito pasa por
+                        nuestras manos. Moldeados, rellenos y decorados uno a uno en nuestro obrador. No hay máquina que
+                        los iguale.</p>
+                </div>
+            </div>
+
+            <!-- Card 03 -->
+            <div
+                class="sr-tilt sr-delay-2 relative flex flex-col p-8 md:p-10 border border-[#FFFFF1]/10 rounded-2xl gap-5 hover:bg-[#FFFFF1]/5 overflow-hidden group">
+                <div
+                    class="absolute top-4 right-5 font-['Now'] font-black text-[4.5rem] leading-none text-[#FFFFF1] select-none pointer-events-none">
+                    03</div>
+                <div
+                    class="w-12 h-12 rounded-xl border border-[#FFFFF1]/20 flex items-center justify-center bg-[#FFFFF1]/5">
+                    <iconify-icon icon="solar:clock-circle-linear" stroke-width="1.5"
+                        class="text-2xl text-[#FFFFF1]"></iconify-icon>
+                </div>
+                <div>
+                    <div
+                        class="text-[0.65rem] font-['Now'] font-bold tracking-[0.2rem] uppercase text-[#FFFFF1]/40 mb-2">
+                        El momento</div>
+                    <h3
+                        class="font-['Now'] font-bold text-2xl md:text-3xl uppercase text-[#FFFFF1] leading-[1.05] tracking-wide mb-3">
+                        Recién<br>Horneados.</h3>
+                    <div class="w-8 h-[1.5px] bg-[#FFFFF1]/20 mb-4"></div>
+                    <p class="text-sm font-['Now'] font-light text-[#FFFFF1]/60 leading-[1.7]">Del horno a la vitrina en
+                        menos de dos horas. Si no están frescos, no salen. Así de simple.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Social / Pack -->
+    <section class="md:px-20 bg-[#FFFFE3] pt-24 pr-8 pb-24 pl-8 relative" id="social">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-36 items-center max-w-[68.75rem] mx-auto">
+
+            <div class="sr-left relative flex justify-center group">
+                <div class="relative shrink-0 scale-[1.3] origin-right">
+                    <img src="img/paquito-caja.webp" alt="Caja 6 Pack de Paquitos Artesanales Paco Merlos Madrid"
+                        width="544" height="400" loading="lazy" decoding="async"
+                        class="w-full max-w-[30rem] md:w-[34rem] object-contain -rotate-2 transition-transform duration-500 ease-[cubic-bezier(.23,1.5,.56,1)] group-hover:rotate-0 group-hover:scale-105 drop-shadow-2xl">
+                    <div id="spinningBadge"
+                        class="absolute top-[12%] right-[8%] w-[4.5rem] h-[4.5rem] bg-[#FF653A] rounded-full flex flex-col items-center justify-center shadow-[0_0.5rem_1.5rem_rgba(255,101,58,0.45)]">
+                        <div class="font-['Now'] font-black text-[1.375rem] text-[#FFFFF1] leading-none">6</div>
+                        <div class="text-xs font-medium tracking-[0.1rem] uppercase text-[#FFFFF1]/75 mt-0.5">Pack</div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-4 -left-4 bg-[#FFFFF1] text-[#0f0f0f] text-xs font-medium tracking-[0.08rem] uppercase px-4 py-2 rounded-sm shadow-[0_0.25rem_0.75rem_rgba(0,0,0,0.12)] -rotate-2">
+                    Gracias por elegirnos <span style="color:#FF653A;">&#10084;</span>
+                </div>
+            </div>
+
+            <div class="sr-right sr-delay-1">
+                <div class="flex gap-2.5 uppercase text-xs font-medium text-[#0f0f0f]/35 tracking-[0.2rem] mb-5 items-center">
+                    no son bollos - son paquitos<div class="h-[0.1rem] bg-[#FF653A] w-6"></div>
+                </div>
+                <h2 class="uppercase leading-[0.93] md:text-[4vw] text-4xl text-[#FF653A] tracking-wide font-['Chunko'] mb-6">
+                    Hay uno <em class="not-italic text-[#8C52FF]">esperando por ti.</em></h2>
+                <p class="text-sm leading-[1.75] text-[#0f0f0f]/55 mb-10">
+                    Presume de tu Paquito; sube tu foto, etiqueta a <strong class="text-[#8C52FF] font-medium">@PacoMerlos</strong> y únete a nosotros. ¡Las mejores imágenes podrán llevarse una Super Box de 6 de regalo!
+                </p>
+                <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2.5 uppercase transition-transform duration-150 hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[0.4375rem_0.4375rem_0_rgba(0,0,0,0.2)] no-underline text-xs text-[#FFFFF1] tracking-[0.1rem] font-['Now'] font-bold bg-[#FF653A] rounded px-7 py-3.5 shadow-[0.25rem_0.25rem_0_rgba(0,0,0,0.2)]">
+                    <iconify-icon icon="solar:camera-linear" stroke-width="1.5" class="text-lg"></iconify-icon>
+                    Síguenos en Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section class="bg-[#FFFFE3] pt-24 pb-20 px-8 md:px-20 relative overflow-hidden" id="galeria">
+
+        <!-- Encabezado -->
+        <div class="sr flex items-center justify-center gap-3.5 mb-4">
+            <div class="h-px w-10 bg-[#0f0f0f]/20"></div>
+            <span class="uppercase text-xs font-medium text-[#0f0f0f]/35 tracking-[0.22rem] font-['Now']">@pacomerlos</span>
+            <div class="h-px w-10 bg-[#0f0f0f]/20"></div>
+        </div>
+        <h2 class="sr-wipe font-['Chunko'] text-5xl md:text-[6.5vw] uppercase text-center text-[#8C52FF] leading-[0.93] tracking-wide mb-3">
+            GALERIA</h2>
+        <p class="sr text-center text-sm text-[#0f0f0f]/40 font-['Now'] mb-14 tracking-[0.05rem]">
+            Etiquétanos en Instagram — las mejores fotos se llevan una <strong class="text-[#FF653A] font-medium">Super Box</strong> de regalo
+        </p>
+
+        <!-- Grid de fotos -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-[68.75rem] mx-auto mb-12">
+
+            <!-- Foto 1 -->
+            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer"
+                class="sr-tilt relative overflow-hidden rounded-2xl group block bg-[#0f0f0f]/5"
+                style="aspect-ratio:1/1;">
+                <img src="img/paquito-frambuesa.webp" alt="Paquito Red Velvet & Cheese — @pacomerlos"
+                    width="480" height="480" loading="lazy" decoding="async"
+                    class="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.06]">
+                <div class="absolute inset-0 bg-[#8C52FF]/0 group-hover:bg-[#8C52FF]/55 transition-all duration-300 flex items-center justify-center">
+                    <iconify-icon icon="solar:instagram-linear" stroke-width="1.5"
+                        class="text-[2.5rem] text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"></iconify-icon>
+                </div>
+            </a>
+
+            <!-- Foto 2 -->
+            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer"
+                class="sr-tilt sr-delay-1 relative overflow-hidden rounded-2xl group block bg-[#0f0f0f]/5"
+                style="aspect-ratio:1/1;">
+                <img src="img/paquito-pistacho.webp" alt="Paquito Pistacho Lover — @pacomerlos"
+                    width="432" height="432" loading="lazy" decoding="async"
+                    class="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.06]">
+                <div class="absolute inset-0 bg-[#8C52FF]/0 group-hover:bg-[#8C52FF]/55 transition-all duration-300 flex items-center justify-center">
+                    <iconify-icon icon="solar:instagram-linear" stroke-width="1.5"
+                        class="text-[2.5rem] text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"></iconify-icon>
+                </div>
+            </a>
+
+            <!-- Foto 3 -->
+            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer"
+                class="sr-tilt sr-delay-2 relative overflow-hidden rounded-2xl group block bg-[#0f0f0f]/5"
+                style="aspect-ratio:1/1;">
+                <img src="img/paquito-chocolate.webp" alt="Paquito Cookies & Kinder — @pacomerlos"
+                    width="544" height="544" loading="lazy" decoding="async"
+                    class="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.06]">
+                <div class="absolute inset-0 bg-[#8C52FF]/0 group-hover:bg-[#8C52FF]/55 transition-all duration-300 flex items-center justify-center">
+                    <iconify-icon icon="solar:instagram-linear" stroke-width="1.5"
+                        class="text-[2.5rem] text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"></iconify-icon>
+                </div>
+            </a>
+
+            <!-- Foto 4 -->
+            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer"
+                class="sr-tilt relative overflow-hidden rounded-2xl group block bg-[#0f0f0f]/5"
+                style="aspect-ratio:1/1;">
+                <img src="img/paquito-frambuesa-lado.webp" alt="Red Velvet & Cheese de lado — @pacomerlos"
+                    width="400" height="160" loading="lazy" decoding="async"
+                    class="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.06]">
+                <div class="absolute inset-0 bg-[#FF653A]/0 group-hover:bg-[#FF653A]/55 transition-all duration-300 flex items-center justify-center">
+                    <iconify-icon icon="solar:instagram-linear" stroke-width="1.5"
+                        class="text-[2.5rem] text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"></iconify-icon>
+                </div>
+            </a>
+
+            <!-- Foto 5 -->
+            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer"
+                class="sr-tilt sr-delay-1 relative overflow-hidden rounded-2xl group block bg-[#0f0f0f]/5"
+                style="aspect-ratio:1/1;">
+                <img src="img/paquito-pistacho-lado.webp" alt="Pistacho Lover de lado — @pacomerlos"
+                    width="400" height="160" loading="lazy" decoding="async"
+                    class="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.06]">
+                <div class="absolute inset-0 bg-[#FF653A]/0 group-hover:bg-[#FF653A]/55 transition-all duration-300 flex items-center justify-center">
+                    <iconify-icon icon="solar:instagram-linear" stroke-width="1.5"
+                        class="text-[2.5rem] text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"></iconify-icon>
+                </div>
+            </a>
+
+            <!-- Tile CTA — Instagram -->
+            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer"
+                class="sr-tilt sr-delay-2 relative overflow-hidden rounded-2xl group block"
+                style="aspect-ratio:1/1; background:#8C52FF;">
+                <img src="img/paquito-caja.webp" alt="Caja 6 Pack Paco Merlos"
+                    width="544" height="400" loading="lazy" decoding="async"
+                    class="w-full h-full object-cover opacity-30 transition-all duration-500 group-hover:scale-[1.06] group-hover:opacity-15">
+                <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
+                    <iconify-icon icon="solar:instagram-linear" stroke-width="1.5"
+                        class="text-[3rem] text-white transition-transform duration-300 group-hover:scale-110"></iconify-icon>
+                    <p class="font-['Now'] font-bold text-white text-sm uppercase tracking-[0.18rem] leading-snug">
+                        Ver todas<br>en Instagram
+                    </p>
+                    <span class="font-['Now'] text-white/60 text-xs tracking-[0.12rem]">@PacoMerlos</span>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- CTA inferior -->
+        <div class="flex justify-center">
+            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2.5 uppercase transition-transform duration-150 hover:-translate-y-0.5 hover:-translate-x-0.5 text-xs text-[#FFFFF1] tracking-[0.1rem] font-['Now'] font-bold bg-[#8C52FF] rounded px-7 py-3.5 shadow-[0.25rem_0.25rem_0_rgba(140,82,255,0.35)] hover:shadow-[0.375rem_0.375rem_0_rgba(140,82,255,0.45)]">
+                <iconify-icon icon="solar:instagram-linear" stroke-width="1.5" class="text-lg"></iconify-icon>
+                Seguir en Instagram
+            </a>
+        </div>
+
+    </section>
+
+    <!-- Encuéntralos -->
+    <section class="md:px-20 overflow-hidden text-center bg-[#FF653A] pt-24 pr-8 pb-[7.5rem] pl-8 relative"
+        id="encuentralos">
+        <div class="absolute -bottom-[3.75rem] right-[-2.5rem] font-['Chunko'] text-[11.25rem] md:text-[30vw] uppercase text-[#FFFFF1]/5 tracking-tight pointer-events-none select-none leading-none z-0"
+            aria-hidden="true">LOS</div>
+
+        <div
+            class="sr transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] flex items-center justify-center gap-3.5 mb-6 relative z-10">
+            <div class="h-px w-8 bg-[#FFFFF1]/30"></div>
+            <span class="text-xs font-['Now'] font-bold tracking-[0.22rem] uppercase text-[#FFFFF1]/45">Tiendas cerca de ti</span>
+            <div class="h-px w-8 bg-[#FFFFF1]/30"></div>
+        </div>
+
+        <h2
+            class="sr delay-100 transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] font-['Now'] font-bold text-5xl md:text-[7vw] uppercase text-[#FFFFF1] leading-[1.1] mb-14 relative z-10 tracking-tight">
+            ENCUÉNTRALOS</h2>
+
+        <!-- Botón ordenar por cercanía -->
+        <div class="sr delay-200 transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] flex justify-center relative z-10 mb-10">
+            <button id="btnGeo" onclick="sortByLocation(this)"
+                class="inline-flex items-center gap-2 bg-transparent text-[#FFFFF1]/65 font-['Now'] font-bold text-xs tracking-[0.12rem] uppercase border-[0.1rem] border-[#FFFFF1]/25 px-5 py-2.5 rounded transition-all duration-200 hover:border-[#FFFFF1]/60 hover:text-[#FFFFF1] cursor-pointer">
+                <iconify-icon icon="solar:map-point-linear" stroke-width="1.5" class="text-sm"></iconify-icon>
+                Ordenar por cercanía
+            </button>
+        </div>
+
+        <!-- Grid de puntos de venta -->
+        <div id="puntosGrid" class="sr delay-300 transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] grid grid-cols-1 md:grid-cols-2 max-w-[52rem] mx-auto gap-4 relative z-10">
+
+            <div class="punto-card bg-[#FFFFF1]/10 border border-[#FFFFF1]/15 rounded-xl p-6 flex flex-col gap-3 text-left" data-lat="40.4228" data-lng="-3.7003">
+                <div class="flex items-start justify-between gap-3">
+                    <div>
+                        <p class="font-['Now'] font-bold text-[#FFFFF1] uppercase tracking-[0.08rem] text-sm">Nombre del punto 1</p>
+                        <p class="font-['Now'] text-[#FFFFF1]/55 text-xs mt-1">Calle Ejemplo 12, Madrid</p>
+                    </div>
+                    <span class="text-xl flex-shrink-0">🥐</span>
+                </div>
+                <p class="font-['Now'] text-[#FFFFF1]/40 text-xs">Lun – Vie: 8:00 – 14:00</p>
+                <div class="flex items-center justify-between mt-auto pt-2 border-t border-[#FFFFF1]/10">
+                    <span class="dist-badge font-['Now'] font-bold text-[#FF653A] text-xs hidden"></span>
+                    <a href="https://maps.google.com/?q=Calle+Ejemplo+12+Madrid" target="_blank" rel="noopener noreferrer"
+                        class="font-['Now'] font-bold text-xs uppercase tracking-[0.1rem] text-[#FFFFF1] hover:text-[#FF653A] transition-colors duration-200 ml-auto">Cómo llegar →</a>
+                </div>
+            </div>
+
+            <div class="punto-card bg-[#FFFFF1]/10 border border-[#FFFFF1]/15 rounded-xl p-6 flex flex-col gap-3 text-left" data-lat="40.4300" data-lng="-3.6900">
+                <div class="flex items-start justify-between gap-3">
+                    <div>
+                        <p class="font-['Now'] font-bold text-[#FFFFF1] uppercase tracking-[0.08rem] text-sm">Nombre del punto 2</p>
+                        <p class="font-['Now'] text-[#FFFFF1]/55 text-xs mt-1">Calle Ejemplo 34, Madrid</p>
+                    </div>
+                    <span class="text-xl flex-shrink-0">🥐</span>
+                </div>
+                <p class="font-['Now'] text-[#FFFFF1]/40 text-xs">Lun – Sáb: 9:00 – 15:00</p>
+                <div class="flex items-center justify-between mt-auto pt-2 border-t border-[#FFFFF1]/10">
+                    <span class="dist-badge font-['Now'] font-bold text-[#FF653A] text-xs hidden"></span>
+                    <a href="https://maps.google.com/?q=Calle+Ejemplo+34+Madrid" target="_blank" rel="noopener noreferrer"
+                        class="font-['Now'] font-bold text-xs uppercase tracking-[0.1rem] text-[#FFFFF1] hover:text-[#FF653A] transition-colors duration-200 ml-auto">Cómo llegar →</a>
+                </div>
+            </div>
+
+            <div class="punto-card bg-[#FFFFF1]/10 border border-[#FFFFF1]/15 rounded-xl p-6 flex flex-col gap-3 text-left" data-lat="40.4100" data-lng="-3.7100">
+                <div class="flex items-start justify-between gap-3">
+                    <div>
+                        <p class="font-['Now'] font-bold text-[#FFFFF1] uppercase tracking-[0.08rem] text-sm">Nombre del punto 3</p>
+                        <p class="font-['Now'] text-[#FFFFF1]/55 text-xs mt-1">Calle Ejemplo 56, Madrid</p>
+                    </div>
+                    <span class="text-xl flex-shrink-0">🥐</span>
+                </div>
+                <p class="font-['Now'] text-[#FFFFF1]/40 text-xs">Mar – Dom: 10:00 – 14:00</p>
+                <div class="flex items-center justify-between mt-auto pt-2 border-t border-[#FFFFF1]/10">
+                    <span class="dist-badge font-['Now'] font-bold text-[#FF653A] text-xs hidden"></span>
+                    <a href="https://maps.google.com/?q=Calle+Ejemplo+56+Madrid" target="_blank" rel="noopener noreferrer"
+                        class="font-['Now'] font-bold text-xs uppercase tracking-[0.1rem] text-[#FFFFF1] hover:text-[#FF653A] transition-colors duration-200 ml-auto">Cómo llegar →</a>
+                </div>
+            </div>
+
+            <div class="punto-card bg-[#FFFFF1]/10 border border-[#FFFFF1]/15 rounded-xl p-6 flex flex-col gap-3 text-left" data-lat="40.4350" data-lng="-3.7050">
+                <div class="flex items-start justify-between gap-3">
+                    <div>
+                        <p class="font-['Now'] font-bold text-[#FFFFF1] uppercase tracking-[0.08rem] text-sm">Nombre del punto 4</p>
+                        <p class="font-['Now'] text-[#FFFFF1]/55 text-xs mt-1">Calle Ejemplo 78, Madrid</p>
+                    </div>
+                    <span class="text-xl flex-shrink-0">🥐</span>
+                </div>
+                <p class="font-['Now'] text-[#FFFFF1]/40 text-xs">Lun – Dom: 8:00 – 13:00</p>
+                <div class="flex items-center justify-between mt-auto pt-2 border-t border-[#FFFFF1]/10">
+                    <span class="dist-badge font-['Now'] font-bold text-[#FF653A] text-xs hidden"></span>
+                    <a href="https://maps.google.com/?q=Calle+Ejemplo+78+Madrid" target="_blank" rel="noopener noreferrer"
+                        class="font-['Now'] font-bold text-xs uppercase tracking-[0.1rem] text-[#FFFFF1] hover:text-[#FF653A] transition-colors duration-200 ml-auto">Cómo llegar →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#FFFFE3] relative overflow-hidden z-50">
+
+        <!-- Bloque superior -->
+        <div class="px-8 md:px-20 pt-16 pb-10 flex flex-col md:flex-row justify-between gap-12 border-b border-[#0f0f0f]/8 relative z-10">
+
+            <!-- Marca -->
+            <div class="flex flex-col gap-4 max-w-[16rem]">
+                <img src="img/logo-paco-merlos.webp" alt="Paco Merlos" class="h-12 w-auto object-contain self-start" width="200" height="48">
+                <p class="text-xs font-['Now'] text-[#0f0f0f]/45 leading-[1.7]">No son bollos — son Paquitos. Hechos a mano, cada mañana, con masa madre y mucho cariño. Madrid, España.</p>
+            </div>
+
+            <!-- Nav -->
+            <div class="flex flex-col gap-3">
+                <div class="font-['Now'] font-bold text-[0.65rem] uppercase tracking-[0.2rem] text-[#0f0f0f]/30 mb-1">Navegar</div>
+                <a href="#vitrina" class="font-['Now'] text-sm text-[#0f0f0f]/60 hover:text-[#8C52FF] transition-colors duration-200">Vitrina</a>
+                <a href="#frescos" class="font-['Now'] text-sm text-[#0f0f0f]/60 hover:text-[#8C52FF] transition-colors duration-200">Siempre Frescos</a>
+                <a href="#galeria" class="font-['Now'] text-sm text-[#0f0f0f]/60 hover:text-[#8C52FF] transition-colors duration-200">Galería</a>
+                <a href="#encuentralos" class="font-['Now'] text-sm text-[#0f0f0f]/60 hover:text-[#8C52FF] transition-colors duration-200">Encuéntralos</a>
+            </div>
+
+            <!-- Legal -->
+            <div class="flex flex-col gap-3">
+                <div class="font-['Now'] font-bold text-[0.65rem] uppercase tracking-[0.2rem] text-[#0f0f0f]/30 mb-1">Legal</div>
+                <a href="aviso-legal.html" class="font-['Now'] text-sm text-[#0f0f0f]/60 hover:text-[#8C52FF] transition-colors duration-200">Aviso Legal</a>
+                <a href="privacidad.html" class="font-['Now'] text-sm text-[#0f0f0f]/60 hover:text-[#8C52FF] transition-colors duration-200">Privacidad</a>
+            </div>
+
+            <!-- Instagram CTA -->
+            <div class="flex flex-col gap-4">
+                <div class="font-['Now'] font-bold text-[0.65rem] uppercase tracking-[0.2rem] text-[#0f0f0f]/30 mb-1">Síguenos</div>
+                <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 font-['Now'] font-bold text-xs uppercase tracking-[0.1rem] text-[#FFFFF1] bg-[#8C52FF] px-5 py-3 rounded transition-transform duration-150 hover:-translate-y-0.5 hover:-translate-x-0.5 shadow-[0.25rem_0.25rem_0_rgba(140,82,255,0.3)] hover:shadow-[0.375rem_0.375rem_0_rgba(140,82,255,0.4)] w-fit">
+                    <iconify-icon icon="solar:instagram-linear" stroke-width="1.5" class="text-base"></iconify-icon>
+                    @PacoMerlos
+                </a>
+            </div>
+        </div>
+
+        <!-- Bloque inferior -->
+        <div class="px-8 md:px-20 py-5 flex flex-col md:flex-row items-center justify-between gap-3 relative z-10">
+            <div class="font-['Now'] text-xs text-[#0f0f0f]/30 tracking-[0.06rem]">© Paco Merlos 2026 — No son bollos, son Paquitos.</div>
+            <div class="flex items-center gap-1.5">
+                <div style="width:8px;height:8px;border-radius:50%;background:#8C52FF;opacity:0.4;"></div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#FF653A;opacity:0.4;"></div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#8C52FF;opacity:0.4;"></div>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
