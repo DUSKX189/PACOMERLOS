@@ -3,25 +3,30 @@ let mx = 0, my = 0;
 // Mobile Menu
 function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
-    const icon = document.getElementById('menuIcon');
+    const iconHamburger = document.getElementById('iconHamburger');
+    const iconClose = document.getElementById('iconClose');
     const isOpen = menu.style.display === 'flex';
     if (isOpen) {
         menu.style.display = 'none';
-        icon.setAttribute('icon', 'solar:hamburger-menu-linear');
+        iconHamburger.style.display = '';
+        iconClose.style.display = 'none';
         document.body.style.overflow = '';
     } else {
         menu.style.display = 'flex';
         menu.style.flexDirection = 'column';
-        icon.setAttribute('icon', 'solar:close-circle-linear');
+        iconHamburger.style.display = 'none';
+        iconClose.style.display = '';
         document.body.style.overflow = 'hidden';
     }
 }
 
 function closeMobileMenu() {
     const menu = document.getElementById('mobileMenu');
-    const icon = document.getElementById('menuIcon');
+    const iconHamburger = document.getElementById('iconHamburger');
+    const iconClose = document.getElementById('iconClose');
     menu.style.display = 'none';
-    icon.setAttribute('icon', 'solar:hamburger-menu-linear');
+    iconHamburger.style.display = '';
+    iconClose.style.display = 'none';
     document.body.style.overflow = '';
 }
 
@@ -29,8 +34,7 @@ function closeMobileMenu() {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.remove('opacity-0', 'translate-y-7');
-            entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.add('revealed');
             observer.unobserve(entry.target);
         }
     });
@@ -54,33 +58,36 @@ document.querySelectorAll('.sr-wipe, .sr-tilt, .sr-tilt-neg, .sr-left, .sr-right
 const eclair1 = document.getElementById('eclair1');
 const eclair2 = document.getElementById('eclair2');
 const eclair3 = document.getElementById('eclair3');
-const badge = document.getElementById('spinningBadge');
 const pins = document.querySelectorAll('.map-pin');
 
-function animateWorld() {
-    if (document.hidden) return;
+let rafId = null;
+let lastFrameTime = 0;
+const FRAME_INTERVAL = 1000 / 40; // cap a 40fps — invisible a ojo, ahorra GPU
 
-    const t = Date.now() / 1000;
+function animateWorld(now) {
+    if (document.hidden) { rafId = null; return; }
+    if (now - lastFrameTime < FRAME_INTERVAL) { rafId = requestAnimationFrame(animateWorld); return; }
+    lastFrameTime = now;
+
+    const t = now / 1000;
 
     if (eclair1) eclair1.style.transform = `rotate(${-22 + Math.sin(t) * 2}deg) translate(${Math.sin(t * 1.2) * 6}px, ${Math.cos(t) * -10}px)`;
     if (eclair2) eclair2.style.transform = `rotate(${16 + Math.sin(t * 0.9) * 2}deg) translate(${Math.cos(t * 1.1) * -5}px, ${Math.sin(t * 0.8) * -8}px)`;
     if (eclair3) eclair3.style.transform = `rotate(${-8 + Math.cos(t * 1.1) * 2}deg) translate(${Math.sin(t * 0.7) * 4}px, ${Math.cos(t * 1.3) * -7}px)`;
 
-
     pins.forEach((pin, i) => {
         if (pin.style.display !== 'none') {
-            const offset = Math.sin(t * 2 + i) * 4 - 4;
-            pin.style.transform = `translateY(${offset}px)`;
+            pin.style.transform = `translateY(${Math.sin(t * 2 + i) * 4 - 4}px)`;
         }
     });
 
-    requestAnimationFrame(animateWorld);
+    rafId = requestAnimationFrame(animateWorld);
 }
-requestAnimationFrame(animateWorld);
+rafId = requestAnimationFrame(animateWorld);
 
 // Reanudar animación al volver a la pestaña
 document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) requestAnimationFrame(animateWorld);
+    if (!document.hidden && !rafId) rafId = requestAnimationFrame(animateWorld);
 });
 
 // Vitrina Slider
@@ -128,22 +135,19 @@ let vitrinaCurrent = 0;
 function goToVitrina(index) {
     const p = vitrinaProducts[index];
     const img = document.getElementById('vitrinaImg');
-    const name = document.getElementById('vitrinaName');
     const info = document.getElementById('vitrinaInfo');
     const badge = document.getElementById('vitrinaBadge');
     const bg = document.getElementById('vitrinaBg');
     const dots = document.querySelectorAll('.vitrina-dot');
 
-    // Fade out
     img.style.opacity = '0';
     img.style.transform = 'rotate(-4deg) translateX(16px)';
     info.style.opacity = '0';
 
     setTimeout(() => {
-        img.src = p.img;
-        img.alt = p.alt;
-        name.innerHTML = p.name;
-        name.style.color = p.nameColor;
+        img.src = p.img; img.alt = p.alt;
+        document.getElementById('vitrinaName').innerHTML = p.name;
+        document.getElementById('vitrinaName').style.color = p.nameColor;
         document.getElementById('vitrinaNum').textContent = p.num;
         document.getElementById('vitrinaTag').textContent = p.tag;
         document.getElementById('vitrinaIngredients').textContent = p.ingredients;
@@ -151,50 +155,32 @@ function goToVitrina(index) {
         badge.textContent = p.badge;
         badge.style.background = p.badgeColor;
         bg.style.background = p.bgColor;
-
-        // Actualizar dots
         dots.forEach((dot, i) => {
             dot.style.background = vitrinaProducts[i].dotColor;
             dot.style.opacity = i === index ? '1' : '0.2';
             dot.style.transform = i === index ? 'scale(1.3)' : 'scale(1)';
         });
-
-        // Fade in
         img.style.opacity = '1';
         img.style.transform = 'rotate(-4deg)';
         info.style.opacity = '1';
-
         vitrinaCurrent = index;
     }, 280);
 }
 
 let vitrinaTimer = null;
-
 function startVitrinaAutoplay() {
     clearInterval(vitrinaTimer);
-    vitrinaTimer = setInterval(() => {
-        goToVitrina((vitrinaCurrent + 1) % vitrinaProducts.length);
-    }, 3500);
+    vitrinaTimer = setInterval(() => goToVitrina((vitrinaCurrent + 1) % vitrinaProducts.length), 3500);
 }
-
 function pauseVitrinaAutoplay() {
     clearInterval(vitrinaTimer);
     setTimeout(startVitrinaAutoplay, 6000);
 }
-
-function prevVitrina() {
-    pauseVitrinaAutoplay();
-    goToVitrina((vitrinaCurrent - 1 + vitrinaProducts.length) % vitrinaProducts.length);
-}
-
-function nextVitrina() {
-    pauseVitrinaAutoplay();
-    goToVitrina((vitrinaCurrent + 1) % vitrinaProducts.length);
-}
+function prevVitrina() { pauseVitrinaAutoplay(); goToVitrina((vitrinaCurrent - 1 + vitrinaProducts.length) % vitrinaProducts.length); }
+function nextVitrina() { pauseVitrinaAutoplay(); goToVitrina((vitrinaCurrent + 1) % vitrinaProducts.length); }
 
 startVitrinaAutoplay();
 
-// Swipe en móvil
 (function () {
     let startX = 0;
     const el = document.getElementById('vitrinaImgWrap');
@@ -219,13 +205,13 @@ function toggleSecretos() {
         panel.style.marginTop = '0';
         icon.style.transform = 'rotate(180deg)';
         btn.querySelector('span').textContent = '🔓';
-        btn.classList.add('text-[#8C52FF]', 'border-[#8C52FF]/40', 'bg-[#8C52FF]/5');
+        btn.classList.add('active');
     } else {
         panel.style.maxHeight = '0';
         panel.style.opacity = '0';
         icon.style.transform = 'rotate(0deg)';
         btn.querySelector('span').textContent = '🔒';
-        btn.classList.remove('text-[#8C52FF]', 'border-[#8C52FF]/40', 'bg-[#8C52FF]/5');
+        btn.classList.remove('active');
     }
 }
 
@@ -235,7 +221,7 @@ function sortByLocation(btn) {
         btn.textContent = 'Tu navegador no permite geolocalización';
         return;
     }
-    btn.innerHTML = '<iconify-icon icon="solar:radar-linear" stroke-width="1.5" class="text-sm"></iconify-icon> Detectando…';
+    btn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="10"/><path d="M12 12l4-4"/></svg> Detectando…';
     btn.disabled = true;
 
     navigator.geolocation.getCurrentPosition(
@@ -253,17 +239,17 @@ function sortByLocation(btn) {
                 card.dataset.dist = dist;
                 const badge = card.querySelector('.dist-badge');
                 badge.textContent = dist < 1 ? Math.round(dist * 1000) + ' m' : dist.toFixed(1) + ' km';
-                badge.classList.remove('hidden');
+                badge.style.display = 'block';
             });
 
             cards.sort((a, b) => a.dataset.dist - b.dataset.dist);
             cards.forEach(card => grid.appendChild(card));
 
-            btn.innerHTML = '<iconify-icon icon="solar:check-circle-linear" stroke-width="1.5" class="text-sm"></iconify-icon> Ordenado por cercanía';
+            btn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg> Ordenado por cercanía';
             btn.disabled = false;
         },
         () => {
-            btn.innerHTML = '<iconify-icon icon="solar:map-point-linear" stroke-width="1.5" class="text-sm"></iconify-icon> Ordenar por cercanía';
+            btn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-7-7-12a7 7 0 0 1 14 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg> Ordenar por cercanía';
             btn.disabled = false;
         }
     );
