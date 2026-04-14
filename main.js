@@ -1,35 +1,3 @@
-let mx = 0, my = 0;
-
-// Mobile Menu
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const iconHamburger = document.getElementById('iconHamburger');
-    const iconClose = document.getElementById('iconClose');
-    const isOpen = menu.style.display === 'flex';
-    if (isOpen) {
-        menu.style.display = 'none';
-        iconHamburger.style.display = '';
-        iconClose.style.display = 'none';
-        document.body.style.overflow = '';
-    } else {
-        menu.style.display = 'flex';
-        menu.style.flexDirection = 'column';
-        iconHamburger.style.display = 'none';
-        iconClose.style.display = '';
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closeMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const iconHamburger = document.getElementById('iconHamburger');
-    const iconClose = document.getElementById('iconClose');
-    menu.style.display = 'none';
-    iconHamburger.style.display = '';
-    iconClose.style.display = 'none';
-    document.body.style.overflow = '';
-}
-
 // Scroll Reveal Observer
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -58,7 +26,6 @@ document.querySelectorAll('.sr-wipe, .sr-tilt, .sr-tilt-neg, .sr-left, .sr-right
 const eclair1 = document.getElementById('eclair1');
 const eclair2 = document.getElementById('eclair2');
 const eclair3 = document.getElementById('eclair3');
-const pins = document.querySelectorAll('.map-pin');
 
 let rafId = null;
 let lastFrameTime = 0;
@@ -75,12 +42,6 @@ function animateWorld(now) {
     if (eclair2) eclair2.style.transform = `rotate(${16 + Math.sin(t * 0.9) * 2}deg) translate(${Math.cos(t * 1.1) * -5}px, ${Math.sin(t * 0.8) * -8}px)`;
     if (eclair3) eclair3.style.transform = `rotate(${-8 + Math.cos(t * 1.1) * 2}deg) translate(${Math.sin(t * 0.7) * 4}px, ${Math.cos(t * 1.3) * -7}px)`;
 
-    pins.forEach((pin, i) => {
-        if (pin.style.display !== 'none') {
-            pin.style.transform = `translateY(${Math.sin(t * 2 + i) * 4 - 4}px)`;
-        }
-    });
-
     rafId = requestAnimationFrame(animateWorld);
 }
 rafId = requestAnimationFrame(animateWorld);
@@ -93,11 +54,11 @@ document.addEventListener('visibilitychange', () => {
 // Vitrina Slider
 const vitrinaProducts = [
     {
-        num: '01', tag: 'Clasico goloso',
+        num: '01', tag: 'Clásico goloso',
         name: 'Red Velvet<br>&amp; Cheese',
         img: 'img/paquito-frambuesa-lado.webp',
         alt: 'Paquito Red Velvet & Cheese',
-        ingredients: 'Masa · Azucar · Glaseado de queso · Frutos rojos',
+        ingredients: 'Masa · Azúcar · Glaseado de queso · Frutos rojos',
         badge: '★ Bestseller',
         badgeColor: '#FF653A',
         nameColor: '#FF653A',
@@ -110,14 +71,14 @@ const vitrinaProducts = [
         img: 'img/paquito-pistacho-lado.webp',
         alt: 'Paquito Pistacho Lover',
         ingredients: 'Masa · Crema pistacho · Cobertura blanca · Pistacho',
-        badge: '★ El mas trendy',
+        badge: '★ El más trendy',
         badgeColor: '#8C52FF',
         nameColor: '#8C52FF',
         bgColor: 'rgba(140,82,255,0.06)',
         dotColor: '#8C52FF'
     },
     {
-        num: '03', tag: 'Para los mas golosos',
+        num: '03', tag: 'Para los más golosos',
         name: 'Cookies<br>&amp; Kinder',
         img: 'img/paquito-chocolate-lado.webp',
         alt: 'Paquito Cookies & Kinder',

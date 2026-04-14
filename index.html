@@ -42,7 +42,7 @@
     <!-- Preload fuentes críticas -->
     <link rel="preload" href="fonts/Now-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/Now-Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/Chunko%20Bold%20Demo.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Chunko%20Bold.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -109,30 +109,13 @@
             </div>
 
             <div class="header-mobile">
-                <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="header-mobile-insta">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".75" fill="currentColor" stroke="none"/></svg>
+                <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="header-mobile-insta" aria-label="Síguenos en Instagram">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".75" fill="currentColor" stroke="none"/></svg>
                 </a>
-                <button id="menuToggle" onclick="toggleMobileMenu()" aria-label="Abrir menú" class="header-menu-btn">
-                    <svg id="iconHamburger" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-                    <svg id="iconClose" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="10"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg>
-                </button>
             </div>
         </div>
     </header>
 
-    <!-- ── Menú móvil ────────────────────────────────── -->
-    <div id="mobileMenu">
-        <nav class="mobile-nav">
-            <a href="#vitrina" onclick="closeMobileMenu()">Vitrina</a>
-            <a href="#frescos" onclick="closeMobileMenu()">Proceso</a>
-            <a href="#galeria" onclick="closeMobileMenu()">Galería</a>
-            <a href="#encuentralos" onclick="closeMobileMenu()" class="mobile-nav-accent">Encuéntralos</a>
-        </nav>
-        <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="mobile-insta-btn">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".75" fill="currentColor" stroke="none"/></svg>
-            Síguenos en Instagram
-        </a>
-    </div>
 
     <main>
 
@@ -148,7 +131,7 @@
 
         <div class="hero-content">
             <h1 class="hero-title sr">YA HAN<br>LLEGADO</h1>
-            <p class="hero-subtitle sr sr-delay-1">Y ESTAN PA' COMERLOS....</p>
+            <p class="hero-subtitle sr sr-delay-1">Y ESTÁN PA' COMERLOS...</p>
             <div class="hero-buttons sr sr-delay-2">
                 <a href="#vitrina" class="btn-hero btn-hero-orange">VER LA VITRINA</a>
                 <a href="#encuentralos" class="btn-hero btn-hero-cream">DONDE ENCONTRARLOS</a>
@@ -160,21 +143,18 @@
                 <img id="eclair1"
                     src="img/paquito-pistacho.webp"
                     alt="Paquito Pistacho Lover de Paco Merlos, bollería artesanal en Madrid"
-                    width="432" height="432"
                     fetchpriority="high" decoding="async"
                     class="hero-paquito">
 
                 <img id="eclair2"
                     src="img/paquito-frambuesa.webp"
                     alt="Paquito Red Velvet & Cheese de Paco Merlos, bestseller artesanal"
-                    width="480" height="480"
                     fetchpriority="high" decoding="async"
                     class="hero-paquito">
 
                 <img id="eclair3"
                     src="img/paquito-chocolate.webp"
                     alt="Paquito Cookies & Kinder de Paco Merlos, obrador artesanal Madrid"
-                    width="544" height="544"
                     fetchpriority="high" decoding="async"
                     class="hero-paquito">
             </div>
@@ -239,12 +219,12 @@
                     <div class="vitrina-meta">
                         <span id="vitrinaNum" class="vitrina-num">01</span>
                         <div class="vitrina-meta-line"></div>
-                        <span id="vitrinaTag" class="vitrina-tag">Clasico goloso</span>
+                        <span id="vitrinaTag" class="vitrina-tag">Clásico goloso</span>
                     </div>
                     <h3 id="vitrinaName" style="color:#FF653A;">Red Velvet<br>&amp; Cheese</h3>
                     <div class="vitrina-divider"></div>
                     <p id="vitrinaIngredients" class="vitrina-ingredients">
-                        Masa · Azucar · Glaseado de queso · Frutos rojos
+                        Masa · Azúcar · Glaseado de queso · Frutos rojos
                     </p>
                 </div>
             </div>
@@ -415,7 +395,14 @@
             </div>
 
         </div>
+
     </section>
+
+    <div class="section-wave section-wave--between-orange">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,30 C360,80 720,0 1080,55 C1260,72 1360,38 1440,48 L1440,80 L0,80 Z" fill="#FFFFE3"></path>
+        </svg>
+    </div>
 
     <!-- ── Social / Pack ────────────────────────────── -->
     <section id="social">
@@ -522,6 +509,11 @@
             </a>
         </div>
 
+        <div class="section-wave">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,55 C200,10 500,80 720,38 C940,0 1200,65 1440,28 L1440,80 L0,80 Z" fill="#FF653A"></path>
+            </svg>
+        </div>
     </section>
 
     <!-- ── Encuéntralos ──────────────────────────────── -->
@@ -607,6 +599,12 @@
             </div>
 
         </div>
+
+        <div class="section-wave">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,42 C280,85 560,8 840,52 C1080,88 1300,22 1440,50 L1440,80 L0,80 Z" fill="#FFFFE3"></path>
+            </svg>
+        </div>
     </section>
 
     </main>
@@ -659,4 +657,4 @@
 
 </body>
 
-</html> 
+</html>
