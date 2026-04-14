@@ -14,6 +14,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
+    overflow-x: hidden;
 }
 
 body {
@@ -844,8 +845,7 @@ button { font-family: inherit; cursor: pointer; }
 /* Ola entre secciones (fuera de cualquier section) */
 .section-wave--between-orange {
     background: #FF653A;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 
@@ -1695,7 +1695,7 @@ footer {
     .encuentralos-title { font-size: 3rem; margin-bottom: 2.5rem; }
 
     /* Vitrina */
-    #vitrina { padding: 4rem 1.5rem 0; }
+    #vitrina { padding: 4rem 1.5rem 0; margin-top: -2px; }
     .vitrina-card { padding: 2rem 1.5rem; min-height: 0; }
     .vitrina-img-col { min-height: 16rem; }
     .secretos-toggle-row { margin-top: 2.5rem; }
