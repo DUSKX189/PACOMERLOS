@@ -1708,10 +1708,11 @@ footer {
     .hero-content { padding: 4rem 2rem 4rem 9rem; }
     .hero-title { font-size: 8vw; line-height: 0.82; }
     .hero-subtitle { font-size: 2vw; }
-    .hero-images { height: 100vh; overflow: hidden; }
-    #eclair1 { width: clamp(22rem, 36vw, 40rem); top: 18%; left: -6%; right: auto; }
-    #eclair2 { width: clamp(25rem, 40vw, 44rem); top: 0%; right: 4%; }
-    #eclair3 { width: clamp(28rem, 45vw, 50rem); top: 40%; right: 2%; }
+    .hero-images { height: 100vh; }
+    .hero-content { z-index: 20; }
+    #eclair1 { width: clamp(22rem, 36vw, 40rem); top: 20%; left: auto; right: 48%; }
+    #eclair2 { width: clamp(25rem, 40vw, 44rem); top: 2%; right: 16%; }
+    #eclair3 { width: clamp(28rem, 45vw, 50rem); top: 42%; right: 13%; }
 
     /* Vitrina */
     #vitrina { padding: 6rem 5rem 0; }
