@@ -1,3 +1,53 @@
+// Navegación interna sin ensuciar la URL con "#..."
+function prefersReducedMotion() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function getHeaderOffset() {
+    const header = document.getElementById('header');
+    return (header ? header.offsetHeight : 0) + 12;
+}
+
+function scrollToSectionById(id) {
+    const target = document.getElementById(id);
+    if (!target) return false;
+    const top = window.scrollY + target.getBoundingClientRect().top - getHeaderOffset();
+    window.scrollTo({ top, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+    return true;
+}
+
+function clearHashFromUrl() {
+    if (!location.hash) return;
+    history.replaceState(null, '', location.pathname + location.search);
+}
+
+document.addEventListener('click', (e) => {
+    if (e.defaultPrevented) return;
+    if (e.button !== 0) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    if (a.getAttribute('target') === '_blank') return;
+    const href = a.getAttribute('href');
+    if (!href || href === '#') return;
+    const id = href.slice(1);
+    if (!id) return;
+    if (scrollToSectionById(id)) {
+        e.preventDefault();
+        clearHashFromUrl();
+    }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = location.hash;
+    if (!hash || hash === '#') return;
+    const id = hash.slice(1);
+    if (!id) return;
+    setTimeout(() => {
+        if (scrollToSectionById(id)) clearHashFromUrl();
+    }, 0);
+});
+
 // Scroll Reveal Observer
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -182,6 +232,14 @@ function sortByLocation(btn) {
         btn.textContent = 'Tu navegador no permite geolocalización';
         return;
     }
+
+    const grid = document.getElementById('puntosGrid');
+    if (!grid) {
+        btn.textContent = 'No se encontró la lista de tiendas';
+        return;
+    }
+
+    const originalHTML = btn.innerHTML;
     btn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="10"/><path d="M12 12l4-4"/></svg> Detectando…';
     btn.disabled = true;
 
@@ -189,30 +247,41 @@ function sortByLocation(btn) {
         pos => {
             const userLat = pos.coords.latitude;
             const userLng = pos.coords.longitude;
-
-            const grid = document.getElementById('puntosGrid');
             const cards = Array.from(grid.querySelectorAll('.punto-card'));
 
             cards.forEach(card => {
                 const lat = parseFloat(card.dataset.lat);
                 const lng = parseFloat(card.dataset.lng);
+                if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
                 const dist = haversine(userLat, userLng, lat, lng);
-                card.dataset.dist = dist;
+                card.dataset.dist = String(dist);
                 const badge = card.querySelector('.dist-badge');
-                badge.textContent = dist < 1 ? Math.round(dist * 1000) + ' m' : dist.toFixed(1) + ' km';
-                badge.style.display = 'block';
+                if (badge) {
+                    badge.textContent = dist < 1 ? Math.round(dist * 1000) + ' m' : dist.toFixed(1) + ' km';
+                    badge.style.display = 'block';
+                }
             });
 
-            cards.sort((a, b) => a.dataset.dist - b.dataset.dist);
+            cards.sort((a, b) => (parseFloat(a.dataset.dist) || Infinity) - (parseFloat(b.dataset.dist) || Infinity));
             cards.forEach(card => grid.appendChild(card));
 
             btn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg> Ordenado por cercanía';
             btn.disabled = false;
         },
-        () => {
-            btn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-7-7-12a7 7 0 0 1 14 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg> Ordenar por cercanía';
+        (err) => {
+            const code = err?.code;
+            const msg =
+                code === 1 ? 'Permiso de ubicación denegado' :
+                code === 2 ? 'No se pudo obtener tu ubicación' :
+                code === 3 ? 'La ubicación tardó demasiado' :
+                'No se pudo obtener tu ubicación';
+
+            btn.innerHTML = originalHTML;
+            btn.setAttribute('data-geo-error', msg);
             btn.disabled = false;
-        }
+            setTimeout(() => btn.removeAttribute('data-geo-error'), 3500);
+        },
+        { enableHighAccuracy: false, timeout: 9000, maximumAge: 2 * 60 * 1000 }
     );
 }
 

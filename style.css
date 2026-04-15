@@ -475,6 +475,53 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ══════════════════════════════════════════════════════
+   SPRINKLES (reutilizable)
+══════════════════════════════════════════════════════ */
+
+.sprinkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    user-select: none;
+
+    /* Defaults (puedes sobreescribir por sección) */
+    --sprinkle-w: 22px;
+    --sprinkle-h: 8px;
+    --sprinkle-radius: 4px;
+    --sprinkles-opacity: 0.18;
+    --sprinkles-color: #fffff1;
+}
+
+.sprinkles > span {
+    position: absolute;
+    display: block;
+    width: var(--sprinkle-w);
+    height: var(--sprinkle-h);
+    border-radius: var(--sprinkle-radius);
+
+    top: var(--t);
+    left: var(--l, auto);
+    right: var(--r, auto);
+
+    background: var(--c, var(--sprinkles-color));
+    opacity: var(--sprinkle-opacity, var(--sprinkles-opacity));
+    transform: rotate(var(--rot));
+    transform-origin: center;
+}
+
+.sprinkles--vitrina {
+    --sprinkles-opacity: 0.10;
+    --sprinkles-color: #8c52ff;
+}
+
+.sprinkles--frescos {
+    --sprinkles-opacity: 0.20;
+    --sprinkles-color: #fffff1;
+}
+
+/* ══════════════════════════════════════════════════════
    VITRINA
 ══════════════════════════════════════════════════════ */
 
@@ -494,15 +541,6 @@ button { font-family: inherit; cursor: pointer; }
     letter-spacing: 0.02em;
     color: #8C52FF;
     margin-bottom: 4rem;
-}
-
-.vitrina-confetti {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-    user-select: none;
 }
 
 .vitrina-wrap {
@@ -875,12 +913,6 @@ button { font-family: inherit; cursor: pointer; }
     user-select: none;
 }
 
-.frescos-sprinkles {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-}
 
 .process-grid {
     display: grid;
@@ -1280,6 +1312,69 @@ button { font-family: inherit; cursor: pointer; }
     letter-spacing: -0.02em;
 }
 
+.encuentralos-coming {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 2rem 1.75rem;
+    background: rgba(255,255,241,0.1);
+    border: 1px solid rgba(255,255,241,0.15);
+    border-radius: 0.75rem;
+    position: relative;
+    z-index: 10;
+    text-align: left;
+}
+
+.encuentralos-coming-badge {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.16rem;
+    text-transform: uppercase;
+    color: #FF653A;
+    background: #FFFFF1;
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    box-shadow: 0.25rem 0.25rem 0 rgba(15,15,15,0.12);
+    margin-bottom: 1rem;
+}
+
+.encuentralos-coming-title {
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04rem;
+    color: #FFFFF1;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+}
+
+.encuentralos-coming-text {
+    color: rgba(255,255,241,0.65);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+
+.encuentralos-coming-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 800;
+    font-size: 1.0625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12rem;
+    color: #FFFFF1;
+    border: 0.1rem solid rgba(255,255,241,0.25);
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.25rem;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.encuentralos-coming-cta:hover {
+    border-color: rgba(255,255,241,0.6);
+    background: rgba(255,255,241,0.06);
+}
+
 .geo-btn-wrap {
     display: flex;
     justify-content: center;
@@ -1613,10 +1708,10 @@ footer {
     .hero-content { padding: 4rem 2rem 4rem 9rem; }
     .hero-title { font-size: 8vw; line-height: 0.82; }
     .hero-subtitle { font-size: 2vw; }
-    .hero-images { height: 100vh; }
-    #eclair1 { width: clamp(22rem, 36vw, 40rem); top: 20%; left: auto; right: 53%; }
-    #eclair2 { width: clamp(25rem, 40vw, 44rem); top: 2%; right: 16%; }
-    #eclair3 { width: clamp(28rem, 45vw, 50rem); top: 42%; right: 13%; }
+    .hero-images { height: 100vh; overflow: hidden; }
+    #eclair1 { width: clamp(22rem, 36vw, 40rem); top: 18%; left: -6%; right: auto; }
+    #eclair2 { width: clamp(25rem, 40vw, 44rem); top: 0%; right: 4%; }
+    #eclair3 { width: clamp(28rem, 45vw, 50rem); top: 40%; right: 2%; }
 
     /* Vitrina */
     #vitrina { padding: 6rem 5rem 0; }
@@ -1654,7 +1749,6 @@ footer {
     #encuentralos { padding: 6rem 5rem 0; }
     .encuentralos-title { font-size: 7vw; }
     .encuentralos-bg-text { font-size: 30vw; }
-    #puntosGrid { grid-template-columns: repeat(2, 1fr); }
 
     /* Footer */
     .footer-top { flex-direction: row; padding: 4rem 5rem 2.5rem; }
@@ -1667,6 +1761,13 @@ footer {
 
 @media (min-width: 1024px) {
     .hero-content { padding: 5rem 4rem 5rem 5rem; }
+}
+
+/* Rango intermedio: desktop estrecho */
+@media (min-width: 768px) and (max-width: 1100px) {
+    #eclair1 { width: clamp(16rem, 28vw, 22rem); top: 22%; left: -4%; }
+    #eclair2 { width: clamp(18rem, 32vw, 26rem); top: 0%; right: 2%; }
+    #eclair3 { width: clamp(20rem, 36vw, 28rem); top: 42%; right: 1%; }
 }
 
 /* ══════════════════════════════════════════════════════
