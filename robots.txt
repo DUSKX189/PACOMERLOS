@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # IMPORTANTE: Actualiza este dominio con tu URL real
-Sitemap: https://pacomerlos.es/sitemap.xml
+Sitemap: https://pacomerlos.com/sitemap.xml
