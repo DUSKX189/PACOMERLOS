@@ -1,596 +1,1082 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paquitos Artesanales en Madrid — Paco Merlos</title>
 
     <!-- SEO Meta -->
-    <meta name="description" content="Paquitos artesanales en Madrid. Hechos a mano con masa madre fermentada 48 h. Red Velvet, Pistacho Lover, Cookies & Kinder. Descubre dónde encontrarlos.">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <meta name="author" content="Paco Merlos">
-    <link rel="canonical" href="https://pacomerlos.com/">
-    <link rel="alternate" hreflang="es" href="https://pacomerlos.com/">
+    <meta
+      name="description"
+      content="Paquitos artesanales en Madrid. Hechos a mano con masa madre fermentada 48 h. Red Velvet, Pistacho Lover, Cookies & Kinder. Descubre dónde encontrarlos."
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1"
+    />
+    <meta name="author" content="Paco Merlos" />
+    <link rel="canonical" href="https://pacomerlos.com/" />
+    <link rel="alternate" hreflang="es" href="https://pacomerlos.com/" />
 
     <!-- Geo / Local SEO -->
-    <meta name="geo.region" content="ES-MD">
-    <meta name="geo.placename" content="Madrid">
-    <meta name="theme-color" content="#8C52FF">
+    <meta name="geo.region" content="ES-MD" />
+    <meta name="geo.placename" content="Madrid" />
+    <meta name="theme-color" content="#8C52FF" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pacomerlos.com/">
-    <meta property="og:title" content="Paquitos Artesanales en Madrid — Paco Merlos">
-    <meta property="og:description" content="Paquitos artesanales hechos a mano con masa madre fermentada 48 h. Red Velvet, Pistacho Lover, Cookies & Kinder. Descúbrelos en Madrid.">
-    <meta property="og:image" content="https://pacomerlos.com/img/paquito-frambuesa.webp">
-    <meta property="og:image:width" content="480">
-    <meta property="og:image:height" content="480">
-    <meta property="og:locale" content="es_ES">
-    <meta property="og:site_name" content="Paco Merlos">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pacomerlos.com/" />
+    <meta
+      property="og:title"
+      content="Paquitos Artesanales en Madrid — Paco Merlos"
+    />
+    <meta
+      property="og:description"
+      content="Paquitos artesanales hechos a mano con masa madre fermentada 48 h. Red Velvet, Pistacho Lover, Cookies & Kinder. Descúbrelos en Madrid."
+    />
+    <meta
+      property="og:image"
+      content="https://pacomerlos.com/img/paquito-frambuesa.webp"
+    />
+    <meta property="og:image:width" content="480" />
+    <meta property="og:image:height" content="480" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Paco Merlos" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Paquitos Artesanales en Madrid — Paco Merlos">
-    <meta name="twitter:description" content="Paquitos artesanales hechos a mano con masa madre fermentada 48 h. Madrid.">
-    <meta name="twitter:image" content="https://pacomerlos.com/img/paquito-frambuesa.webp">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Paquitos Artesanales en Madrid — Paco Merlos"
+    />
+    <meta
+      name="twitter:description"
+      content="Paquitos artesanales hechos a mano con masa madre fermentada 48 h. Madrid."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pacomerlos.com/img/paquito-frambuesa.webp"
+    />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="img/favicon-paco.png">
-    <link rel="apple-touch-icon" href="img/favicon-paco.png">
+    <link rel="icon" type="image/png" href="img/favicon-paco.png" />
+    <link rel="apple-touch-icon" href="img/favicon-paco.png" />
 
     <!-- Preload fuentes críticas -->
-    <link rel="preload" href="fonts/Now-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/Now-Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/Chunko%20Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link
+      rel="preload"
+      href="fonts/Now-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/Now-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/Chunko%20Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Bakery",
-      "name": "Paco Merlos",
-      "description": "Paquitos artesanales hechos a mano cada mañana con masa madre fermentada más de 48 horas. Sin aditivos, sin atajos.",
-      "url": "https://pacomerlos.com",
-      "logo": "https://pacomerlos.com/img/logo-paco-merlos.webp",
-      "image": [
-        "https://pacomerlos.com/img/paquito-frambuesa.webp",
-        "https://pacomerlos.com/img/paquito-pistacho.webp",
-        "https://pacomerlos.com/img/paquito-chocolate.webp"
-      ],
-      "founder": { "@type": "Person", "name": "Paco Merlos" },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Madrid",
-        "addressRegion": "Comunidad de Madrid",
-        "addressCountry": "ES"
-      },
-      "areaServed": { "@type": "City", "name": "Madrid" },
-      "sameAs": ["https://www.instagram.com/paco_merlos/"],
-      "servesCuisine": "Panadería artesanal",
-      "priceRange": "€€",
-      "hasMenu": "https://pacomerlos.com/#vitrina",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Paquitos",
-        "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Red Velvet & Cheese", "description": "Masa madre, azúcar, glaseado de queso y frutos rojos. Bestseller.", "image": "https://pacomerlos.com/img/paquito-frambuesa-lado.webp" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pistacho Lover", "description": "Masa madre, crema pistacho, cobertura blanca y pistacho. El favorito de Instagram.", "image": "https://pacomerlos.com/img/paquito-pistacho-lado.webp" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Cookies & Kinder", "description": "Masa madre, galleta Oreo, Kinder Bueno y ganache.", "image": "https://pacomerlos.com/img/paquito-chocolate-lado.webp" } }
-        ]
+      {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Paco Merlos",
+        "description": "Paquitos artesanales hechos a mano cada mañana con masa madre fermentada más de 48 horas. Sin aditivos, sin atajos.",
+        "url": "https://pacomerlos.com",
+        "logo": "https://pacomerlos.com/img/logo-paco-merlos.webp",
+        "image": [
+          "https://pacomerlos.com/img/paquito-frambuesa.webp",
+          "https://pacomerlos.com/img/paquito-pistacho.webp",
+          "https://pacomerlos.com/img/paquito-chocolate.webp"
+        ],
+        "founder": { "@type": "Person", "name": "Paco Merlos" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Madrid",
+          "addressRegion": "Comunidad de Madrid",
+          "addressCountry": "ES"
+        },
+        "areaServed": { "@type": "City", "name": "Madrid" },
+        "sameAs": ["https://www.instagram.com/paco_merlos/"],
+        "servesCuisine": "Panadería artesanal",
+        "priceRange": "€€",
+        "hasMenu": "https://pacomerlos.com/#vitrina",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Paquitos",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Red Velvet & Cheese",
+                "description": "Masa madre, azúcar, glaseado de queso y frutos rojos. Bestseller.",
+                "image": "https://pacomerlos.com/img/paquito-frambuesa-lado.webp"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Pistacho Lover",
+                "description": "Masa madre, crema pistacho, cobertura blanca y pistacho. El favorito de Instagram.",
+                "image": "https://pacomerlos.com/img/paquito-pistacho-lado.webp"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Cookies & Kinder",
+                "description": "Masa madre, galleta Oreo, Kinder Bueno y ganache.",
+                "image": "https://pacomerlos.com/img/paquito-chocolate-lado.webp"
+              }
+            }
+          ]
+        }
       }
-    }
     </script>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-
+  <body>
     <!-- ── Header ───────────────────────────────────── -->
     <header id="header">
-        <div class="header-pill">
+      <div class="header-pill">
+        <a href="#hero" class="header-logo">
+          <img
+            src="img/logo-paco-merlos.webp"
+            alt="Paco Merlos"
+            width="200"
+            height="40"
+          />
+        </a>
 
-            <a href="#hero" class="header-logo">
-                <img src="img/logo-paco-merlos.webp" alt="Paco Merlos" width="200" height="40">
-            </a>
+        <nav class="header-nav">
+          <a href="#vitrina">Vitrina</a>
+          <a href="#frescos">Proceso</a>
+          <a href="#galeria">Galería</a>
+        </nav>
 
-            <nav class="header-nav">
-                <a href="#vitrina">Vitrina</a>
-                <a href="#frescos">Proceso</a>
-                <a href="#galeria">Galería</a>
-            </nav>
-
-            <div class="header-ctas">
-                <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="btn btn-purple">
-                    Síguenos
-                </a>
-                <a href="#encuentralos" class="btn btn-orange">Encuéntralos</a>
-            </div>
-
-            <div class="header-mobile">
-                <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="header-mobile-insta" aria-label="Síguenos en Instagram">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".75" fill="currentColor" stroke="none"/></svg>
-                </a>
-            </div>
+        <div class="header-ctas">
+          <a
+            href="https://www.instagram.com/paco_merlos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-purple"
+          >
+            Síguenos
+          </a>
+          <a href="#encuentralos" class="btn btn-orange">Encuéntralos</a>
         </div>
+
+        <div class="header-mobile">
+          <a
+            href="https://www.instagram.com/paco_merlos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="header-mobile-insta"
+            aria-label="Síguenos en Instagram"
+          >
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle
+                cx="17.2"
+                cy="6.8"
+                r=".75"
+                fill="currentColor"
+                stroke="none"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
     </header>
 
-
     <main>
-
-    <!-- ── Hero ─────────────────────────────────────── -->
-    <section id="hero">
-
+      <!-- ── Hero ─────────────────────────────────────── -->
+      <section id="hero">
         <div class="hero-noise"></div>
 
         <div class="hero-bg-text" aria-hidden="true">
-            <div class="hero-bg-word">PACO</div>
-            <div class="hero-bg-word">MERLOS</div>
+          <div class="hero-bg-word">PACO</div>
+          <div class="hero-bg-word">MERLOS</div>
         </div>
 
         <div class="hero-content">
-            <h1 class="hero-title sr">YA HAN<br>LLEGADO</h1>
-            <p class="hero-subtitle sr sr-delay-1">Y ESTÁN PA' COMERLOS...</p>
-            <div class="hero-buttons sr sr-delay-2">
-                <a href="#vitrina" class="btn-hero btn-hero-orange">VER LA VITRINA</a>
-                <a href="#encuentralos" class="btn-hero btn-hero-cream">DONDE ENCONTRARLOS</a>
-            </div>
+          <h1 class="hero-title sr">YA HAN<br />LLEGADO</h1>
+          <p class="hero-subtitle sr sr-delay-1">Y ESTÁN PA' COMERLOS...</p>
+          <div class="hero-buttons sr sr-delay-2">
+            <a href="#vitrina" class="btn-hero btn-hero-orange"
+              >VER LA VITRINA</a
+            >
+            <a href="#encuentralos" class="btn-hero btn-hero-cream"
+              >DONDE ENCONTRARLOS</a
+            >
+          </div>
         </div>
 
         <div class="hero-images">
-            <div class="hero-images-inner">
-                <img id="eclair1"
-                    src="img/paquito-pistacho.webp"
-                    alt="Paquito Pistacho Lover de Paco Merlos, bollería artesanal en Madrid"
-                    fetchpriority="high" decoding="async"
-                    class="hero-paquito">
+          <div class="hero-images-inner">
+            <img
+              id="eclair1"
+              src="img/paquito-pistacho.webp"
+              alt="Paquito Pistacho Lover de Paco Merlos, bollería artesanal en Madrid"
+              fetchpriority="high"
+              decoding="async"
+              class="hero-paquito"
+            />
 
-                <img id="eclair2"
-                    src="img/paquito-frambuesa.webp"
-                    alt="Paquito Red Velvet & Cheese de Paco Merlos, bestseller artesanal"
-                    fetchpriority="high" decoding="async"
-                    class="hero-paquito">
+            <img
+              id="eclair2"
+              src="img/paquito-frambuesa.webp"
+              alt="Paquito Red Velvet & Cheese de Paco Merlos, bestseller artesanal"
+              fetchpriority="high"
+              decoding="async"
+              class="hero-paquito"
+            />
 
-                <img id="eclair3"
-                    src="img/paquito-chocolate.webp"
-                    alt="Paquito Cookies & Kinder de Paco Merlos, obrador artesanal Madrid"
-                    fetchpriority="high" decoding="async"
-                    class="hero-paquito">
-            </div>
+            <img
+              id="eclair3"
+              src="img/paquito-chocolate.webp"
+              alt="Paquito Cookies & Kinder de Paco Merlos, obrador artesanal Madrid"
+              fetchpriority="high"
+              decoding="async"
+              class="hero-paquito"
+            />
+          </div>
         </div>
 
         <div class="hero-wave">
-            <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,0 C180,90 360,30 540,60 C720,90 900,10 1080,50 C1200,75 1340,30 1440,45 L1440,90 L0,90 Z" fill="#FFFFE3"></path>
-            </svg>
+          <svg
+            viewBox="0 0 1440 90"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,0 C180,90 360,30 540,60 C720,90 900,10 1080,50 C1200,75 1340,30 1440,45 L1440,90 L0,90 Z"
+              fill="#FFFFE3"
+            ></path>
+          </svg>
         </div>
-    </section>
+      </section>
 
-    <!-- ── Vitrina ───────────────────────────────────── -->
-    <section id="vitrina">
-
+      <!-- ── Vitrina ───────────────────────────────────── -->
+      <section id="vitrina">
         <!-- Chispitas decorativas -->
         <div class="sprinkles sprinkles--vitrina" aria-hidden="true">
-            <span style="--t: 5%; --l: 4%; --rot: -40deg; --c: #8c52ff"></span>
-            <span style="--t: 15%; --l: 2%; --rot: 22deg; --c: #8c52ff"></span>
-            <span style="--t: 32%; --l: 7%; --rot: -18deg; --c: #ff653a"></span>
-            <span style="--t: 55%; --l: 3%; --rot: 50deg; --c: #8c52ff"></span>
-            <span style="--t: 72%; --l: 6%; --rot: -30deg; --c: #ff653a"></span>
-            <span style="--t: 88%; --l: 2%; --rot: 12deg; --c: #8c52ff"></span>
-            <span style="--t: 4%; --r: 5%; --rot: 38deg; --c: #ff653a"></span>
-            <span style="--t: 20%; --r: 3%; --rot: -52deg; --c: #8c52ff"></span>
-            <span style="--t: 42%; --r: 6%; --rot: 14deg; --c: #8c52ff"></span>
-            <span style="--t: 60%; --r: 4%; --rot: 62deg; --c: #ff653a"></span>
-            <span style="--t: 78%; --r: 2%; --rot: -28deg; --c: #8c52ff"></span>
-            <span style="--t: 92%; --r: 6%; --rot: 44deg; --c: #ff653a"></span>
-            <span style="--t: 10%; --l: 20%; --rot: -55deg; --c: #8c52ff"></span>
-            <span style="--t: 8%; --r: 20%; --rot: 35deg; --c: #ff653a"></span>
-            <span style="--t: 85%; --l: 25%; --rot: 18deg; --c: #8c52ff"></span>
-            <span style="--t: 82%; --r: 24%; --rot: -42deg; --c: #ff653a"></span>
+          <span style="--t: 5%; --l: 4%; --rot: -40deg; --c: #8c52ff"></span>
+          <span style="--t: 15%; --l: 2%; --rot: 22deg; --c: #8c52ff"></span>
+          <span style="--t: 32%; --l: 7%; --rot: -18deg; --c: #ff653a"></span>
+          <span style="--t: 55%; --l: 3%; --rot: 50deg; --c: #8c52ff"></span>
+          <span style="--t: 72%; --l: 6%; --rot: -30deg; --c: #ff653a"></span>
+          <span style="--t: 88%; --l: 2%; --rot: 12deg; --c: #8c52ff"></span>
+          <span style="--t: 4%; --r: 5%; --rot: 38deg; --c: #ff653a"></span>
+          <span style="--t: 20%; --r: 3%; --rot: -52deg; --c: #8c52ff"></span>
+          <span style="--t: 42%; --r: 6%; --rot: 14deg; --c: #8c52ff"></span>
+          <span style="--t: 60%; --r: 4%; --rot: 62deg; --c: #ff653a"></span>
+          <span style="--t: 78%; --r: 2%; --rot: -28deg; --c: #8c52ff"></span>
+          <span style="--t: 92%; --r: 6%; --rot: 44deg; --c: #ff653a"></span>
+          <span style="--t: 10%; --l: 20%; --rot: -55deg; --c: #8c52ff"></span>
+          <span style="--t: 8%; --r: 20%; --rot: 35deg; --c: #ff653a"></span>
+          <span style="--t: 85%; --l: 25%; --rot: 18deg; --c: #8c52ff"></span>
+          <span style="--t: 82%; --r: 24%; --rot: -42deg; --c: #ff653a"></span>
         </div>
 
         <div class="section-eyebrow sr">
-            <div class="eyebrow-line"></div>
-            <span class="eyebrow-text">Nuestros paquitos</span>
-            <div class="eyebrow-line"></div>
+          <div class="eyebrow-line"></div>
+          <span class="eyebrow-text">Nuestros paquitos</span>
+          <div class="eyebrow-line"></div>
         </div>
-        <h2 class="vitrina-section-title sr-wipe sr-delay-1">NUESTRA<br>VITRINA</h2>
+        <h2 class="vitrina-section-title sr-wipe sr-delay-1">
+          NUESTRA<br />VITRINA
+        </h2>
 
         <!-- Mostrador -->
         <div class="vitrina-wrap">
+          <div class="vitrina-card">
+            <div
+              id="vitrinaBg"
+              style="background: rgba(255, 101, 58, 0.06)"
+            ></div>
 
-            <div class="vitrina-card">
-                <div id="vitrinaBg" style="background: rgba(255,101,58,0.06);"></div>
-
-                <div class="vitrina-img-col">
-                    <div id="vitrinaImgWrap">
-                        <img id="vitrinaImg"
-                            src="img/paquito-frambuesa-lado.webp"
-                            alt="Paquito Red Velvet & Cheese de Paco Merlos"
-                            width="1920" height="1920"
-                            loading="lazy" decoding="async">
-                        <div id="vitrinaBadge" style="background:#FF653A;">★ Bestseller</div>
-                    </div>
-                    <div class="vitrina-img-sep"></div>
+            <div class="vitrina-img-col">
+              <div id="vitrinaImgWrap">
+                <img
+                  id="vitrinaImg"
+                  src="img/paquito-frambuesa-lado.webp"
+                  alt="Paquito Red Velvet & Cheese de Paco Merlos"
+                  width="1920"
+                  height="1920"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div id="vitrinaBadge" style="background: #ff653a">
+                  ★ Bestseller
                 </div>
-
-                <div id="vitrinaInfo">
-                    <div class="vitrina-meta">
-                        <span id="vitrinaNum" class="vitrina-num">01</span>
-                        <div class="vitrina-meta-line"></div>
-                        <span id="vitrinaTag" class="vitrina-tag">Clásico goloso</span>
-                    </div>
-                    <h3 id="vitrinaName" style="color:#FF653A;">Red Velvet<br>&amp; Cheese</h3>
-                    <div class="vitrina-divider"></div>
-                    <p id="vitrinaIngredients" class="vitrina-ingredients">
-                        Masa · Azúcar · Glaseado de queso · Frutos rojos
-                    </p>
-                </div>
+              </div>
+              <div class="vitrina-img-sep"></div>
             </div>
 
-            <div class="vitrina-controls">
-                <div class="vitrina-counter">
-                    <span id="vitrinaCurrent">01</span>
-                    <span class="vitrina-counter-total"> / 03</span>
-                </div>
-                <div class="vitrina-dots">
-                    <button onclick="goToVitrina(0)" class="vitrina-dot" style="background:#FF653A; opacity:1; transform:scale(1.3);" aria-label="Red Velvet"></button>
-                    <button onclick="goToVitrina(1)" class="vitrina-dot" aria-label="Pistacho"></button>
-                    <button onclick="goToVitrina(2)" class="vitrina-dot" aria-label="Chocolate"></button>
-                </div>
-                <div class="vitrina-arrows">
-                    <button onclick="prevVitrina()" class="vitrina-arrow" aria-label="Anterior">←</button>
-                    <button onclick="nextVitrina()" class="vitrina-arrow" aria-label="Siguiente">→</button>
-                </div>
+            <div id="vitrinaInfo">
+              <div class="vitrina-meta">
+                <span id="vitrinaNum" class="vitrina-num">01</span>
+                <div class="vitrina-meta-line"></div>
+                <span id="vitrinaTag" class="vitrina-tag">Clásico goloso</span>
+              </div>
+              <h3 id="vitrinaName" style="color: #ff653a">
+                Red Velvet<br />&amp; Cheese
+              </h3>
+              <div class="vitrina-divider"></div>
+              <p id="vitrinaIngredients" class="vitrina-ingredients">
+                Masa · Azúcar · Glaseado de queso · Frutos rojos
+              </p>
             </div>
+          </div>
 
+          <div class="vitrina-controls">
+            <div class="vitrina-counter">
+              <span id="vitrinaCurrent">01</span>
+              <span class="vitrina-counter-total"> / 03</span>
+            </div>
+            <div class="vitrina-dots">
+              <button
+                onclick="goToVitrina(0)"
+                class="vitrina-dot"
+                style="background: #ff653a; opacity: 1; transform: scale(1.3)"
+                aria-label="Red Velvet"
+              ></button>
+              <button
+                onclick="goToVitrina(1)"
+                class="vitrina-dot"
+                aria-label="Pistacho"
+              ></button>
+              <button
+                onclick="goToVitrina(2)"
+                class="vitrina-dot"
+                aria-label="Chocolate"
+              ></button>
+            </div>
+            <div class="vitrina-arrows">
+              <button
+                onclick="prevVitrina()"
+                class="vitrina-arrow"
+                aria-label="Anterior"
+              >
+                ←
+              </button>
+              <button
+                onclick="nextVitrina()"
+                class="vitrina-arrow"
+                aria-label="Siguiente"
+              >
+                →
+              </button>
+            </div>
+          </div>
         </div>
 
         <!-- Sabores Secretos -->
         <div class="secretos-toggle-row">
-            <div class="secretos-line"></div>
-            <button id="btnSecretos" onclick="toggleSecretos()">
-                <span>🔒</span>
-                Sabores Secretos
-                <svg id="iconSecretos" class="secretos-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                </svg>
-            </button>
-            <div class="secretos-line"></div>
+          <div class="secretos-line"></div>
+          <button id="btnSecretos" onclick="toggleSecretos()">
+            <span>🔒</span>
+            Sabores Secretos
+            <svg
+              id="iconSecretos"
+              class="secretos-chevron"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          <div class="secretos-line"></div>
         </div>
 
         <div id="secretosPanel">
-            <div class="secretos-grid">
-
-                <div class="secreto-card sr">
-                    <div class="secreto-num">04</div>
-                    <div class="secreto-name">???<br>Secreto</div>
-                    <div class="secreto-type">Textura</div>
-                    <div class="secreto-hint">Descúbrelos al abrir tu caja</div>
-                    <div class="secreto-paquito" style="background: linear-gradient(150deg, #b0b0b0 0%, #888 100%);">
-                        <div class="secreto-paquito-shine"></div>
-                        <div class="secreto-paquito-icon">🔒</div>
-                    </div>
-                </div>
-
-                <div class="secretos-divider"></div>
-
-                <div class="secreto-card sr sr-delay-1">
-                    <div class="secreto-num">05</div>
-                    <div class="secreto-name">???<br>Exclusivo</div>
-                    <div class="secreto-type">Sabor</div>
-                    <div class="secreto-hint">Descúbrelos al abrir tu caja</div>
-                    <div class="secreto-paquito" style="background: linear-gradient(150deg, #c0c0c0 0%, #999 100%);">
-                        <div class="secreto-paquito-shine"></div>
-                        <div class="secreto-paquito-icon">🔒</div>
-                    </div>
-                </div>
-
-                <div class="secretos-divider"></div>
-
-                <div class="secreto-card sr sr-delay-2">
-                    <div class="secreto-num">06</div>
-                    <div class="secreto-name">???<br>Misterio</div>
-                    <div class="secreto-type">Ligero</div>
-                    <div class="secreto-hint">Descúbrelos al abrir tu caja</div>
-                    <div class="secreto-paquito" style="background: linear-gradient(150deg, #a8a8a8 0%, #777 100%);">
-                        <div class="secreto-paquito-shine"></div>
-                        <div class="secreto-paquito-icon">🔒</div>
-                    </div>
-                </div>
-
+          <div class="secretos-grid">
+            <div class="secreto-card sr">
+              <div class="secreto-num">04</div>
+              <div class="secreto-name">???<br />Secreto</div>
+              <div class="secreto-type">Textura</div>
+              <div class="secreto-hint">Descúbrelos al abrir tu caja</div>
+              <div
+                class="secreto-paquito"
+                style="
+                  background: linear-gradient(150deg, #b0b0b0 0%, #888 100%);
+                "
+              >
+                <div class="secreto-paquito-shine"></div>
+                <div class="secreto-paquito-icon">🔒</div>
+              </div>
             </div>
+
+            <div class="secretos-divider"></div>
+
+            <div class="secreto-card sr sr-delay-1">
+              <div class="secreto-num">05</div>
+              <div class="secreto-name">???<br />Exclusivo</div>
+              <div class="secreto-type">Sabor</div>
+              <div class="secreto-hint">Descúbrelos al abrir tu caja</div>
+              <div
+                class="secreto-paquito"
+                style="
+                  background: linear-gradient(150deg, #c0c0c0 0%, #999 100%);
+                "
+              >
+                <div class="secreto-paquito-shine"></div>
+                <div class="secreto-paquito-icon">🔒</div>
+              </div>
+            </div>
+
+            <div class="secretos-divider"></div>
+
+            <div class="secreto-card sr sr-delay-2">
+              <div class="secreto-num">06</div>
+              <div class="secreto-name">???<br />Misterio</div>
+              <div class="secreto-type">Ligero</div>
+              <div class="secreto-hint">Descúbrelos al abrir tu caja</div>
+              <div
+                class="secreto-paquito"
+                style="
+                  background: linear-gradient(150deg, #a8a8a8 0%, #777 100%);
+                "
+              >
+                <div class="secreto-paquito-shine"></div>
+                <div class="secreto-paquito-icon">🔒</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="vitrina-wave">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,50 C240,0 480,100 720,50 C960,0 1200,80 1440,40 L1440,100 L0,100 Z" fill="#FF653A"></path>
-            </svg>
+          <svg
+            viewBox="0 0 1440 100"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,50 C240,0 480,100 720,50 C960,0 1200,80 1440,40 L1440,100 L0,100 Z"
+              fill="#FF653A"
+            ></path>
+          </svg>
         </div>
-    </section>
+      </section>
 
-    <!-- ── Frescos ───────────────────────────────────── -->
-    <section id="frescos">
-
+      <!-- ── Frescos ───────────────────────────────────── -->
+      <section id="frescos">
         <div class="frescos-bg-text" aria-hidden="true">FRESCOS</div>
 
         <!-- Sprinkles -->
         <div class="sprinkles sprinkles--frescos" aria-hidden="true">
-            <span style="--t: 8%; --l: 6%; --rot: -40deg"></span>
-            <span style="--t: 18%; --l: 3%; --rot: 20deg"></span>
-            <span style="--t: 30%; --l: 9%; --rot: -15deg"></span>
-            <span style="--t: 50%; --l: 4%; --rot: 55deg"></span>
-            <span style="--t: 65%; --l: 7%; --rot: -25deg"></span>
-            <span style="--t: 80%; --l: 3%; --rot: 10deg"></span>
-            <span style="--t: 6%; --r: 7%; --rot: 35deg"></span>
-            <span style="--t: 22%; --r: 4%; --rot: -50deg"></span>
-            <span style="--t: 40%; --r: 8%; --rot: 10deg"></span>
-            <span style="--t: 55%; --r: 5%; --rot: 60deg"></span>
-            <span style="--t: 70%; --r: 3%; --rot: -30deg"></span>
-            <span style="--t: 85%; --r: 7%; --rot: 45deg"></span>
-            <span style="--t: 12%; --l: 22%; --rot: -60deg"></span>
-            <span style="--t: 10%; --r: 22%; --rot: 40deg"></span>
-            <span style="--t: 20%; --l: 28%; --rot: 15deg"></span>
-            <span style="--t: 18%; --r: 26%; --rot: -35deg"></span>
+          <span style="--t: 8%; --l: 6%; --rot: -40deg"></span>
+          <span style="--t: 18%; --l: 3%; --rot: 20deg"></span>
+          <span style="--t: 30%; --l: 9%; --rot: -15deg"></span>
+          <span style="--t: 50%; --l: 4%; --rot: 55deg"></span>
+          <span style="--t: 65%; --l: 7%; --rot: -25deg"></span>
+          <span style="--t: 80%; --l: 3%; --rot: 10deg"></span>
+          <span style="--t: 6%; --r: 7%; --rot: 35deg"></span>
+          <span style="--t: 22%; --r: 4%; --rot: -50deg"></span>
+          <span style="--t: 40%; --r: 8%; --rot: 10deg"></span>
+          <span style="--t: 55%; --r: 5%; --rot: 60deg"></span>
+          <span style="--t: 70%; --r: 3%; --rot: -30deg"></span>
+          <span style="--t: 85%; --r: 7%; --rot: 45deg"></span>
+          <span style="--t: 12%; --l: 22%; --rot: -60deg"></span>
+          <span style="--t: 10%; --r: 22%; --rot: 40deg"></span>
+          <span style="--t: 20%; --l: 28%; --rot: 15deg"></span>
+          <span style="--t: 18%; --r: 26%; --rot: -35deg"></span>
         </div>
 
-        <div class="section-eyebrow sr" style="position:relative;z-index:10;">
-            <div class="eyebrow-line-light"></div>
-            <span class="eyebrow-text-light">Nuestro proceso</span>
-            <div class="eyebrow-line-light"></div>
+        <div class="section-eyebrow sr" style="position: relative; z-index: 10">
+          <div class="eyebrow-line-light"></div>
+          <span class="eyebrow-text-light">Nuestro proceso</span>
+          <div class="eyebrow-line-light"></div>
         </div>
-        <h2 class="vitrina-section-title sr-wipe" style="color:#FFFFF1;margin-bottom:5rem;">SIEMPRE<br>FRESCOS</h2>
+        <h2
+          class="vitrina-section-title sr-wipe"
+          style="color: #fffff1; margin-bottom: 5rem"
+        >
+          SIEMPRE<br />FRESCOS
+        </h2>
 
         <div class="process-grid">
-
-            <div class="process-card sr-tilt">
-                <div class="process-card-num">01</div>
-                <div class="process-icon">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <g transform="rotate(35 12 12)">
-                            <line x1="12" y1="22" x2="12" y2="3"/>
-                            <ellipse cx="12" cy="4.5" rx="1.5" ry="2.5"/>
-                            <ellipse cx="10" cy="9" rx="1.5" ry="2.5" transform="rotate(-40 10 9)"/>
-                            <ellipse cx="14" cy="9" rx="1.5" ry="2.5" transform="rotate(40 14 9)"/>
-                            <ellipse cx="9.5" cy="13" rx="1.5" ry="2.5" transform="rotate(-40 9.5 13)"/>
-                            <ellipse cx="14.5" cy="13" rx="1.5" ry="2.5" transform="rotate(40 14.5 13)"/>
-                            <ellipse cx="9.5" cy="17" rx="1.5" ry="2.5" transform="rotate(-40 9.5 17)"/>
-                            <ellipse cx="14.5" cy="17" rx="1.5" ry="2.5" transform="rotate(40 14.5 17)"/>
-                        </g>
-                    </svg>
-                </div>
-                <div>
-                    <div class="process-tag">La base</div>
-                    <h3 class="process-title">Masa<br>Madre.</h3>
-                    <div class="process-sep"></div>
-                    <p class="process-text">Fermentada más de 48 horas. Sin aditivos, sin atajos. Solo harina, agua y tiempo. La misma receta desde el primer día.</p>
-                </div>
+          <div class="process-card sr-tilt">
+            <div class="process-card-num">01</div>
+            <div class="process-icon">
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <g transform="rotate(35 12 12)">
+                  <line x1="12" y1="22" x2="12" y2="3" />
+                  <ellipse cx="12" cy="4.5" rx="1.5" ry="2.5" />
+                  <ellipse
+                    cx="10"
+                    cy="9"
+                    rx="1.5"
+                    ry="2.5"
+                    transform="rotate(-40 10 9)"
+                  />
+                  <ellipse
+                    cx="14"
+                    cy="9"
+                    rx="1.5"
+                    ry="2.5"
+                    transform="rotate(40 14 9)"
+                  />
+                  <ellipse
+                    cx="9.5"
+                    cy="13"
+                    rx="1.5"
+                    ry="2.5"
+                    transform="rotate(-40 9.5 13)"
+                  />
+                  <ellipse
+                    cx="14.5"
+                    cy="13"
+                    rx="1.5"
+                    ry="2.5"
+                    transform="rotate(40 14.5 13)"
+                  />
+                  <ellipse
+                    cx="9.5"
+                    cy="17"
+                    rx="1.5"
+                    ry="2.5"
+                    transform="rotate(-40 9.5 17)"
+                  />
+                  <ellipse
+                    cx="14.5"
+                    cy="17"
+                    rx="1.5"
+                    ry="2.5"
+                    transform="rotate(40 14.5 17)"
+                  />
+                </g>
+              </svg>
             </div>
-
-            <div class="process-card sr-tilt-neg sr-delay-1">
-                <div class="process-card-num">02</div>
-                <div class="process-icon">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                </div>
-                <div>
-                    <div class="process-tag">El proceso</div>
-                    <h3 class="process-title">100%<br>Artesanos.</h3>
-                    <div class="process-sep"></div>
-                    <p class="process-text">Cada Paquito pasa por nuestras manos. Moldeados, rellenos y decorados uno a uno en nuestro obrador. No hay máquina que los iguale.</p>
-                </div>
+            <div>
+              <div class="process-tag">La base</div>
+              <h3 class="process-title">Masa<br />Madre.</h3>
+              <div class="process-sep"></div>
+              <p class="process-text">
+                Fermentada más de 48 horas. Sin aditivos, sin atajos. Solo
+                harina, agua y tiempo. La misma receta desde el primer día.
+              </p>
             </div>
+          </div>
 
-            <div class="process-card sr-tilt sr-delay-2">
-                <div class="process-card-num">03</div>
-                <div class="process-icon">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 3"/></svg>
-                </div>
-                <div>
-                    <div class="process-tag">El momento</div>
-                    <h3 class="process-title">Recién<br>Horneados.</h3>
-                    <div class="process-sep"></div>
-                    <p class="process-text">Del horno a la vitrina en menos de dos horas. Si no están frescos, no salen. Así de simple.</p>
-                </div>
+          <div class="process-card sr-tilt-neg sr-delay-1">
+            <div class="process-card-num">02</div>
+            <div class="process-icon">
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"
+                />
+              </svg>
             </div>
+            <div>
+              <div class="process-tag">El proceso</div>
+              <h3 class="process-title">100%<br />Artesanos.</h3>
+              <div class="process-sep"></div>
+              <p class="process-text">
+                Cada Paquito pasa por nuestras manos. Moldeados, rellenos y
+                decorados uno a uno en nuestro obrador. No hay máquina que los
+                iguale.
+              </p>
+            </div>
+          </div>
 
+          <div class="process-card sr-tilt sr-delay-2">
+            <div class="process-card-num">03</div>
+            <div class="process-icon">
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 7v5l3 3" />
+              </svg>
+            </div>
+            <div>
+              <div class="process-tag">El momento</div>
+              <h3 class="process-title">Recién<br />Horneados.</h3>
+              <div class="process-sep"></div>
+              <p class="process-text">
+                Del horno a la vitrina en menos de dos horas. Si no están
+                frescos, no salen. Así de simple.
+              </p>
+            </div>
+          </div>
         </div>
+      </section>
 
-    </section>
-
-    <div class="section-wave section-wave--between-orange">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,30 C360,80 720,0 1080,55 C1260,72 1360,38 1440,48 L1440,80 L0,80 Z" fill="#FFFFE3"></path>
+      <div class="section-wave section-wave--between-orange">
+        <svg
+          viewBox="0 0 1440 80"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,30 C360,80 720,0 1080,55 C1260,72 1360,38 1440,48 L1440,80 L0,80 Z"
+            fill="#FFFFE3"
+          ></path>
         </svg>
-    </div>
+      </div>
 
-    <!-- ── Social / Pack ────────────────────────────── -->
-    <section id="social">
+      <!-- ── Social / Pack ────────────────────────────── -->
+      <section id="social">
         <div class="pack-grid">
-
-            <div class="pack-image-col sr-left">
-                <div class="pack-image-inner">
-                    <img src="img/paquito-caja.webp" alt="Caja 6 Pack de Paquitos Artesanales Paco Merlos Madrid"
-                        width="544" height="400" loading="lazy" decoding="async"
-                        class="pack-caja">
-                    <div id="spinningBadge">
-                        <div class="badge-num">6</div>
-                        <div class="badge-label">Pack</div>
-                    </div>
-                </div>
-                <div class="pack-tag">
-                    Gracias por elegirnos <span style="color:#FF653A;">&#10084;</span>
-                </div>
+          <div class="pack-image-col sr-left">
+            <div class="pack-image-inner">
+              <img
+                src="img/paquito-caja.webp"
+                alt="Caja 6 Pack de Paquitos Artesanales Paco Merlos Madrid"
+                width="544"
+                height="400"
+                loading="lazy"
+                decoding="async"
+                class="pack-caja"
+              />
+              <div id="spinningBadge">
+                <div class="badge-num">6</div>
+                <div class="badge-label">Pack</div>
+              </div>
             </div>
-
-            <div class="pack-content sr-right sr-delay-1">
-                <div class="pack-eyebrow">
-                    no son bollos - son paquitos
-                    <div class="pack-eyebrow-line"></div>
-                </div>
-                <h2 class="pack-title">
-                    Hay uno <em>esperando por ti.</em>
-                </h2>
-                <p class="pack-text">
-                    Presume de tu Paquito; sube tu foto, etiqueta a <strong>@paco_merlos</strong> y únete a nosotros. ¡Las mejores imágenes podrán llevarse una Super Box de 6 de regalo!
-                </p>
-                <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="btn-insta">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-                    Síguenos en Instagram
-                </a>
+            <div class="pack-tag">
+              Gracias por elegirnos <span style="color: #ff653a">&#10084;</span>
             </div>
+          </div>
 
+          <div class="pack-content sr-right sr-delay-1">
+            <div class="pack-eyebrow">
+              no son bollos - son paquitos
+              <div class="pack-eyebrow-line"></div>
+            </div>
+            <h2 class="pack-title">Hay uno <em>esperando por ti.</em></h2>
+            <p class="pack-text">
+              Presume de tu Paquito; sube tu foto, etiqueta a
+              <strong>@paco_merlos</strong> y únete a nosotros. ¡Las mejores
+              imágenes podrán llevarse una Super Box de 6 de regalo!
+            </p>
+            <a
+              href="https://www.instagram.com/paco_merlos/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-insta"
+            >
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"
+                />
+                <circle cx="12" cy="13" r="3" />
+              </svg>
+              Síguenos en Instagram
+            </a>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- ── Galería ───────────────────────────────────── -->
-    <section id="galeria">
-
+      <!-- ── Galería ───────────────────────────────────── -->
+      <section id="galeria">
         <div class="section-eyebrow sr">
-            <div class="eyebrow-line"></div>
-            <span class="eyebrow-text">@paco_merlos</span>
-            <div class="eyebrow-line"></div>
+          <div class="eyebrow-line"></div>
+          <span class="eyebrow-text">@paco_merlos</span>
+          <div class="eyebrow-line"></div>
         </div>
         <h2 class="vitrina-section-title sr-wipe">GALERIA</h2>
         <p class="galeria-subtitle sr">
-            Etiquétanos en Instagram — las mejores fotos se llevan una <strong>Super Box</strong> de regalo
+          Etiquétanos en Instagram — las mejores fotos se llevan una
+          <strong>Super Box</strong> de regalo
         </p>
 
         <div class="gallery-grid">
+          <a
+            href="https://www.instagram.com/paco_merlos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-item sr-tilt"
+          >
+            <img
+              src="img/paquito-frambuesa.webp"
+              alt="Paquito Red Velvet & Cheese — @paco_merlos"
+              width="480"
+              height="480"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="gallery-overlay">
+              <svg
+                class="icon gallery-overlay-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.2"
+                  cy="6.8"
+                  r=".75"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </div>
+          </a>
 
-            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="gallery-item sr-tilt">
-                <img src="img/paquito-frambuesa.webp" alt="Paquito Red Velvet & Cheese — @paco_merlos" width="480" height="480" loading="lazy" decoding="async">
-                <div class="gallery-overlay">
-                    <svg class="icon gallery-overlay-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".75" fill="currentColor" stroke="none"/></svg>
-                </div>
-            </a>
+          <a
+            href="https://www.instagram.com/paco_merlos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-item sr-tilt sr-delay-1"
+          >
+            <img
+              src="img/paquito-pistacho.webp"
+              alt="Paquito Pistacho Lover — @paco_merlos"
+              width="432"
+              height="432"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="gallery-overlay">
+              <svg
+                class="icon gallery-overlay-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.2"
+                  cy="6.8"
+                  r=".75"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </div>
+          </a>
 
-            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="gallery-item sr-tilt sr-delay-1">
-                <img src="img/paquito-pistacho.webp" alt="Paquito Pistacho Lover — @paco_merlos" width="432" height="432" loading="lazy" decoding="async">
-                <div class="gallery-overlay">
-                    <svg class="icon gallery-overlay-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".75" fill="currentColor" stroke="none"/></svg>
-                </div>
-            </a>
+          <a
+            href="https://www.instagram.com/paco_merlos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-item sr-tilt sr-delay-2"
+          >
+            <img
+              src="img/paquito-chocolate.webp"
+              alt="Paquito Cookies & Kinder — @paco_merlos"
+              width="544"
+              height="544"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="gallery-overlay">
+              <svg
+                class="icon gallery-overlay-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.2"
+                  cy="6.8"
+                  r=".75"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </div>
+          </a>
 
-            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="gallery-item sr-tilt sr-delay-2">
-                <img src="img/paquito-chocolate.webp" alt="Paquito Cookies & Kinder — @paco_merlos" width="544" height="544" loading="lazy" decoding="async">
-                <div class="gallery-overlay">
-                    <svg class="icon gallery-overlay-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".75" fill="currentColor" stroke="none"/></svg>
-                </div>
-            </a>
+          <a
+            href="https://www.instagram.com/paco_merlos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-item orange-hover sr-tilt"
+          >
+            <img
+              src="img/paquito-frambuesa-lado.webp"
+              alt="Red Velvet & Cheese de lado — @paco_merlos"
+              width="400"
+              height="160"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="gallery-overlay">
+              <svg
+                class="icon gallery-overlay-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.2"
+                  cy="6.8"
+                  r=".75"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </div>
+          </a>
 
-            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="gallery-item orange-hover sr-tilt">
-                <img src="img/paquito-frambuesa-lado.webp" alt="Red Velvet & Cheese de lado — @paco_merlos" width="400" height="160" loading="lazy" decoding="async">
-                <div class="gallery-overlay">
-                    <svg class="icon gallery-overlay-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".75" fill="currentColor" stroke="none"/></svg>
-                </div>
-            </a>
+          <a
+            href="https://www.instagram.com/paco_merlos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-item orange-hover sr-tilt sr-delay-1"
+          >
+            <img
+              src="img/paquito-pistacho-lado.webp"
+              alt="Pistacho Lover de lado — @paco_merlos"
+              width="400"
+              height="160"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="gallery-overlay">
+              <svg
+                class="icon gallery-overlay-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.2"
+                  cy="6.8"
+                  r=".75"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </div>
+          </a>
 
-            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="gallery-item orange-hover sr-tilt sr-delay-1">
-                <img src="img/paquito-pistacho-lado.webp" alt="Pistacho Lover de lado — @paco_merlos" width="400" height="160" loading="lazy" decoding="async">
-                <div class="gallery-overlay">
-                    <svg class="icon gallery-overlay-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".75" fill="currentColor" stroke="none"/></svg>
-                </div>
-            </a>
-
-            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="gallery-item gallery-cta-tile sr-tilt sr-delay-2">
-                <img src="img/paquito-caja.webp" alt="Caja 6 Pack Paco Merlos" width="544" height="400" loading="lazy" decoding="async">
-                <div class="gallery-cta-content">
-                    <p class="gallery-cta-label">Ver todas<br>en Instagram</p>
-                    <span class="gallery-cta-handle">@paco_merlos</span>
-                </div>
-            </a>
-
+          <a
+            href="https://www.instagram.com/paco_merlos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-item gallery-cta-tile sr-tilt sr-delay-2"
+          >
+            <img
+              src="img/paquito-caja.webp"
+              alt="Caja 6 Pack Paco Merlos"
+              width="544"
+              height="400"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="gallery-cta-content">
+              <p class="gallery-cta-label">Ver todas<br />en Instagram</p>
+              <span class="gallery-cta-handle">@paco_merlos</span>
+            </div>
+          </a>
         </div>
-
 
         <div class="section-wave">
-            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,55 C200,10 500,80 720,38 C940,0 1200,65 1440,28 L1440,80 L0,80 Z" fill="#FF653A"></path>
-            </svg>
+          <svg
+            viewBox="0 0 1440 80"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,55 C200,10 500,80 720,38 C940,0 1200,65 1440,28 L1440,80 L0,80 Z"
+              fill="#FF653A"
+            ></path>
+          </svg>
         </div>
-    </section>
+      </section>
 
-    <!-- ── Encuéntralos ──────────────────────────────── -->
-    <section id="encuentralos">
-
+      <!-- ── Encuéntralos ──────────────────────────────── -->
+      <section id="encuentralos">
         <div class="encuentralos-bg-text" aria-hidden="true">LOS</div>
 
         <div class="encuentralos-eyebrow sr">
-            <div class="eyebrow-line-light"></div>
-            <span class="eyebrow-text-light" style="font-weight:700;">Tiendas cerca de ti</span>
-            <div class="eyebrow-line-light"></div>
+          <div class="eyebrow-line-light"></div>
+          <span class="eyebrow-text-light" style="font-weight: 700"
+            >Tiendas cerca de ti</span
+          >
+          <div class="eyebrow-line-light"></div>
         </div>
 
         <h2 class="encuentralos-title sr sr-delay-1">ENCUÉNTRALOS</h2>
 
         <div class="encuentralos-coming sr sr-delay-2">
-            <div class="encuentralos-coming-badge">Coming soon</div>
-            <p class="encuentralos-coming-title">Muy pronto podrás disfrutarlos cerca de ti</p>
-            <p class="encuentralos-coming-text">
-                Estamos cerrando nuevos puntos de venta en Madrid. En cuanto estén listos,
-                podrás ver aquí las tiendas y ordenarlas por cercanía.
-            </p>
-            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="encuentralos-coming-cta">
-                Avísame en Instagram →
-            </a>
+          <div class="encuentralos-coming-badge">Coming soon</div>
+          <p class="encuentralos-coming-title">
+            Muy pronto podrás disfrutarlos cerca de ti
+          </p>
+          <p class="encuentralos-coming-text">
+            Estamos cerrando nuevos puntos de venta en Madrid. En cuanto estén
+            listos, podrás ver aquí las tiendas y ordenarlas por cercanía.
+          </p>
+          <a
+            href="https://www.instagram.com/paco_merlos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="encuentralos-coming-cta"
+          >
+            Avísame en Instagram →
+          </a>
         </div>
 
         <div class="section-wave">
-            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,42 C280,85 560,8 840,52 C1080,88 1300,22 1440,50 L1440,80 L0,80 Z" fill="#FFFFE3"></path>
-            </svg>
+          <svg
+            viewBox="0 0 1440 80"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,42 C280,85 560,8 840,52 C1080,88 1300,22 1440,50 L1440,80 L0,80 Z"
+              fill="#FFFFE3"
+            ></path>
+          </svg>
         </div>
-    </section>
-
+      </section>
     </main>
 
     <!-- ── Footer ────────────────────────────────────── -->
     <footer>
-
-        <div class="footer-top">
-
-            <div class="footer-brand">
-                <img src="img/logo-paco-merlos.webp" alt="Paco Merlos" width="200" height="48">
-                <p class="footer-brand-text">No son bollos — son Paquitos. Hechos a mano, cada mañana, con masa madre y mucho cariño. Madrid, España.</p>
-            </div>
-
-            <div class="footer-col">
-                <div class="footer-col-title">Navegar</div>
-                <a href="#vitrina">Vitrina</a>
-                <a href="#frescos">Siempre Frescos</a>
-                <a href="#galeria">Galería</a>
-                <a href="#encuentralos">Encuéntralos</a>
-            </div>
-
-            <div class="footer-col">
-                <div class="footer-col-title">Legal</div>
-                <a href="aviso-legal.html">Aviso Legal</a>
-                <a href="privacidad.html">Privacidad</a>
-            </div>
-
-            <div class="footer-col">
-                <div class="footer-col-title">Síguenos</div>
-                <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="footer-social-btn">
-                    @paco_merlos
-                </a>
-            </div>
-
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img
+            src="img/logo-paco-merlos.webp"
+            alt="Paco Merlos"
+            width="200"
+            height="48"
+          />
+          <p class="footer-brand-text">
+            No son bollos — son Paquitos. Hechos a mano, cada mañana, con masa
+            madre y mucho cariño. Madrid, España.
+          </p>
         </div>
 
-        <div class="footer-bottom">
-            <div class="footer-copyright">© Paco Merlos 2026 — No son bollos, son Paquitos.</div>
-            <div class="footer-dots">
-                <div class="footer-dot purple"></div>
-                <div class="footer-dot orange"></div>
-                <div class="footer-dot purple"></div>
-            </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navegar</div>
+          <a href="#vitrina">Vitrina</a>
+          <a href="#frescos">Siempre Frescos</a>
+          <a href="#galeria">Galería</a>
+          <a href="#encuentralos">Encuéntralos</a>
         </div>
 
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="privacidad.html">Privacidad</a>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Síguenos</div>
+          <a
+            href="https://www.instagram.com/paco_merlos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-social-btn"
+          >
+            @paco_merlos
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © Paco Merlos 2026 — No son bollos, son Paquitos.
+        </div>
+        <div class="footer-dots">
+          <div class="footer-dot purple"></div>
+          <div class="footer-dot orange"></div>
+          <div class="footer-dot purple"></div>
+        </div>
+      </div>
     </footer>
 
     <script src="main.js"></script>
-
-</body>
-
+  </body>
 </html>
