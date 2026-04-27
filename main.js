@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js-ready');
+
 // Navegación interna sin ensuciar la URL con "#..."
 function prefersReducedMotion() {
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
