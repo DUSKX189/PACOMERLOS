@@ -9,3 +9,4 @@ img/.DS_Store
 .claude/
 skills-lock.json
 uploads/
+.vscode/
