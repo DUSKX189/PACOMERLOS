@@ -1,15 +1,17 @@
 document.documentElement.classList.add('js-ready');
 
-// Navegación interna sin ensuciar la URL con "#..."
+// ─── Reduced motion ───────────────────────────────────────
 function prefersReducedMotion() {
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
+// ─── Header offset ────────────────────────────────────────
 function getHeaderOffset() {
-    const header = document.getElementById('header');
-    return (header ? header.offsetHeight : 0) + 12;
+    const h = document.getElementById('header');
+    return (h ? h.offsetHeight : 0) + 12;
 }
 
+// ─── Smooth scroll a sección ──────────────────────────────
 function scrollToSectionById(id) {
     const target = document.getElementById(id);
     if (!target) return false;
@@ -24,87 +26,241 @@ function clearHashFromUrl() {
 }
 
 document.addEventListener('click', (e) => {
-    if (e.defaultPrevented) return;
-    if (e.button !== 0) return;
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     const a = e.target.closest && e.target.closest('a[href^="#"]');
-    if (!a) return;
-    if (a.getAttribute('target') === '_blank') return;
+    if (!a || a.getAttribute('target') === '_blank') return;
     const href = a.getAttribute('href');
     if (!href || href === '#') return;
     const id = href.slice(1);
-    if (!id) return;
-    if (scrollToSectionById(id)) {
-        e.preventDefault();
-        clearHashFromUrl();
-    }
+    if (id && scrollToSectionById(id)) { e.preventDefault(); clearHashFromUrl(); }
 });
 
 window.addEventListener('DOMContentLoaded', () => {
     const hash = location.hash;
     if (!hash || hash === '#') return;
     const id = hash.slice(1);
-    if (!id) return;
-    setTimeout(() => {
-        if (scrollToSectionById(id)) clearHashFromUrl();
-    }, 0);
+    if (id) setTimeout(() => { if (scrollToSectionById(id)) clearHashFromUrl(); }, 0);
 });
 
-// Scroll Reveal Observer
-const observer = new IntersectionObserver((entries) => {
+// ─── Header hide/show on scroll ───────────────────────────
+(function () {
+    const header = document.getElementById('header');
+    if (!header) return;
+    let lastY = 0;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            const y = window.scrollY;
+            if (y < 80) {
+                header.classList.remove('hide');
+            } else if (y > lastY + 4) {
+                header.classList.add('hide');
+            } else if (y < lastY - 4) {
+                header.classList.remove('hide');
+            }
+            lastY = y;
+            ticking = false;
+        });
+    }, { passive: true });
+})();
+
+// ─── Scroll Reveal ────────────────────────────────────────
+const srObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('revealed');
-            observer.unobserve(entry.target);
+            srObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 
-document.querySelectorAll('.sr').forEach(el => observer.observe(el));
+document.querySelectorAll('.sr, .sr-wipe, .sr-tilt, .sr-tilt-neg, .sr-left, .sr-right')
+    .forEach(el => srObserver.observe(el));
 
-// Scroll Reveal — CSS Animation Classes
-const srRevealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            srRevealObserver.unobserve(entry.target);
+
+// ─── Hero: ciclo de fondos con crossfade ─────────────────
+(function () {
+    const slides = Array.from(document.querySelectorAll('.hero-bg-slide'));
+    if (!slides.length || prefersReducedMotion()) return;
+    let current = 0;
+    setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+    }, 5000);
+})();
+
+// ─── Anatomía: líneas SVG hacia capas del paquito ────────
+(function () {
+    const diagram = document.querySelector('.anatomia-diagram');
+    const img     = document.getElementById('anatomy-img');
+    if (!diagram || !img) return;
+
+    const ns  = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:5';
+    diagram.appendChild(svg);
+
+    function draw() {
+        svg.innerHTML = '';
+        const dRect = diagram.getBoundingClientRect();
+        const iRect = img.getBoundingClientRect();
+
+        document.querySelectorAll('.anatomia-label[data-target-y]').forEach(label => {
+            const targetY = parseFloat(label.dataset.targetY) / 100;
+            const color   = label.dataset.color || '#0f0f0f';
+            const side    = label.dataset.side;
+            const dot     = label.querySelector('.anatomia-label-dot');
+            if (!dot) return;
+
+            const dotRect = dot.getBoundingClientRect();
+            const x1 = dotRect.left + dotRect.width  / 2 - dRect.left;
+            const y1 = dotRect.top  + dotRect.height / 2 - dRect.top;
+            const x2 = (side === 'left' ? iRect.left : iRect.right) - dRect.left;
+            const y2 = iRect.top - dRect.top + iRect.height * targetY;
+
+            // Línea punteada
+            const line = document.createElementNS(ns, 'line');
+            line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+            line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+            line.setAttribute('stroke', color);
+            line.setAttribute('stroke-width', '1.5');
+            line.setAttribute('stroke-dasharray', '5 4');
+            line.setAttribute('opacity', '0.55');
+            svg.appendChild(line);
+
+            // Círculo en el punto de la imagen
+            const circle = document.createElementNS(ns, 'circle');
+            circle.setAttribute('cx', x2); circle.setAttribute('cy', y2);
+            circle.setAttribute('r', '5');
+            circle.setAttribute('fill', color);
+            circle.setAttribute('opacity', '0.85');
+            svg.appendChild(circle);
+        });
+    }
+
+    img.complete ? draw() : img.addEventListener('load', draw);
+    window.addEventListener('resize', draw);
+})();
+
+// ─── Sabores: depth carousel ─────────────────────────────
+(function () {
+    const slides = Array.from(document.querySelectorAll('.sabor-slide'));
+    const nameEl = document.querySelector('.sabor-stage-name');
+    if (!slides.length) return;
+
+    const n = slides.length;
+    let current = 0;
+    let paused  = false;
+
+    function teleport(slide, state) {
+        slide.style.transition = 'none';
+        slide.dataset.state = state;
+    }
+
+    function init() {
+        slides.forEach(s => s.style.transition = 'none');
+        slides.forEach((s, i) => {
+            if (i === 0)        s.dataset.state = 'active';
+            else if (i === 1)   s.dataset.state = 'next';
+            else if (i === n-1) s.dataset.state = 'prev';
+            else                s.dataset.state = 'hidden';
+        });
+        if (nameEl) {
+            nameEl.textContent = slides[0].dataset.name;
+            nameEl.style.color = slides[0].dataset.color || 'var(--dark)';
         }
-    });
-}, { threshold: 0.05 });
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            slides.forEach(s => s.style.transition = '');
+        }));
+    }
 
-document.querySelectorAll('.sr-wipe, .sr-tilt, .sr-tilt-neg, .sr-left, .sr-right').forEach(el => srRevealObserver.observe(el));
+    function advance() {
+        if (paused) return;
+        const outgoing = (current - 1 + n) % n; // old prev → hidden
+        const nextCur  = (current + 1) % n;      // old next → active
+        const newNext  = (current + 2) % n;      // hidden → far-next → next
 
-// Eclair Drift Animations
-const eclair1 = document.getElementById('eclair1');
-const eclair2 = document.getElementById('eclair2');
-const eclair3 = document.getElementById('eclair3');
+        // Step 1: instant – hide outgoing + place newNext off-screen right
+        teleport(slides[outgoing], 'hidden');
+        teleport(slides[newNext],  'far-next');
+        void slides[outgoing].offsetWidth; // force reflow
+        slides[outgoing].style.transition = '';
+        slides[newNext].style.transition  = '';
 
-let rafId = null;
-let lastFrameTime = 0;
-const FRAME_INTERVAL = 1000 / 40; // cap a 40fps — invisible a ojo, ahorra GPU
+        // Step 2: animate – active→prev, next→active, far-next→next
+        slides[current].dataset.state = 'prev';
+        slides[nextCur].dataset.state  = 'active';
+        slides[newNext].dataset.state  = 'next';
+        current = nextCur;
 
-function animateWorld(now) {
-    if (document.hidden) { rafId = null; return; }
-    if (now - lastFrameTime < FRAME_INTERVAL) { rafId = requestAnimationFrame(animateWorld); return; }
-    lastFrameTime = now;
+        // Fade name label
+        if (nameEl) {
+            nameEl.style.opacity = '0';
+            setTimeout(() => {
+                nameEl.textContent = slides[current].dataset.name;
+                nameEl.style.color = slides[current].dataset.color || 'var(--dark)';
+                nameEl.style.opacity = '1';
+            }, 350);
+        }
+    }
 
-    const t = now / 1000;
+    function retreat() {
+        if (paused) return;
+        const outgoing = (current + 1) % n;
+        const prevCur  = (current - 1 + n) % n;
+        const newPrev  = (current - 2 + n) % n;
 
-    if (eclair1) eclair1.style.transform = `rotate(${-22 + Math.sin(t) * 2}deg) translate(${Math.sin(t * 1.2) * 6}px, ${Math.cos(t) * -10}px)`;
-    if (eclair2) eclair2.style.transform = `rotate(${16 + Math.sin(t * 0.9) * 2}deg) translate(${Math.cos(t * 1.1) * -5}px, ${Math.sin(t * 0.8) * -8}px)`;
-    if (eclair3) eclair3.style.transform = `rotate(${-8 + Math.cos(t * 1.1) * 2}deg) translate(${Math.sin(t * 0.7) * 4}px, ${Math.cos(t * 1.3) * -7}px)`;
+        teleport(slides[outgoing], 'hidden');
+        teleport(slides[newPrev],  'far-prev');
+        void slides[outgoing].offsetWidth;
+        slides[outgoing].style.transition = '';
+        slides[newPrev].style.transition  = '';
 
-    rafId = requestAnimationFrame(animateWorld);
-}
-rafId = requestAnimationFrame(animateWorld);
+        slides[current].dataset.state = 'next';
+        slides[prevCur].dataset.state = 'active';
+        slides[newPrev].dataset.state = 'prev';
+        current = prevCur;
 
-// Reanudar animación al volver a la pestaña
-document.addEventListener('visibilitychange', () => {
-    if (!document.hidden && !rafId) rafId = requestAnimationFrame(animateWorld);
-});
+        if (nameEl) {
+            nameEl.style.opacity = '0';
+            setTimeout(() => {
+                nameEl.textContent = slides[current].dataset.name;
+                nameEl.style.color = slides[current].dataset.color || 'var(--dark)';
+                nameEl.style.opacity = '1';
+            }, 350);
+        }
+    }
+
+    if (prefersReducedMotion()) {
+        slides[0].dataset.state = 'active';
+        if (nameEl) {
+            nameEl.textContent = slides[0].dataset.name;
+            nameEl.style.color = slides[0].dataset.color || 'var(--dark)';
+        }
+        return;
+    }
+
+    init();
+    setInterval(advance, 3500);
+
+    const stage = document.querySelector('.sabores-stage');
+    if (stage) {
+        stage.addEventListener('mouseenter', () => { paused = true; });
+        stage.addEventListener('mouseleave', () => { paused = false; });
+    }
+
+    const btnNext = document.getElementById('sabores-next');
+    const btnPrev = document.getElementById('sabores-prev');
+    if (btnNext) btnNext.addEventListener('click', () => { paused = false; advance(); paused = false; });
+    if (btnPrev) btnPrev.addEventListener('click', () => { paused = false; retreat(); paused = false; });
+})();
 
 
-// Sabores accordion — uno a la vez, efecto líquido
+// ─── Sabores accordion ────────────────────────────────────
 (function () {
     const cards = document.querySelectorAll('.sabor-card');
     if (!cards.length) return;
@@ -112,194 +268,110 @@ document.addEventListener('visibilitychange', () => {
     cards.forEach(card => {
         const btn = card.querySelector('.sabor-card-summary');
         if (!btn) return;
-
         btn.addEventListener('click', () => {
             const isOpen = card.classList.contains('expanded');
-
-            // Cerrar todos
             cards.forEach(c => {
                 c.classList.remove('expanded');
                 const b = c.querySelector('.sabor-card-summary');
                 if (b) b.setAttribute('aria-expanded', 'false');
             });
-
-            // Abrir el pulsado si estaba cerrado
             if (!isOpen) {
                 card.classList.add('expanded');
                 btn.setAttribute('aria-expanded', 'true');
-                // Scroll suave para que no quede cortado
                 setTimeout(() => {
                     const top = card.getBoundingClientRect().top + window.scrollY - getHeaderOffset() - 12;
                     window.scrollTo({ top, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
                 }, 80);
             }
         });
-
-        // Soporte teclado
         btn.addEventListener('keydown', e => {
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
         });
     });
 })();
 
-// ¿Por qué están tan buenos? — accordion centrado
-document.querySelectorAll('.why-item-head').forEach(btn => {
+// ─── Sabores carousel dots ────────────────────────────────
+(function () {
+    const grid = document.querySelector('.sabores-grid');
+    const dotsWrap = document.querySelector('.sabores-dots');
+    if (!grid || !dotsWrap) return;
+
+    const cards = grid.querySelectorAll('.sabor-card');
+    if (!cards.length) return;
+
+    // Build dots
+    dotsWrap.innerHTML = '';
+    cards.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'sabores-dot' + (i === 0 ? ' sabores-dot--active' : '');
+        dot.setAttribute('aria-label', `Sabor ${i + 1}`);
+        dot.addEventListener('click', () => {
+            cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        });
+        dotsWrap.appendChild(dot);
+    });
+
+    const dots = dotsWrap.querySelectorAll('.sabores-dot');
+
+    function updateDots() {
+        const scrollLeft = grid.scrollLeft;
+        const cardWidth = cards[0].offsetWidth + parseFloat(getComputedStyle(grid).gap || '20');
+        const idx = Math.round(scrollLeft / cardWidth);
+        dots.forEach((d, i) => d.classList.toggle('sabores-dot--active', i === idx));
+    }
+
+    grid.addEventListener('scroll', updateDots, { passive: true });
+    updateDots();
+
+    // Drag support
+    let isDragging = false, startX = 0, scrollStart = 0;
+    grid.addEventListener('mousedown', e => {
+        isDragging = true; startX = e.pageX; scrollStart = grid.scrollLeft;
+        grid.style.userSelect = 'none';
+    });
+    window.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        grid.scrollLeft = scrollStart - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', () => {
+        isDragging = false; grid.style.userSelect = '';
+    });
+})();
+
+// ─── Social carousel drag support ─────────────────────────
+(function () {
+    const carousel = document.querySelector('.social-carousel');
+    if (!carousel) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    carousel.addEventListener('mousedown', e => {
+        isDragging = true; startX = e.pageX; scrollStart = carousel.scrollLeft;
+        carousel.style.userSelect = 'none';
+    });
+    window.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        carousel.scrollLeft = scrollStart - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', () => {
+        isDragging = false; carousel.style.userSelect = '';
+    });
+})();
+
+// ─── Cookie banner ────────────────────────────────────────
+(function () {
+    const banner = document.querySelector('.cookie-banner');
+    const btn = document.querySelector('.cookie-btn');
+    if (!banner || !btn) return;
+
+    if (localStorage.getItem('cookies_ok')) {
+        banner.classList.add('hidden');
+        return;
+    }
+
+    // Mostrar tras 1.2s
+    setTimeout(() => banner.classList.remove('hidden'), 1200);
+
     btn.addEventListener('click', () => {
-        const item = btn.closest('.why-item');
-        const isOpen = item.classList.contains('expanded');
-        document.querySelectorAll('.why-item').forEach(i => {
-            i.classList.remove('expanded');
-            i.querySelector('.why-item-head').setAttribute('aria-expanded', 'false');
-        });
-        if (!isOpen) {
-            item.classList.add('expanded');
-            btn.setAttribute('aria-expanded', 'true');
-        }
+        localStorage.setItem('cookies_ok', '1');
+        banner.classList.add('hidden');
     });
-    btn.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
-    });
-});
-
-// Statement — 3 reel slot machine
-(function () {
-    const reelEls = Array.from(document.querySelectorAll('.slot-reel'));
-    if (!reelEls.length) return;
-    const jackpotMsg = document.querySelector('.slots-jackpot-msg');
-
-    // Track which image index each reel is showing
-    const cur = reelEls.map((_, i) => i % 3);
-
-    function getImgs(reel) { return Array.from(reel.querySelectorAll('.slot-img')); }
-
-    function showImg(ri, idx, land) {
-        const reel = reelEls[ri];
-        const imgs = getImgs(reel);
-        imgs[cur[ri]].classList.remove('active', 'landing');
-        cur[ri] = ((idx % imgs.length) + imgs.length) % imgs.length;
-        imgs[cur[ri]].classList.add('active');
-        if (land) imgs[cur[ri]].classList.add('landing');
-    }
-
-    // Init: show starting image on each reel
-    reelEls.forEach((_, i) => showImg(i, cur[i], true));
-
-    function spinReelTo(ri, targetIdx, startDelay, onDone) {
-        const n = getImgs(reelEls[ri]).length;
-        // Calculate minimum flips to land on target
-        let flips = 4;
-        while ((cur[ri] + flips) % n !== targetIdx) flips++;
-        if (flips < 4) flips += n;
-
-        setTimeout(() => {
-            let step = 0;
-            let delay = 75;
-            function tick() {
-                step++;
-                const nextIdx = (cur[ri] + 1) % n;
-                const isLast = step === flips;
-                showImg(ri, nextIdx, isLast);
-                if (isLast) {
-                    if (onDone) onDone();
-                } else {
-                    // Slow down near the end
-                    if (step >= flips - 2) delay = Math.min(delay * 1.6, 380);
-                    else delay = Math.min(delay * 1.18, 140);
-                    setTimeout(tick, delay);
-                }
-            }
-            tick();
-        }, startDelay);
-    }
-
-    const jackpotTexts = ['¡Lool!', '¡Boooom!', '¡De locos!'];
-    let jackpotIdx = 0;
-
-    function triggerJackpot() {
-        reelEls.forEach(r => {
-            r.classList.add('jackpot');
-            setTimeout(() => r.classList.remove('jackpot'), 700);
-        });
-        if (jackpotMsg) {
-            jackpotMsg.textContent = jackpotTexts[jackpotIdx % jackpotTexts.length];
-            jackpotIdx++;
-            jackpotMsg.classList.add('visible');
-            setTimeout(() => jackpotMsg.classList.remove('visible'), 2200);
-        }
-    }
-
-    let cycleCount = 0;
-
-    function runCycle() {
-        cycleCount++;
-        const isJackpot = cycleCount % 5 === 0;
-        const jackpotTarget = Math.floor(Math.random() * 3);
-
-        const targets = reelEls.map(() =>
-            isJackpot ? jackpotTarget : Math.floor(Math.random() * 3)
-        );
-
-        let done = 0;
-        reelEls.forEach((_, i) => {
-            spinReelTo(i, targets[i], i * 450, () => {
-                done++;
-                if (done === reelEls.length) {
-                    if (isJackpot) triggerJackpot();
-                    setTimeout(runCycle, 2200 + Math.random() * 800);
-                }
-            });
-        });
-    }
-
-    setTimeout(runCycle, 1800);
 })();
-
-// Popup Próximamente
-(function () {
-    const overlay = document.getElementById('prontoOverlay');
-    const btn = document.getElementById('prontoClose');
-    if (!overlay || !btn) return;
-    btn.addEventListener('click', () => overlay.classList.add('hidden'));
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.add('hidden'); });
-})();
-
-// Infiltrado — paquito cycling with random "?"
-(function () {
-    const reveal = document.querySelector('.infiltrado-reveal');
-    if (!reveal) return;
-    const srcs = [
-        'img/paquito-frambuesa-lado.webp',
-        'img/paquito-pistacho-lado.webp',
-        'img/paquito-chocolate-lado.webp',
-    ];
-    const img = reveal.querySelector('.infiltrado-reveal-img');
-    const q = reveal.querySelector('.infiltrado-reveal-q');
-    if (!img) return;
-    let step = 0;
-    let sinceLastQ = 0;
-
-    function tick() {
-        const showQ = sinceLastQ >= 3 && Math.random() < 0.35;
-
-        img.style.transition = 'opacity 0.4s ease-in-out';
-        img.style.opacity = '0';
-        if (q) q.style.opacity = '0';
-
-        setTimeout(() => {
-            if (showQ) {
-                img.style.opacity = '0.15';
-                if (q) q.style.opacity = '1';
-                sinceLastQ = 0;
-            } else {
-                step = (step + 1) % srcs.length;
-                img.src = srcs[step];
-                img.style.opacity = '1';
-                if (q) q.style.opacity = '0';
-                sinceLastQ++;
-            }
-        }, 420);
-    }
-
-    setInterval(tick, 1800);
-})();
-
