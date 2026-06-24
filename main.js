@@ -80,6 +80,20 @@ const srObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.sr, .sr-wipe, .sr-tilt, .sr-tilt-neg, .sr-left, .sr-right')
     .forEach(el => srObserver.observe(el));
 
+// ─── Prow repeat reveal (re-animates every scroll pass) ───
+const prowObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+        } else if (entry.boundingClientRect.top > 0) {
+            // element went back below viewport → reset so it animates again
+            entry.target.classList.remove('revealed');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.prow-sr').forEach(el => prowObserver.observe(el));
+
 
 // ─── Hero: ciclo de fondos con crossfade ─────────────────
 (function () {
@@ -93,57 +107,31 @@ document.querySelectorAll('.sr, .sr-wipe, .sr-tilt, .sr-tilt-neg, .sr-left, .sr-
     }, 5000);
 })();
 
-// ─── Anatomía: líneas SVG hacia capas del paquito ────────
+
+// ─── Anatomía: texto e imagen suben desde debajo del fondo ─
 (function () {
-    const diagram = document.querySelector('.anatomia-diagram');
-    const img     = document.getElementById('anatomy-img');
-    if (!diagram || !img) return;
+    const bands = document.querySelectorAll('.anat-band');
+    if (!bands.length || prefersReducedMotion()) return;
 
-    const ns  = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(ns, 'svg');
-    svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:5';
-    diagram.appendChild(svg);
+    function ease(t) { return t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2; }
 
-    function draw() {
-        svg.innerHTML = '';
-        const dRect = diagram.getBoundingClientRect();
-        const iRect = img.getBoundingClientRect();
+    function tick() {
+        const viewH = window.innerHeight;
+        bands.forEach(band => {
+            const rect = band.getBoundingClientRect();
+            // 0 = banda justo entrando por abajo, 1 = banda centrada en pantalla
+            const raw  = (viewH - rect.top) / (viewH * 0.7);
+            const prog = ease(Math.max(0, Math.min(1, raw)));
 
-        document.querySelectorAll('.anatomia-label[data-target-y]').forEach(label => {
-            const targetY = parseFloat(label.dataset.targetY) / 100;
-            const color   = label.dataset.color || '#0f0f0f';
-            const side    = label.dataset.side;
-            const dot     = label.querySelector('.anatomia-label-dot');
-            if (!dot) return;
-
-            const dotRect = dot.getBoundingClientRect();
-            const x1 = dotRect.left + dotRect.width  / 2 - dRect.left;
-            const y1 = dotRect.top  + dotRect.height / 2 - dRect.top;
-            const x2 = (side === 'left' ? iRect.left : iRect.right) - dRect.left;
-            const y2 = iRect.top - dRect.top + iRect.height * targetY;
-
-            // Línea punteada
-            const line = document.createElementNS(ns, 'line');
-            line.setAttribute('x1', x1); line.setAttribute('y1', y1);
-            line.setAttribute('x2', x2); line.setAttribute('y2', y2);
-            line.setAttribute('stroke', color);
-            line.setAttribute('stroke-width', '1.5');
-            line.setAttribute('stroke-dasharray', '5 4');
-            line.setAttribute('opacity', '0.55');
-            svg.appendChild(line);
-
-            // Círculo en el punto de la imagen
-            const circle = document.createElementNS(ns, 'circle');
-            circle.setAttribute('cx', x2); circle.setAttribute('cy', y2);
-            circle.setAttribute('r', '5');
-            circle.setAttribute('fill', color);
-            circle.setAttribute('opacity', '0.85');
-            svg.appendChild(circle);
+            const text = band.querySelector('.anat-text');
+            const img  = band.querySelector('.anat-photo img');
+            if (text) text.style.transform = `translateY(${(1 - prog) * 110}%)`;
+            if (img)  img.style.transform  = `translateY(${(1 - prog) * 100}%)`;
         });
     }
 
-    img.complete ? draw() : img.addEventListener('load', draw);
-    window.addEventListener('resize', draw);
+    window.addEventListener('scroll', tick, { passive: true });
+    tick();
 })();
 
 // ─── Sabores: depth carousel ─────────────────────────────
@@ -260,101 +248,6 @@ document.querySelectorAll('.sr, .sr-wipe, .sr-tilt, .sr-tilt-neg, .sr-left, .sr-
 })();
 
 
-// ─── Sabores accordion ────────────────────────────────────
-(function () {
-    const cards = document.querySelectorAll('.sabor-card');
-    if (!cards.length) return;
-
-    cards.forEach(card => {
-        const btn = card.querySelector('.sabor-card-summary');
-        if (!btn) return;
-        btn.addEventListener('click', () => {
-            const isOpen = card.classList.contains('expanded');
-            cards.forEach(c => {
-                c.classList.remove('expanded');
-                const b = c.querySelector('.sabor-card-summary');
-                if (b) b.setAttribute('aria-expanded', 'false');
-            });
-            if (!isOpen) {
-                card.classList.add('expanded');
-                btn.setAttribute('aria-expanded', 'true');
-                setTimeout(() => {
-                    const top = card.getBoundingClientRect().top + window.scrollY - getHeaderOffset() - 12;
-                    window.scrollTo({ top, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
-                }, 80);
-            }
-        });
-        btn.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
-        });
-    });
-})();
-
-// ─── Sabores carousel dots ────────────────────────────────
-(function () {
-    const grid = document.querySelector('.sabores-grid');
-    const dotsWrap = document.querySelector('.sabores-dots');
-    if (!grid || !dotsWrap) return;
-
-    const cards = grid.querySelectorAll('.sabor-card');
-    if (!cards.length) return;
-
-    // Build dots
-    dotsWrap.innerHTML = '';
-    cards.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'sabores-dot' + (i === 0 ? ' sabores-dot--active' : '');
-        dot.setAttribute('aria-label', `Sabor ${i + 1}`);
-        dot.addEventListener('click', () => {
-            cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-        });
-        dotsWrap.appendChild(dot);
-    });
-
-    const dots = dotsWrap.querySelectorAll('.sabores-dot');
-
-    function updateDots() {
-        const scrollLeft = grid.scrollLeft;
-        const cardWidth = cards[0].offsetWidth + parseFloat(getComputedStyle(grid).gap || '20');
-        const idx = Math.round(scrollLeft / cardWidth);
-        dots.forEach((d, i) => d.classList.toggle('sabores-dot--active', i === idx));
-    }
-
-    grid.addEventListener('scroll', updateDots, { passive: true });
-    updateDots();
-
-    // Drag support
-    let isDragging = false, startX = 0, scrollStart = 0;
-    grid.addEventListener('mousedown', e => {
-        isDragging = true; startX = e.pageX; scrollStart = grid.scrollLeft;
-        grid.style.userSelect = 'none';
-    });
-    window.addEventListener('mousemove', e => {
-        if (!isDragging) return;
-        grid.scrollLeft = scrollStart - (e.pageX - startX);
-    });
-    window.addEventListener('mouseup', () => {
-        isDragging = false; grid.style.userSelect = '';
-    });
-})();
-
-// ─── Social carousel drag support ─────────────────────────
-(function () {
-    const carousel = document.querySelector('.social-carousel');
-    if (!carousel) return;
-    let isDragging = false, startX = 0, scrollStart = 0;
-    carousel.addEventListener('mousedown', e => {
-        isDragging = true; startX = e.pageX; scrollStart = carousel.scrollLeft;
-        carousel.style.userSelect = 'none';
-    });
-    window.addEventListener('mousemove', e => {
-        if (!isDragging) return;
-        carousel.scrollLeft = scrollStart - (e.pageX - startX);
-    });
-    window.addEventListener('mouseup', () => {
-        isDragging = false; carousel.style.userSelect = '';
-    });
-})();
 
 // ─── Cookie banner ────────────────────────────────────────
 (function () {
@@ -374,4 +267,239 @@ document.querySelectorAll('.sr, .sr-wipe, .sr-tilt, .sr-tilt-neg, .sr-left, .sr-
         localStorage.setItem('cookies_ok', '1');
         banner.classList.add('hidden');
     });
+})();
+
+// ─── Locator "Donde encontrarlos" ─────────────────────────
+(function () {
+    const geoBtn    = document.getElementById('encGeoBtn');
+    const searchBtn = document.getElementById('encSearchBtn');
+    const searchInp = document.getElementById('encSearch');
+    const listEl    = document.getElementById('encList');
+    const mapEl     = document.getElementById('encMap');
+    if (!geoBtn || !mapEl || typeof L === 'undefined') return;
+
+    const OVERPASS = 'https://overpass-api.de/api/interpreter';
+    const RADIUS_M = 30000; // 30 km
+
+    const map = L.map(mapEl, {
+        zoomControl: true,
+        scrollWheelZoom: true,
+        gestureHandling: true
+    }).setView([40.4168, -3.7038], 13);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '© OpenStreetMap © CARTO',
+        maxZoom: 19
+    }).addTo(map);
+
+    const iconNormal = L.divIcon({
+        className: '',
+        html: '<div style="width:20px;height:20px;border-radius:50%;background:#FF653A;border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,0.45)"></div>',
+        iconSize: [20, 20], iconAnchor: [10, 10]
+    });
+    const iconActive = L.divIcon({
+        className: '',
+        html: '<div style="width:26px;height:26px;border-radius:50%;background:#fff;border:4px solid #FF653A;box-shadow:0 3px 12px rgba(0,0,0,0.5)"></div>',
+        iconSize: [26, 26], iconAnchor: [13, 13]
+    });
+
+    let storeMarkers = {};
+    let activeId     = null;
+    let userMarker   = null;
+
+    function distKm(lat1, lng1, lat2, lng2) {
+        const R = 6371, dLat = (lat2-lat1)*Math.PI/180, dLng = (lng2-lng1)*Math.PI/180;
+        const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    }
+
+    function clearMarkers() {
+        Object.values(storeMarkers).forEach(m => m.remove());
+        storeMarkers = {};
+        activeId = null;
+    }
+
+    function setActive(store) {
+        if (activeId !== null && storeMarkers[activeId]) storeMarkers[activeId].setIcon(iconNormal);
+        activeId = store.id;
+        if (storeMarkers[store.id]) {
+            storeMarkers[store.id].setIcon(iconActive);
+            storeMarkers[store.id].openPopup();
+        }
+        map.panTo([store.lat, store.lng], { animate: true });
+        listEl.querySelectorAll('.enc-item').forEach(el => {
+            el.classList.toggle('active', el.dataset.id === String(store.id));
+        });
+        const activeEl = listEl.querySelector('.enc-item.active');
+        if (activeEl) activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+
+    async function fetchStores(lat, lng) {
+        const query = `[out:json][timeout:25];(node["brand"="Mercadona"](around:${RADIUS_M},${lat},${lng});way["brand"="Mercadona"](around:${RADIUS_M},${lat},${lng}););out center;`;
+        const res  = await fetch(OVERPASS, { method: 'POST', body: 'data=' + encodeURIComponent(query) });
+        const data = await res.json();
+        return data.elements.map(el => {
+            const elLat  = el.type === 'way' ? el.center.lat : el.lat;
+            const elLng  = el.type === 'way' ? el.center.lon : el.lon;
+            const tags   = el.tags || {};
+            const street = tags['addr:street'] ? tags['addr:street'] + (tags['addr:housenumber'] ? ' ' + tags['addr:housenumber'] : '') : '';
+            const city   = tags['addr:city'] || '';
+            const addr   = [street, city].filter(Boolean).join(', ') || 'España';
+            return { id: el.id, name: tags.name || 'Mercadona', addr, lat: elLat, lng: elLng };
+        });
+    }
+
+    function renderList(userLat, userLng, stores) {
+        clearMarkers();
+        const sorted = stores
+            .map(s => ({ ...s, dist: distKm(userLat, userLng, s.lat, s.lng) }))
+            .sort((a, b) => a.dist - b.dist);
+
+        listEl.innerHTML = '';
+        if (!sorted.length) {
+            listEl.innerHTML = '<p class="enc-list-placeholder">No encontramos tiendas en este radio.</p>';
+            return;
+        }
+
+        sorted.forEach((s, i) => {
+            const distTxt = s.dist < 1 ? Math.round(s.dist * 1000) + ' m' : s.dist.toFixed(1) + ' km';
+            const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lng}`;
+            const m = L.marker([s.lat, s.lng], { icon: iconNormal }).addTo(map);
+            m.bindPopup(`
+                <div style="font-family:sans-serif;min-width:160px">
+                    <strong style="font-size:0.85rem">${s.name}</strong>
+                    <div style="font-size:0.75rem;color:#666;margin:3px 0 8px">${s.addr}</div>
+                    <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer"
+                       style="display:block;text-align:center;background:#FF653A;color:#fff;font-weight:700;font-size:0.75rem;padding:6px 10px;border-radius:6px;text-decoration:none">
+                        Cómo llegar →
+                    </a>
+                </div>`);
+            m.on('click', () => setActive(s));
+            storeMarkers[s.id] = m;
+
+            const item = document.createElement('div');
+            item.className = 'enc-item';
+            item.dataset.id = s.id;
+            item.innerHTML = `
+                <div class="enc-item-icon">${String(i+1).padStart(2,'0')}</div>
+                <div class="enc-item-body">
+                    <div class="enc-item-name">${s.name}</div>
+                    <div class="enc-item-addr">${s.addr}</div>
+                    <div class="enc-item-footer">
+                        <span class="enc-item-dist">${distTxt}</span>
+                        <a class="enc-item-gmaps" href="${mapsUrl}" target="_blank" rel="noopener noreferrer">Cómo llegar →</a>
+                    </div>
+                </div>`;
+            item.addEventListener('click', () => setActive(s));
+            listEl.appendChild(item);
+        });
+
+        if (userMarker) userMarker.remove();
+        const userIcon = L.divIcon({
+            className: '',
+            html: `<div class="enc-user-pin"><div class="enc-user-pulse"></div><div class="enc-user-dot"></div></div>`,
+            iconSize: [40, 40], iconAnchor: [20, 20]
+        });
+        userMarker = L.marker([userLat, userLng], { icon: userIcon }).addTo(map).bindPopup('Tu ubicación');
+
+        const bounds = L.latLngBounds([[userLat, userLng], ...sorted.slice(0, 15).map(s => [s.lat, s.lng])]);
+        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
+        setActive(sorted[0]);
+    }
+
+    function setLoading(msg) {
+        listEl.innerHTML = `<p class="enc-list-placeholder">${msg}</p>`;
+    }
+
+    async function locateAndRender(lat, lng) {
+        setLoading('Buscando Mercadonas cercanas…');
+        try {
+            const stores = await fetchStores(lat, lng);
+            renderList(lat, lng, stores);
+        } catch {
+            listEl.innerHTML = '<p class="enc-list-placeholder">Error al cargar tiendas. Inténtalo de nuevo.</p>';
+        }
+    }
+
+    const GEO_SVG = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="8" stroke-opacity=".3"/></svg>`;
+
+    geoBtn.addEventListener('click', () => {
+        if (!navigator.geolocation) return alert('Tu navegador no soporta geolocalización.');
+        geoBtn.innerHTML = `${GEO_SVG} Buscando…`;
+        geoBtn.disabled = true;
+        navigator.geolocation.getCurrentPosition(
+            pos => {
+                geoBtn.innerHTML = `${GEO_SVG} Mi ubicación`;
+                geoBtn.disabled = false;
+                locateAndRender(pos.coords.latitude, pos.coords.longitude);
+            },
+            () => {
+                geoBtn.innerHTML = `${GEO_SVG} Usar mi ubicación`;
+                geoBtn.disabled = false;
+                alert('No se pudo obtener la ubicación. Prueba a buscar por dirección.');
+            },
+            { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 }
+        );
+    });
+
+    async function searchAddress(query) {
+        setLoading('Buscando dirección…');
+        try {
+            const res  = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1&countrycodes=es`, { headers: { 'Accept-Language': 'es' } });
+            const data = await res.json();
+            if (!data.length) { listEl.innerHTML = '<p class="enc-list-placeholder">No encontramos esa dirección.</p>'; return; }
+            await locateAndRender(+data[0].lat, +data[0].lon);
+        } catch {
+            listEl.innerHTML = '<p class="enc-list-placeholder">Error al buscar. Inténtalo de nuevo.</p>';
+        }
+    }
+
+    searchBtn.addEventListener('click', () => { const q = searchInp.value.trim(); if (q) searchAddress(q); });
+    searchInp.addEventListener('keydown', e => { if (e.key === 'Enter') { const q = searchInp.value.trim(); if (q) searchAddress(q); } });
+
+    setTimeout(() => map.invalidateSize(), 300);
+    new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) setTimeout(() => map.invalidateSize(), 100);
+    }, { threshold: 0.1 }).observe(mapEl);
+})();
+
+// ─── Pacommunity board drag ────────────────────────────────
+(function () {
+    const board = document.getElementById('pcomBoard');
+    if (!board) return;
+
+    let dragging = false;
+    let startX   = 0;
+    let offsetX  = 0;
+
+    function clamp(val) {
+        const max = 0;
+        const min = -(board.scrollWidth - board.parentElement.clientWidth);
+        return Math.max(min, Math.min(max, val));
+    }
+
+    function onDown(clientX) {
+        dragging = true;
+        startX   = clientX - offsetX;
+        board.classList.add('is-dragging');
+    }
+
+    function onMove(clientX) {
+        if (!dragging) return;
+        offsetX = clamp(clientX - startX);
+        board.style.transform = `translateX(${offsetX}px)`;
+    }
+
+    function onUp() {
+        dragging = false;
+        board.classList.remove('is-dragging');
+    }
+
+    board.addEventListener('mousedown',  e => onDown(e.clientX));
+    document.addEventListener('mousemove', e => onMove(e.clientX));
+    document.addEventListener('mouseup',   onUp);
+
+    board.addEventListener('touchstart', e => onDown(e.touches[0].clientX), { passive: true });
+    board.addEventListener('touchmove',  e => onMove(e.touches[0].clientX), { passive: true });
+    board.addEventListener('touchend',   onUp);
 })();

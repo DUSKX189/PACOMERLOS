@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nosotros — Paco Merlos</title>
+    <meta name="description" content="Conoce la historia de Paco Merlos. Bollería artesanal hecha a mano en Madrid desde 2020." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Paco Merlos" />
+    <link rel="canonical" href="https://pacomerlos.com/about.html" />
+    <meta name="theme-color" content="#FF653A" />
+    <link rel="icon" type="image/png" href="img/favicon-paco.png" />
+    <link rel="apple-touch-icon" href="img/favicon-paco.png" />
+    <link rel="preload" href="fonts/Now-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/Now-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/Chunko%20Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+
+      /* ── About page layout ── */
+      .about-hero {
+        background: var(--orange);
+        color: var(--cream);
+        padding: 12rem clamp(2rem, 8vw, 8rem) 6rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .about-hero-eyebrow {
+        font-family: 'Now', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(255,255,245,0.55);
+        margin-bottom: 1.5rem;
+        display: flex; align-items: center; gap: 1rem;
+      }
+      .about-hero-eyebrow::before,
+      .about-hero-eyebrow::after {
+        content: ''; flex: 0 0 40px; height: 1px;
+        background: rgba(255,255,245,0.35);
+      }
+      .about-hero-title {
+        font-family: 'Chunko', sans-serif;
+        font-size: clamp(5rem, 14vw, 11rem);
+        line-height: 0.85;
+        text-transform: uppercase;
+        color: var(--cream);
+        max-width: 12ch;
+      }
+      .about-hero-sub {
+        font-family: 'Now', sans-serif;
+        font-size: clamp(1rem, 1.8vw, 1.25rem);
+        color: rgba(255,255,245,0.75);
+        max-width: 44ch;
+        line-height: 1.7;
+        margin-top: 2.5rem;
+      }
+      .about-hero-wave {
+        background: var(--orange);
+        line-height: 0;
+      }
+      .about-hero-wave svg { width: 100%; display: block; }
+
+      /* ── Historia ── */
+      .about-historia {
+        background: var(--cream);
+        color: var(--dark);
+        padding: 7rem clamp(2rem, 8vw, 8rem);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: center;
+      }
+      .about-historia-img {
+        border-radius: 0.75rem;
+        overflow: hidden;
+        aspect-ratio: 4/5;
+      }
+      .about-historia-img img {
+        width: 100%; height: 100%;
+        object-fit: cover; display: block;
+      }
+      .about-historia-kicker {
+        font-family: 'Now', sans-serif;
+        font-size: 0.72rem; font-weight: 700;
+        letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--orange); margin-bottom: 1.25rem;
+      }
+      .about-historia-title {
+        font-family: 'Chunko', sans-serif;
+        font-size: clamp(3rem, 6vw, 5.5rem);
+        line-height: 0.88; text-transform: uppercase;
+        color: var(--dark); margin-bottom: 2rem;
+      }
+      .about-historia-body {
+        font-family: 'Now', sans-serif;
+        font-size: 1rem; line-height: 1.8;
+        color: rgba(15,15,15,0.68);
+        max-width: 48ch;
+      }
+      .about-historia-body + .about-historia-body {
+        margin-top: 1.25rem;
+      }
+      .about-historia-stats {
+        display: flex; gap: 3rem;
+        padding-top: 2.5rem; margin-top: 2.5rem;
+        border-top: 1px solid rgba(15,15,15,0.1);
+      }
+      .about-historia-stat-num {
+        font-family: 'Chunko', sans-serif;
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        color: var(--orange); line-height: 1;
+        display: block;
+      }
+      .about-historia-stat-label {
+        font-family: 'Now', sans-serif;
+        font-size: 0.7rem; font-weight: 700;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        color: rgba(15,15,15,0.38);
+        display: block; margin-top: 0.3rem;
+      }
+
+      /* ── Valores ── */
+      .about-valores {
+        background: var(--cream);
+        color: var(--dark);
+        padding: 7rem clamp(2rem, 8vw, 8rem);
+        position: relative;
+      }
+      .about-valores-head {
+        margin-bottom: 4rem;
+      }
+      .about-valores-kicker {
+        font-family: 'Now', sans-serif;
+        font-size: 0.72rem; font-weight: 700;
+        letter-spacing: 0.2em; text-transform: uppercase;
+        color: rgba(15,15,15,0.38); margin-bottom: 1rem;
+      }
+      .about-valores-title {
+        font-family: 'Chunko', sans-serif;
+        font-size: clamp(3rem, 7vw, 6rem);
+        line-height: 0.88; text-transform: uppercase;
+        color: var(--dark);
+      }
+      .about-valores-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        border-top: 1px solid rgba(15,15,15,0.1);
+      }
+      .about-valor {
+        padding: 3rem 2.5rem;
+        border-left: 1px solid rgba(15,15,15,0.1);
+        position: relative;
+      }
+      .about-valor:first-child { border-left: none; }
+      .about-valor-num {
+        font-family: 'Chunko', sans-serif;
+        font-size: 5rem; line-height: 1;
+        color: rgba(15,15,15,0.05);
+        position: absolute; top: 1.5rem; right: 1.5rem;
+        pointer-events: none;
+      }
+      .about-valor-title {
+        font-family: 'Chunko', sans-serif;
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 1rem; line-height: 0.9;
+      }
+      .about-valor-text {
+        font-family: 'Now', sans-serif;
+        font-size: 0.95rem; line-height: 1.7;
+        color: rgba(15,15,15,0.62);
+      }
+      .about-valores-wave {
+        background: var(--cream); line-height: 0;
+      }
+      .about-valores-wave svg { width: 100%; display: block; }
+
+      /* ── Foto full ── */
+      .about-foto {
+        background: var(--cream);
+        line-height: 0;
+        overflow: hidden;
+        max-height: 70vh;
+      }
+      .about-foto img {
+        width: 100%; height: 100%;
+        object-fit: cover; display: block;
+        max-height: 70vh;
+      }
+
+      /* ── CTA final ── */
+      .about-cta {
+        background: var(--purple);
+        color: var(--cream);
+        padding: 8rem clamp(2rem, 8vw, 8rem);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .about-cta-title {
+        font-family: 'Chunko', sans-serif;
+        font-size: clamp(3.5rem, 9vw, 7rem);
+        text-transform: uppercase;
+        line-height: 0.88;
+        color: var(--cream);
+        margin-bottom: 2rem;
+      }
+      .about-cta-sub {
+        font-family: 'Now', sans-serif;
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        color: rgba(255,255,245,0.72);
+        max-width: 40ch; margin: 0 auto 3rem;
+        line-height: 1.7;
+      }
+      .about-cta-btns {
+        display: flex; gap: 1rem;
+        justify-content: center; flex-wrap: wrap;
+      }
+      .about-cta-wave {
+        background: var(--purple); line-height: 0;
+      }
+      .about-cta-wave svg { width: 100%; display: block; }
+
+      @media (max-width: 767px) {
+        .about-historia {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .about-historia-img { aspect-ratio: 4/3; order: -1; }
+        .about-valores-grid { grid-template-columns: 1fr; }
+        .about-valor { border-left: none; border-top: 1px solid rgba(255,255,245,0.1); }
+        .about-valor:first-child { border-top: none; }
+        .about-historia-stats { gap: 2rem; flex-wrap: wrap; }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- ── Header ── -->
+    <header id="header">
+      <div class="header-pill">
+        <a href="index.html" class="header-logo">
+          <img src="img/logo-paco-merlos.webp" alt="Paco Merlos" width="200" height="40" />
+        </a>
+        <nav class="header-nav">
+          <a href="index.html#galeria">Sabores</a>
+          <a href="index.html#proceso">Proceso</a>
+          <a href="index.html#social">Pacommunity</a>
+          <a href="about.html" class="active">Nosotros</a>
+        </nav>
+        <div class="header-ctas">
+          <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="btn btn-purple">Síguenos</a>
+          <a href="index.html#encuentralos" class="btn btn-orange">Encuéntralos</a>
+        </div>
+        <div class="header-mobile">
+          <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="header-mobile-insta" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="icon">
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".75" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ── Hero ── -->
+      <section class="about-hero">
+        <p class="about-hero-eyebrow sr">Detrás del obrador</p>
+        <h1 class="about-hero-title sr sr-delay-1">SOMOS<br>PACO<br>MERLOS</h1>
+        <p class="about-hero-sub sr sr-delay-2">No somos una franquicia, no tenemos fábrica. Somos un obrador en Madrid que hace bollería artesanal con las manos, cada mañana, sin excusas.</p>
+      </section>
+      <div class="about-hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,40 C320,80 640,0 960,45 C1140,72 1320,20 1440,40 L1440,80 L0,80 Z" fill="#fffff5"/>
+        </svg>
+      </div>
+
+      <!-- ── Historia ── -->
+      <section class="about-historia">
+        <div class="about-historia-img sr">
+          <img src="img/pacosconcaja.png" alt="Paco Merlos" loading="lazy" decoding="async">
+        </div>
+        <div class="about-historia-text">
+          <p class="about-historia-kicker sr">Nuestra historia</p>
+          <h2 class="about-historia-title sr sr-delay-1">TODO<br>EMPEZÓ<br>EN MADRID</h2>
+          <p class="about-historia-body sr sr-delay-2">En 2020 empezamos con una pregunta simple: ¿por qué es tan difícil encontrar bollería de verdad en Madrid? No algo bonito para Instagram. Algo bueno de verdad, hecho con tiempo y con las manos.</p>
+          <p class="about-historia-body sr sr-delay-3">La respuesta fue los Paquitos. Masa madre fermentada 48 horas, rellenos hechos a diario, sin conservantes ni ingredientes que no puedas pronunciar. Y un nombre que lleva nuestra firma.</p>
+          <div class="about-historia-stats sr sr-delay-3">
+            <div>
+              <span class="about-historia-stat-num">2020</span>
+              <span class="about-historia-stat-label">Año de inicio</span>
+            </div>
+            <div>
+              <span class="about-historia-stat-num">Madrid</span>
+              <span class="about-historia-stat-label">Donde empezó todo</span>
+            </div>
+            <div>
+              <span class="about-historia-stat-num">100%</span>
+              <span class="about-historia-stat-label">Artesanal</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Foto full bleed ── -->
+      <div class="about-foto">
+        <img src="img/foto tablon 2 gente .png" alt="Paco Merlos" loading="lazy" decoding="async">
+      </div>
+
+      <!-- ── Valores ── -->
+      <section class="about-valores">
+        <div class="about-valores-head">
+          <p class="about-valores-kicker sr">En qué creemos</p>
+          <h2 class="about-valores-title sr sr-delay-1">LO QUE NOS<br>DEFINE</h2>
+        </div>
+        <div class="about-valores-grid">
+          <div class="about-valor sr">
+            <span class="about-valor-num">01</span>
+            <h3 class="about-valor-title">Sin<br>prisas</h3>
+            <p class="about-valor-text">La masa madre necesita 48 horas. No 24, no 36. Los atajos se notan en el resultado y nosotros no nos los podemos permitir.</p>
+          </div>
+          <div class="about-valor sr sr-delay-1">
+            <span class="about-valor-num">02</span>
+            <h3 class="about-valor-title">Sin<br>trampa</h3>
+            <p class="about-valor-text">Sin aditivos, sin conservantes, sin mezclas industriales. Todo lo que va dentro de un Paquito lo puedes leer en una etiqueta de supermercado.</p>
+          </div>
+          <div class="about-valor sr sr-delay-2">
+            <span class="about-valor-num">03</span>
+            <h3 class="about-valor-title">Sin<br>disculpas</h3>
+            <p class="about-valor-text">Si no está recién hecho, no sale. Si no está bien, no sale. Preferimos hacer menos y hacerlo bien que llenar una vitrina con producto mediocre.</p>
+          </div>
+        </div>
+        <div class="about-valores-wave" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,35 C360,80 720,0 1080,45 C1260,70 1360,28 1440,42 L1440,80 L0,80 Z" fill="#8C52FF"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- ── CTA final ── -->
+      <section class="about-cta">
+        <h2 class="about-cta-title sr">¿AÚN NO<br>LOS HAS<br>PROBADO?</h2>
+        <p class="about-cta-sub sr sr-delay-1">Encuéntralos en el punto de venta más cercano o síguenos en Instagram para saber cuándo hay novedades.</p>
+        <div class="about-cta-btns sr sr-delay-2">
+          <a href="index.html#encuentralos" class="btn btn-orange">Encuéntralos</a>
+          <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="btn btn-cream">@paco_merlos</a>
+        </div>
+        <div class="about-cta-wave" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,40 C320,80 640,0 960,45 C1140,72 1320,20 1440,40 L1440,80 L0,80 Z" fill="#0f0f0f"/>
+          </svg>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="img/logo-paco-merlos.webp" alt="Paco Merlos" width="200" height="48" />
+          <p class="footer-brand-text">No son bollos — son Paquitos. Hechos a mano, cada mañana, con masa madre y mucho cariño. Madrid, España.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navegar</div>
+          <a href="index.html#galeria">Sabores</a>
+          <a href="index.html#anatomia">El producto</a>
+          <a href="index.html#encuentralos">Encuéntralos</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="privacidad.html">Privacidad</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Síguenos</div>
+          <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="footer-social-btn">@paco_merlos</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copyright">© Paco Merlos 2026 — Sin rodeos.</div>
+        <div class="footer-dots">
+          <div class="footer-dot purple"></div>
+          <div class="footer-dot orange"></div>
+          <div class="footer-dot purple"></div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cookie-banner hidden" id="cookieBanner" role="alertdialog" aria-label="Aviso de cookies">
+      <p class="cookie-text">Esta web usa únicamente cookies técnicas necesarias. <a href="privacidad.html">Más información</a></p>
+      <button class="cookie-btn" id="cookieAccept">Entendido</button>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

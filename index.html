@@ -23,6 +23,8 @@
     <link rel="preload" href="fonts/Now-Bold.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/Chunko%20Bold.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css"/>
   </head>
 
   <body>
@@ -36,7 +38,8 @@
         <nav class="header-nav">
           <a href="#galeria">Sabores</a>
           <a href="#proceso">Proceso</a>
-          <a href="#social">Pacomunity</a>
+          <a href="#social">Pacommunity</a>
+          <a href="about.html">Nosotros</a>
         </nav>
         <div class="header-ctas">
           <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="btn btn-purple">Síguenos</a>
@@ -137,17 +140,55 @@
       </section>
 
       <!-- ══════════════════════════════
+           ANATOMÍA — 3 bandas
+      ══════════════════════════════ -->
+      <section id="anatomia">
+
+        <!-- Banda 1: Rellenos Únicos — naranja, texto izq, foto der -->
+        <div class="anat-band anat-band--orange">
+          <div class="anat-text">
+            <span class="anat-kicker">Rellenos</span>
+            <h3 class="anat-word">Únicos</h3>
+            <p class="anat-desc">Crema pastelera artesanal</p>
+          </div>
+          <div class="anat-photo">
+            <img src="img/rellenos unicos.png" alt="Rellenos únicos" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <!-- Banda 2: Cuerpo Nube — violeta, foto izq, texto der -->
+        <div class="anat-band anat-band--purple">
+          <div class="anat-photo">
+            <img src="img/MASA NUBE.png" alt="Masa madre nube" loading="lazy" decoding="async">
+          </div>
+          <div class="anat-text">
+            <span class="anat-kicker">Cuerpo</span>
+            <h3 class="anat-word">Nube</h3>
+            <p class="anat-desc">Masa madre fermentada 48 h</p>
+          </div>
+        </div>
+
+        <!-- Banda 3: Cobertura Golosa — crema, texto izq, foto der -->
+        <div class="anat-band anat-band--cream">
+          <div class="anat-text">
+            <span class="anat-kicker">Cobertura</span>
+            <h3 class="anat-word">Golosa</h3>
+            <p class="anat-desc">Cargada de crema y tus toppings favoritos</p>
+          </div>
+          <div class="anat-photo">
+            <img src="img/cobertura_.png 2.png" alt="Cobertura golosa" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ══════════════════════════════
            CONECTOR MORADO
       ══════════════════════════════ -->
       <section id="manifiesto">
-        <div class="stmt-wave-top" aria-hidden="true">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,38 C360,0 720,75 1080,28 C1260,8 1360,55 1440,32 L1440,0 L0,0 Z" fill="#fffff5"/>
-          </svg>
-        </div>
         <div class="stmt-body">
-          <p class="stmt-kicker sr">Ni repostería fina, ni postureo</p>
-          <p class="stmt-text sr">Nosotros nos manchamos<br>las manos</p>
+          <p class="stmt-kicker sr">Créenos o pruébalo</p>
+          <p class="stmt-text sr">Una mordida<br>lo explica todo.</p>
         </div>
         <div class="stmt-wave-bot" aria-hidden="true">
           <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -163,121 +204,69 @@
         <img src="img/ANUNCIO PACO.jpg" alt="Paquitos Paco Merlos" class="brand-anuncio" loading="lazy" decoding="async">
       </section>
 
-      <!-- ══════════════════════════════
-           CONECTOR NARANJA 2
-      ══════════════════════════════ -->
-      <section id="statement-naranja-2">
-        <div class="stmt-wave-top" aria-hidden="true">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,48 C320,80 640,8 960,52 C1140,80 1320,16 1440,38 L1440,0 L0,0 Z" fill="#0f0f0f"/>
-          </svg>
-        </div>
-        <div class="stmt-body">
-          <p class="stmt-kicker sr">Créenos o pruébalo</p>
-          <p class="stmt-text sr">Una mordida<br>lo explica todo.</p>
-        </div>
-        <div class="stmt-wave-bot" aria-hidden="true">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,48 C320,80 640,8 960,52 C1140,80 1320,16 1440,38 L1440,80 L0,80 Z" fill="#fffff5"/>
-          </svg>
-        </div>
-      </section>
-
-      <!-- ══════════════════════════════
-           ANATOMÍA
-      ══════════════════════════════ -->
-      <section id="anatomia">
-        <div class="anatomia-header">
-          <h2 class="anatomia-title sr-wipe">TRES CAPAS.<br>UN PAQUITO.</h2>
-        </div>
-
-        <div class="anatomia-diagram">
-
-          <!-- Columna izquierda: 01 y 03 -->
-          <div class="anatomia-diagram-col anatomia-diagram-col--left">
-
-            <div class="anatomia-label sr" data-target-y="15" data-color="#FF653A" data-side="left">
-              <div class="anatomia-label-body">
-                <span class="anatomia-label-num" style="color:var(--orange)">01</span>
-                <h3 class="anatomia-label-title">El Exterior</h3>
-                <p class="anatomia-label-text">Cobertura densa<br>+ toppings crujientes</p>
-              </div>
-              <div class="anatomia-label-connector">
-                <span class="anatomia-label-dot" style="background:var(--orange)"></span>
-              </div>
-            </div>
-
-            <div class="anatomia-label sr" data-target-y="72" data-color="#8C52FF" data-side="left">
-              <div class="anatomia-label-body">
-                <span class="anatomia-label-num" style="color:var(--purple)">03</span>
-                <h3 class="anatomia-label-title">El Corazón</h3>
-                <p class="anatomia-label-text">Relleno brutal<br>y desbordante</p>
-              </div>
-              <div class="anatomia-label-connector">
-                <span class="anatomia-label-dot" style="background:var(--purple)"></span>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Centro: imagen -->
-          <div class="anatomia-diagram-center sr">
-            <img id="anatomy-img" src="img/paquito-OREO.webp.png" alt="Anatomía de un Paquito" loading="lazy" decoding="async">
-          </div>
-
-          <!-- Columna derecha: 02 -->
-          <div class="anatomia-diagram-col anatomia-diagram-col--right">
-
-            <div class="anatomia-label anatomia-label--right sr" data-target-y="48" data-color="#0f0f0f" data-side="right">
-              <div class="anatomia-label-connector">
-                <span class="anatomia-label-dot" style="background:var(--dark)"></span>
-              </div>
-              <div class="anatomia-label-body">
-                <span class="anatomia-label-num" style="color:var(--dark)">02</span>
-                <h3 class="anatomia-label-title">El Cuerpo</h3>
-                <p class="anatomia-label-text">Masa Nube<br>fermentada 48 h</p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
 
       <!-- ══════════════════════════════
            PROCESO
       ══════════════════════════════ -->
       <section id="proceso">
-        <div class="proceso-inner">
-          <div class="section-eyebrow sr">
-            <div class="eyebrow-line-light"></div>
-            <span class="eyebrow-text-light">Cómo se hace</span>
-            <div class="eyebrow-line-light"></div>
+
+        <div class="proceso-head">
+          <p class="section-kicker section-kicker--light">Sin atajos</p>
+          <h2 class="proceso-title">DEL HORNO<br>A TUS MANOS</h2>
+        </div>
+
+        <div class="prows-container">
+
+        <!-- Paso 01 -->
+        <div class="prow prow-sr">
+          <div class="prow-media">
+            <video autoplay muted loop playsinline>
+              <source src="img/videos pacos/8477846-hd_1080_1920_24fps.mp4" type="video/mp4">
+            </video>
           </div>
-          <h2 class="proceso-title sr-wipe">DEL OBRADOR<br>A TU MANO.</h2>
-          <div class="proceso-steps">
-            <div class="proceso-step sr">
-              <div class="proceso-step-num">01</div>
-              <h3 class="proceso-step-title">La masa</h3>
-              <p class="proceso-step-text">48 horas de fermentación con masa madre. Sin aditivos, sin prisas. Solo harina, agua y tiempo.</p>
-            </div>
-            <div class="proceso-step sr sr-delay-1">
-              <div class="proceso-step-num">02</div>
-              <h3 class="proceso-step-title">El obrador</h3>
-              <p class="proceso-step-text">Moldeados, rellenos y decorados uno a uno. No hay máquina que los iguale.</p>
-            </div>
-            <div class="proceso-step sr sr-delay-2">
-              <div class="proceso-step-num">03</div>
-              <h3 class="proceso-step-title">La vitrina</h3>
-              <p class="proceso-step-text">Del horno a tu mano en menos de dos horas. Si no están frescos, no salen.</p>
-            </div>
+          <div class="prow-content">
+            <span class="prow-bg-num">01</span>
+            <h3 class="prow-title">La masa</h3>
+            <p class="prow-text"><strong>Fermentación de 48 horas.</strong> Masa madre, harina, agua y tiempo. Sin aditivos, sin atajos. El reposo largo es lo que da a cada pieza su textura única.</p>
           </div>
         </div>
+
+        <!-- Paso 02 -->
+        <div class="prow prow--flip prow-sr">
+          <div class="prow-media">
+            <video autoplay muted loop playsinline>
+              <source src="img/videos pacos/19575437-hd_1080_1920_25fps.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="prow-content">
+            <span class="prow-bg-num">02</span>
+            <h3 class="prow-title">El obrador</h3>
+            <p class="prow-text"><strong>100% artesanal.</strong> Cada pieza moldeada, rellenada y acabada a mano en nuestro propio obrador. Sin automatización, sin intermediarios.</p>
+          </div>
+        </div>
+
+        <!-- Paso 03 -->
+        <div class="prow prow-sr">
+          <div class="prow-media">
+            <video autoplay muted loop playsinline>
+              <source src="img/videos pacos/42040-431422845.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="prow-content">
+            <span class="prow-bg-num">03</span>
+            <h3 class="prow-title">La vitrina</h3>
+            <p class="prow-text"><strong>Del horno a tus manos.</strong> Horneamos en lotes pequeños durante toda la jornada. Sin almacenaje, sin recalentados. Si no está recién hecho, no sale.</p>
+          </div>
+        </div>
+
+        </div><!-- /prows-container -->
+
         <div class="proceso-wave" aria-hidden="true">
           <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0,40 C320,80 640,0 960,45 C1140,72 1320,20 1440,40 L1440,80 L0,80 Z" fill="#fffff5"/>
           </svg>
         </div>
+
       </section>
 
       <!-- ══════════════════════════════
@@ -290,48 +279,53 @@
             Galería · @paco_merlos
             <span class="pacomunity-eyebrow-line"></span>
           </div>
-          <h2 class="pacomunity-title">PACOMUNITY</h2>
+          <h2 class="pacomunity-title">PACOMMUNITY</h2>
           <p class="pacomunity-sub">Etiquétanos y aparece en nuestro mural.</p>
           <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="pacomunity-cta-link">@paco_merlos →</a>
         </div>
 
-        <div class="pcom-board">
+        <div class="pcom-board" id="pcomBoard">
 
-          <!-- Fila 1 -->
-          <div class="pcom-pin" style="--r:-2deg">
-            <img src="img/post.jpg" alt="" loading="lazy" decoding="async">
-            <span class="pcom-handle">@saratus</span>
+          <!-- TICKET — 2 cols, toda la altura, sale esquina inferior izq -->
+          <div class="pcom-raw pcom-ticket" style="grid-column:1/3; grid-row:1/4;">
+            <img src="img/TICKET PACO TABLÓN.png" alt="" loading="lazy" decoding="async">
           </div>
 
-          <div class="pcom-pin pcom-pin--wide" style="--r:0.5deg">
-            <img src="img/PACOSJUNTOS.png" alt="" loading="lazy" decoding="async">
+          <!-- Foto tablón gente -->
+          <div class="pcom-pin" style="--r:-2deg; grid-column:3/5; grid-row:1/3;">
+            <img src="img/foto tablon gente .png" alt="" loading="lazy" decoding="async">
             <span class="pcom-handle">@paco_merlos</span>
           </div>
 
-          <div class="pcom-pin pcom-pin--note" style="--r:2deg">
+          <!-- Foto tablón 2 gente -->
+          <div class="pcom-pin" style="--r:1.5deg; grid-column:5/7; grid-row:1/3;">
+            <img src="img/foto tablon 2 gente .png" alt="" loading="lazy" decoding="async">
+            <span class="pcom-handle">@paco_merlos</span>
+          </div>
+
+          <!-- Post-it -->
+          <div class="pcom-pin pcom-pin--note" style="--r:-2deg; grid-column:3; grid-row:3;">
             <p class="pcom-note-text">Etiquétanos y puede ser la próxima foto aquí</p>
             <span class="pcom-note-cta">@paco_merlos</span>
           </div>
 
-          <!-- Fila 2 -->
-          <div class="pcom-pin pcom-pin--portrait" style="--r:1.5deg">
-            <img src="img/paquito-PINKY.webp.png" alt="" loading="lazy" decoding="async">
-            <span class="pcom-handle">@javiwalls</span>
-          </div>
-
-          <div class="pcom-pin pcom-pin--announce" style="--r:-1deg">
+          <!-- Tarjeta anuncio -->
+          <div class="pcom-pin pcom-pin--announce" style="--r:-1.5deg; grid-column:4/7; grid-row:3;">
             <p class="pcom-announce-text">Caja gratis cada mes</p>
             <span class="pcom-announce-sub">Participa en el sorteo</span>
           </div>
 
-          <div class="pcom-pin" style="--r:3deg">
-            <img src="img/post1.jpg" alt="" loading="lazy" decoding="async">
-            <span class="pcom-handle">@robertulm</span>
+          <!-- EMPLEADO DEL MES — 3 cols x 3 filas, sin marco -->
+          <div class="pcom-raw" style="--r:-1deg; grid-column:7/10; grid-row:1/4;">
+            <img src="img/empleado del mes tablon.png" alt="Empleado del mes" loading="lazy" decoding="async">
           </div>
 
-          <div class="pcom-pin" style="--r:-1.5deg">
-            <img src="img/post2.jpg" alt="" loading="lazy" decoding="async">
-            <span class="pcom-handle">@paco_merlos</span>
+          <!-- Pegatinas -->
+          <div class="pcom-sticker" style="--r:-8deg; grid-column:4; grid-row:1;">
+            <img src="img/PEGATA PACO.png" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="pcom-sticker pcom-sticker--xl" style="--r:12deg; grid-column:1; grid-row:1;">
+            <img src="img/PEGATA PACO naranja.png" alt="" loading="lazy" decoding="async">
           </div>
 
         </div>
@@ -344,15 +338,33 @@
         <div class="encuentralos-inner">
           <div class="encuentralos-eyebrow sr">
             <div class="eyebrow-line-light"></div>
-            <span class="eyebrow-text-light">Tiendas cerca de ti</span>
+            <span class="eyebrow-text-light">Puntos de venta</span>
             <div class="eyebrow-line-light"></div>
           </div>
-          <h2 class="encuentralos-title sr sr-delay-1">ENCUÉNTRALOS</h2>
-          <div class="encuentralos-coming sr sr-delay-2">
-            <div class="encuentralos-coming-badge">Coming soon</div>
-            <p class="encuentralos-coming-title">Muy pronto podrás disfrutarlos cerca de ti</p>
-            <p class="encuentralos-coming-text">Estamos cerrando nuevos puntos de venta en Madrid. En cuanto estén listos, verás aquí las tiendas ordenadas por cercanía.</p>
-            <a href="https://www.instagram.com/paco_merlos/" target="_blank" rel="noopener noreferrer" class="encuentralos-coming-cta">Avísame en Instagram →</a>
+          <h2 class="encuentralos-title sr sr-delay-1">DONDE<br>ENCONTRARLOS</h2>
+          <p class="encuentralos-sub sr sr-delay-2">Localiza el punto de venta más cercano a ti.</p>
+
+          <div class="enc-locator sr sr-delay-3">
+            <!-- Barra de búsqueda -->
+            <div class="enc-search-bar">
+              <button class="enc-geo-btn" id="encGeoBtn" type="button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="8" stroke-opacity=".3"/></svg>
+                Usar mi ubicación
+              </button>
+              <span class="enc-or">o</span>
+              <div class="enc-input-wrap">
+                <input type="text" id="encSearch" class="enc-input" placeholder="Escribe tu dirección o ciudad…" autocomplete="off">
+                <button class="enc-search-submit" id="encSearchBtn" type="button">Buscar</button>
+              </div>
+            </div>
+
+            <!-- Cuerpo: lista + mapa -->
+            <div class="enc-body">
+              <div class="enc-list" id="encList">
+                <p class="enc-list-placeholder">Activa tu ubicación para ver los puntos más cercanos.</p>
+              </div>
+              <div id="encMap" class="enc-map"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -397,6 +409,8 @@
       <button class="cookie-btn" id="cookieAccept">Entendido</button>
     </div>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
